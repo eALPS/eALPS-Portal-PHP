@@ -1,15 +1,23 @@
 parameters:
     database_driver:   pdo_mysql
-    database_host:     127.0.0.1
-    database_port:     ~
-    database_name:     symfony
-    database_user:     root
-    database_password: ~
+    database_host:     hogehoge
+    database_port:     hogehoge
+    database_name:     hogehoge
+    database_user:     hogehoge
+    database_password: hogehoge
+
+    info_database_driver:   pdo_sqlite
+    info_database_host:     127.0.0.1
+    info_database_port:     null
+    info_database_name:     ealps-info.db
+    info_database_user:     null
+    info_database_password: null
+    info_database_path:     src/eALPS/PortalBundle/Resources/data/ealps-info.db
 
     mailer_transport:  smtp
     mailer_host:       127.0.0.1
     mailer_user:       ~
     mailer_password:   ~
-
-    locale:            en
+    
+    locale:            ja
     secret:            ThisTokenIsNotSoSecretChangeIt
