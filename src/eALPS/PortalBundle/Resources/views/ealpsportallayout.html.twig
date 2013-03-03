@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+
+		<meta charset="UTF-8" />
+
+		<meta name="Author" content="OsamuHASEGAWA"/>
+		<meta name="generator" content="coda2" />
+		<meta name="description" content="eALPSポータルサイト" />
+		<meta name="Keywords" content="eALPS,eALPSポータル,eラーニング,信州大学" />
+		<meta name="Robots" content="index,follow" /> 
+		
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="cleartype" content="on" />
+		<meta http-equiv="imagetoolbar" content="no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		
+		<link rel="shortcut icon" type="image/vnd.microsoft.icon" sizes="16x16 24x24 32x32 48x48 64x64 72x72 96x96 128x128 256x256" href="{{ asset('favicon.ico') }}" />
+		<link rel="icon" type="image/vnd.microsoft.icon" sizes="16x16 24x24 32x32 48x48 64x64 72x72 96x96 128x128 256x256" href="{{ asset('favicon.ico') }}" />
+		
+		<link rel="start" href="/" />
+		
+		<link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/ealpsportal/bootstrap/css/bootstrap.css') }}" />
+		<link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/ealpsportal/css/common.css') }}" />
+		<link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/ealpsportal/css/bootstrap-override.css') }}" />
+		<link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/ealpsportal/css/jquery.dataTables.css') }}" />
+		
+		<script type="text/javascript" src="{{ asset('bundles/ealpsportal/js/jquery-1.9.1.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('bundles/ealpsportal/bootstrap/js/bootstrap.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('bundles/ealpsportal/js/jquery.dataTables.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('bundles/ealpsportal/js/TableTools.js') }}"></script>
+
+		<!--[if lte IE 9]>
+			<script type="text/javascript" src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<style>
+			article,aside,dialog,figure,footer,header,hgroup,menu,nav,section {
+				display: block;
+			}
+		</style>
+
+		<title>{% block title %}eALPSポータル{% endblock %}</title>
+		
+	</head>
+	<body>
+
+		<div class="container">
+			
+			<header>
+				<a href="/ealps-portal/"><h1>eALPSポータル</h1></a>
+			</header>
+
+			<!-- メインコンテンツ -->
+			{% block content %}
+			{% endblock %}
+
+			<hr>
+
+			<footer>
+				Copyright &copy; 2009-{% render "eALPSPortalBundle:Common:getCurrentYear" %} <a href="http://www.shinshu-u.ac.jp/institution/e-L/" target="_blank">e-Learning Center</a>, Shinshu University. All Rights Reserved.
+			</footer>
+		</div>
+		
+	</body>
+</html>

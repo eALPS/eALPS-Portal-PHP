@@ -1,0 +1,414 @@
+{% extends "eALPSPortalBundle::ealpsportallayout.html.twig" %}
+
+{# メインコンテンツ #}
+{% block content %}
+
+	{# お知らせ #}
+	{% include "eALPSPortalBundle:Info:local.html.twig" %}
+	
+	<section id="viewOption" class="well">
+		<h1>表示オプション</h1>
+		<dl>
+			<dt>表示形式</dt>
+			<dd class="btn-group" data-toggle="buttons-radio">
+				<button class="btn btn-success courseScheduleRadio active"><i class="icon-th icon-white"></i>&nbsp;時間割</button>
+				<button class="btn btn-success courseListRadio"><i class="icon-th-list icon-white"></i>&nbsp;履修コースリスト</button>
+				<button class="btn btn-success ealpsListRadio"><i class="icon-list-alt icon-white"></i>&nbsp;学部別eALPSリスト</button>
+			</dd>
+		</dl>
+		<dl class="control-group">
+			<dt class="control-label">期間</dt>
+			<dd class="btn-group" data-toggle="buttons-checkbox">
+				<button class="btn btn-success firstSemesterCheck"><i></i>&nbsp;前期&nbsp;</button>
+				<button class="btn btn-success secondSemesterCheck"><i></i>&nbsp;後期&nbsp;</button>
+				<button class="btn btn-success throughSemesterCheck"><i></i>&nbsp;通年&nbsp;</button>
+				<button class="btn btn-success irregularSemesterCheck"><i></i>&nbsp;不定期&nbsp;</button>
+			</dd>
+		</dl>
+	</section>
+	
+	<div class="schedule">
+		
+		<ul id="yearTab" class="nav nav-tabs">
+			{% for fiscalYear, courseYearViewArray in courseViewArray %}
+			<li class="tab_{{ fiscalYear }}"><a href="#{{ fiscalYear }}"><i class="icon-tag"></i>&nbsp;{{ fiscalYear }}</a></li>
+			{% endfor %}
+			<li class="pull-right"><button class="btn btn-success ealpsListButton" rel="tooltip" data-placement="top" data-original-title="このボタンをクリックすると以前のバージョンと同様の学部毎eALPS一覧を表示することができます．<br />クリック後，再び時間割表示に戻すには，左の表示オプションボタンをクリックして設定を変更してください．"><i class="icon-white icon-backward"></i>&nbsp;学部一覧</button></li>
+			<li class="pull-right">&nbsp;</li>
+			<li class="pull-right"><button class="btn btn-success courseScheduleButton" rel="tooltip" data-placement="top" data-original-title="hogehoge"><i class="icon-white icon-backward"></i>&nbsp;時間割</button></li>
+			<li class="pull-right">&nbsp;</li>
+			<li class="pull-right"><button class="btn btn-success viewOptionCheck"><i class="icon-cog"></i>&nbsp;表示オプション</button></li>
+		</ul>
+	
+		<div class="tab-content">
+		
+			{% for fiscalYear, courseYearViewArray in courseViewArray %}
+			<div id="{{ fiscalYear }}" class="tab-pane fade">
+				
+				{% for viewType, view in courseYearViewArray %}
+				<div>
+				{% if viewType == 'courseSchedule' %}
+					<div class="{{ viewType }}">
+						<table class="table table-striped table-bordered table-condensed schedule">
+							<thead>
+								<tr>
+									<th class="courseHour">&nbsp;</th>
+									<th>月曜</th>
+									<th>火曜</th>
+									<th>水曜</th>
+									<th>木曜</th>
+									<th>金曜</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for hourKey, week in view.table %}
+								<tr>
+									<td class="courseHour">{{ hourKey }}</td>
+									{% for weekKey, dayCourseArray in week %}
+									<td>
+										<ul class="unstyled">
+											{% for course in dayCourseArray %}
+											<li class="{{ course.semester }}">
+												<dl class="dl-horizontal">
+													<dt><i class="icon-book"></i>&nbsp;</dt>
+													<dd><a href="{{ course.URL }}" target="{{ course.URLTarget }}" class="toolTip" title="{{ course.relation.getRelationRole().getCaption() }}">{{ course.titleName }}</a></dd>
+													<dt><i class="icon-user"></i>&nbsp;</dt>
+													<dd>{{ course.teacherArray | first }}</dd>
+													{% if course.subTeacherArray %}
+													<dt><i class="icon-user"></i>&nbsp;</dt>
+													<dd><span class="toolTip" data-toggle="tooltip" title="{{ course.subTeachers }}">...</span></dd>
+													{% endif %}
+													<dt><i class="icon-info-sign"></i>&nbsp;</dt>
+													<dd><a href="{{ course.informationURL }}" target="{{ course.URLTarget }}">コース情報</a></dd>
+												</dl>
+											</li>
+											{% endfor %}
+										</ul>
+									</td>
+									{% endfor%}
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+						<div>
+							<ul class="nav nav-list">
+								{% for course in view.otherCourseArray %}
+								<li class="{{ course.semester }}">
+									<span>
+										<a href="{{ course.URL }}" target="{{ course.URLTarget }}" class="toolTip" data-toggle="tooltip" title="{{ course.relation.getRelationRole().getCaption() }}">
+											<i class="icon-book"></i>&nbsp;{{ course.titleName }}{{ course.relation.getCourse().getId() }}
+										</a>
+										&nbsp;&nbsp;
+										<i class="icon-user"></i>&nbsp;{{ course.teacherArray | first }}&nbsp;&nbsp;
+										{% if course.subTeacherArray %}<i class="icon-user"></i><span class="toolTip" data-toggle="tooltip" title="{{ course.subTeachers }}">&nbsp;...</span>&nbsp;&nbsp;{% endif %}
+										<i class="icon-time"></i>&nbsp;{{ course.opYear }}&nbsp;{{ course.lecPeriod }}&nbsp;{{ course.opDay }}&nbsp;&nbsp;{{ course.opHour }}&nbsp;&nbsp;
+										<a href="{{ course.informationURL }}" target="{{ course.URLTarget }}">
+											<i class="icon-info-sign"></i>&nbsp;コース情報
+										</a>
+									</span>
+								</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+					{% endif %}
+					
+					{% if viewType == 'courseList' %}
+					<div class="{{ viewType }}">
+						<ul class="nav nav-list">
+							{% for course in view %}
+							<li class="{{ course.semester }}">
+								<span>
+									<a href="{{ course.URL }}" target="{{ course.URLTarget }}" class="toolTip" data-toggle="tooltip" title="{{ course.relation.getRelationRole().getCaption() }}">
+										<i class="icon-book"></i>&nbsp;{{ course.titleName }}{{ course.relation.getCourse().getId() }}
+									</a>
+									&nbsp;&nbsp;
+									<i class="icon-user"></i>&nbsp;{{ course.teacherArray | first }}&nbsp;&nbsp;
+									{% if course.subTeacherArray %}<i class="icon-user"></i><span class="toolTip" data-toggle="tooltip" title="{{ course.subTeachers }}">&nbsp;...</span>&nbsp;&nbsp;{% endif %}
+									<i class="icon-time"></i>&nbsp;{{ course.opYear }}&nbsp;{{ course.lecPeriod }}&nbsp;{{ course.opDay }}&nbsp;&nbsp;{{ course.opHour }}&nbsp;&nbsp;
+									<a href="{{ course.informationURL }}" target="{{ course.URLTarget }}">
+										<i class="icon-info-sign"></i>&nbsp;コース情報
+									</a>
+								</span>
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+					{% endif %}
+					
+					{% if viewType == 'ealpsList' %}
+					<div class="{{ viewType }}">
+						<ul class="nav nav-list">
+							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2012/g/" target="_blank"><i class="icon-bookmark"></i>&nbsp;共通教育</a></li>
+							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2012/a/" target="_blank"><i class="icon-bookmark"></i>&nbsp;農学部・農学研究科</a></li>
+							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2012/e/" target="_blank"><i class="icon-bookmark"></i>&nbsp;教育学部・教育学研究科</a></li>
+							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2012/f/" target="_blank"><i class="icon-bookmark"></i>&nbsp;繊維学部・理工学系研究科[繊維]</a></li>
+							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2012/k/" target="_blank"><i class="icon-bookmark"></i>&nbsp;経済学部・経済社会政策科学研究科</a></li>
+							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2012/l/" target="_blank"><i class="icon-bookmark"></i>&nbsp;人文学部・人文科学研究科</a></li>
+							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2012/m/" target="_blank"><i class="icon-bookmark"></i>&nbsp;医学部・医学研究科</a></li>
+							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2012/s/" target="_blank"><i class="icon-bookmark"></i>&nbsp;理学部・理工学系研究科[理学]</a></li>
+							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2012/t/" target="_blank"><i class="icon-bookmark"></i>&nbsp;工学部・理工学系研究科[工学]</a></li>
+						</ul>
+					</div>
+					{% endif %}
+					
+				</div>
+				{% endfor %}
+				
+			</div>
+			{% endfor %}
+			
+<!--
+			<div id="2011" class="tab-pane fade">
+				<ul class="nav nav-list">
+					<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2011/g/" target="_blank"><i class="icon-bookmark"></i>&nbsp;共通教育</a></li>
+					<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2011/a/" target="_blank"><i class="icon-bookmark"></i>&nbsp;農学部・農学研究科</a></li>
+					<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2011/e/" target="_blank"><i class="icon-bookmark"></i>&nbsp;教育学部・教育学研究科</a></li>
+					<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2011/f/" target="_blank"><i class="icon-bookmark"></i>&nbsp;繊維学部・工学系研究科[繊維]</a></li>
+					<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2011/k/" target="_blank"><i class="icon-bookmark"></i>&nbsp;経済学部・経済社会政策科学研究科</a></li>
+					<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2011/l/" target="_blank"><i class="icon-bookmark"></i>&nbsp;人文学部・人文科学研究科</a></li>
+					<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2011/m/" target="_blank"><i class="icon-bookmark"></i>&nbsp;医学部・医学研究科</a></li>
+					<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2011/s/" target="_blank"><i class="icon-bookmark"></i>&nbsp;理学部・工学系研究科[理学]</a></li>
+					<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2011/t/" target="_blank"><i class="icon-bookmark"></i>&nbsp;工学部・工学系研究科[工学]</a></li>
+				</ul>
+			</div>
+
+			<div id="2010" class="tab-pane fade">
+				<ul class="nav nav-list">
+					<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2010/g/" target="_blank"><i class="icon-bookmark"></i>&nbsp;共通教育</a></li>
+					<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2010/a/" target="_blank"><i class="icon-bookmark"></i>&nbsp;農学部・農学研究科</a></li>
+					<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2010/e/" target="_blank"><i class="icon-bookmark"></i>&nbsp;教育学部・教育学研究科</a></li>
+					<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2010/f/" target="_blank"><i class="icon-bookmark"></i>&nbsp;繊維学部・工学系研究科[繊維]</a></li>
+					<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2010/k/" target="_blank"><i class="icon-bookmark"></i>&nbsp;経済学部・経済社会政策科学研究科</a></li>
+					<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2010/l/" target="_blank"><i class="icon-bookmark"></i>&nbsp;人文学部・人文科学研究科</a></li>
+					<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2010/m/" target="_blank"><i class="icon-bookmark"></i>&nbsp;医学部・医学研究科</a></li>
+					<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2010/s/" target="_blank"><i class="icon-bookmark"></i>&nbsp;理学部・工学系研究科[理学]</a></li>
+					<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2010/t/" target="_blank"><i class="icon-bookmark"></i>&nbsp;工学部・工学系研究科[工学]</a></li>
+				</ul>
+			</div>
+-->
+		</div>
+	</div>
+	
+	<section class="well">
+		<h1>各年度共通</h1>
+		<ul class="nav nav-list">
+			<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2010/h/" target="_blank"><i class="icon-bookmark"></i>&nbsp;附属病院</a></li>
+			<li><a href="http://moodle.ealps.shinshu-u.ac.jp/other/training/" target="_blank"><i class="icon-bookmark"></i>&nbsp;一般</a></li>
+			<li><a href="http://eches.shinshu-u.ac.jp/2012/" target="_blank"><i class="icon-bookmark"></i>&nbsp;高等教育コンソーシアム eChes</a></li>
+			<br />
+		</ul>
+	</section>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// 初期表示のタブ
+			$('#yearTab a:first').tab('show');
+			
+			// ツールチップ表示用（bootstrap.js）
+			$('.toolTip').tooltip();
+			
+			var date = new Date();
+			if(date.getMonth() > 2 && date.getMonth() < 9) {
+				$('.firstSemesterCheck').addClass('active');
+				$('.firstSemesterCheck').children().toggleClass('icon-check icon-white');
+			} else {
+				$('.secondSemesterCheck').addClass('active');
+				$('.secondSemesterCheck').children().toggleClass('icon-check icon-white');
+			}
+			$('.throughSemesterCheck').addClass('active');
+			$('.throughSemesterCheck').children().toggleClass('icon-check icon-white');
+			
+			viewTypeHideCheck();
+			semesterHideCheck();
+			
+		});
+		
+		// 年度タブ制御（bootstrap.js）
+		$('#yearTab a').click(function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+		});
+		
+		// 表示オプションボタン制御
+		$('.viewOptionCheck').click(function () {
+			$('.viewOptionCheck').toggleClass('active');
+			$(this).children().toggleClass('icon-check icon-white');
+			$('#viewOption').fadeToggle();
+			viewTypeHideCheck();
+		});
+		
+		// 学部一覧ボタン
+		$('.ealpsListButton').click(function() {
+			$('.ealpsListRadio').click();
+		});
+		
+		// 時間割ボタン
+		$('.courseScheduleButton').click(function() {
+			$('.courseScheduleRadio').click();
+		});
+		
+		$('.courseScheduleRadio').click(function() {
+			//$.cookie('viewType', null);
+			//$.cookie('viewType', 'courseSchedule', {expire: 365});
+			semesterHideCheck();
+			$('.courseList').hide();
+			$('.ealpsList').hide();
+			$('.courseScheduleButton').hide();
+			$('.courseSchedule').fadeIn();
+			$('.ealpsListButton').fadeIn();
+		});
+		
+		$('.courseListRadio').click(function() {
+			//$.cookie('viewType', null);
+			//$.cookie('viewType', 'courseList', {expire: 365});
+			semesterHideCheck();
+			$('.courseSchedule').hide();
+			$('.ealpsList').hide();
+			$('.courseList').fadeIn();
+			$('.courseScheduleButton').fadeIn();
+			$('.ealpsListButton').fadeIn();
+		});
+		
+		$('.ealpsListRadio').click(function() {
+			//$.cookie('viewType', null);
+			//$.cookie('viewType', 'ealpsList', {expire: 365});
+			semesterHideCheck();
+			$('.courseSchedule').hide();
+			$('.courseList').hide();
+			$('.ealpsListButton').hide();
+			$('.ealpsList').fadeIn();
+			$('.courseScheduleButton').fadeIn();
+		});
+		
+		$('.firstSemesterCheck').click(function () {
+			$(this).children().toggleClass('icon-check icon-white');
+			viewTypeHideCheck();
+			$('.firstSemester').fadeToggle();
+		});
+		
+		$('.secondSemesterCheck').click(function () {
+			$(this).children().toggleClass('icon-check icon-white');
+			viewTypeHideCheck();
+			$('.secondSemester').fadeToggle();
+		});
+		
+		$('.throughSemesterCheck').click(function () {
+			$(this).children().toggleClass('icon-check icon-white');
+			viewTypeHideCheck();
+			$('.throughSemester').fadeToggle();
+		});
+		
+		$('.irregularSemesterCheck').click(function () {
+			$(this).children().toggleClass('icon-check icon-white');
+			viewTypeHideCheck();
+			$('.irregularSemester').fadeToggle();
+		});
+		
+		function viewTypeHideCheck() {
+			if(!$('.courseScheduleRadio').hasClass('active')) {
+				$('.courseSchedule').hide();
+			} else {
+				$('.courseSchedule').fadeIn();
+				$('.courseScheduleButton').hide();
+			}
+			
+			if(!$('.courseListRadio').hasClass('active')) {
+				$('.courseList').hide();
+			} else {
+				$('.courseList').fadeIn();
+			}
+			
+			if(!$('.ealpsListRadio').hasClass('active')) {
+				$('.ealpsList').hide();
+			} else {
+				$('.ealpsList').fadeIn();
+				$('.ealpsListButton').hide();
+			}
+		}
+		
+		function semesterHideCheck() {
+			var semesterCookie = '';
+			
+			if(!$('.firstSemesterCheck').hasClass('active')) {
+				$('.firstSemester').hide();
+				//semesterCookie += '0';
+			} else {
+				$('.firstSemester').fadeIn();
+				//semesterCookie += '1';
+			}
+			
+			if(!$('.secondSemesterCheck').hasClass('active')) {
+				$('.secondSemester').hide();
+				//semesterCookie += '0';
+			} else {
+				$('.secondSemester').fadeIn();
+				//semesterCookie += '1';
+			}
+			
+			if(!$('.throughSemesterCheck').hasClass('active')) {
+				$('.throughSemester').hide();
+				//semesterCookie += '0';
+			} else {
+				$('.throughSemester').fadeIn();
+				//semesterCookie += '1';
+			}
+			
+			if(!$('.irregularSemesterCheck').hasClass('active')) {
+				$('.irregularSemester').hide();
+				//semesterCookie += '0';
+			} else {
+				$('.irregularSemester').fadeIn();
+				//semesterCookie += '1';
+			}
+			//$.cookie('semester', null);
+			//$.cookie('semester', semesterCookie, {expire: 365});
+
+		}
+		
+		/*
+		function semesterCookieToggle() {
+			var semesterCookie = '';
+			//if($.cookie('semester')) {
+			//	semesterCookie = $.cookie('semester');
+			//} else {
+				semesterCookie = '0000';
+			//}
+			
+			if($('.firstSemesterCheck').children().hasClass('icon-check icon-white')) {
+				semesterCookie = '1'.concat(semesterCookie.substring(1));
+			} else {
+				semesterCookie = '0'.concat(semesterCookie.substring(1));
+			}
+			
+			if($('.secondSemesterCheck').children().hasClass('icon-check icon-white')) {
+				semesterCookie = semesterCookie.charAt(0).concat('1').concat(semesterCookie.substring(2));
+			} else {
+				semesterCookie = semesterCookie.charAt(0).concat('0').concat(semesterCookie.substring(2));
+			}
+			
+			if($('.throughSemesterCheck').children().hasClass('icon-check icon-white')) {
+				semesterCookie = semesterCookie.substring(0, 2).concat('1').concat(semesterCookie.charAt(3));
+			} else {
+				semesterCookie = semesterCookie.substring(0, 2).concat('0').concat(semesterCookie.charAt(3));
+			}
+			
+			if($('.irregularSemesterCheck').children().hasClass('icon-check icon-white')) {
+				semesterCookie = semesterCookie.substring(0, 3).concat('1');
+			} else {
+				semesterCookie = semesterCookie.substring(0, 3).concat('0');
+			}
+			//$.cookie('semester', null);
+			//$.cookie('semester', semesterCookie, {expire: 365});
+		}
+*/
+	</script>
+
+	{# 時間割 #}
+	{% include "eALPSPortalBundle:Schedule:schedule.html.twig" %}
+	
+	
+	{# グローバルなお知らせ #}
+	{% include "eALPSPortalBundle:Info:global.html.twig" %}
+
+{% endblock %}

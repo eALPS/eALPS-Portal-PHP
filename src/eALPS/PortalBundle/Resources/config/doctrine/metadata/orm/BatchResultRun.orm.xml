@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BatchResultRun" table="Batch_Result_Run">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="operation" type="string" column="operation" length="255" nullable="false"/>
+    <field name="tableName" type="string" column="table_name" length="255" nullable="false"/>
+    <field name="dataId" type="integer" column="data_id" nullable="true"/>
+    <field name="fields" type="string" column="fields" length="255" nullable="true"/>
+    <field name="newValues" type="string" column="new_values" length="255" nullable="true"/>
+    <field name="state" type="string" column="state" length="255" nullable="false"/>
+    <field name="message" type="text" column="message" nullable="true"/>
+    <field name="finishedat" type="datetime" column="finishedAt" nullable="true"/>
+    <many-to-one field="batchResult" target-entity="BatchResult">
+      <join-columns>
+        <join-column name="batch_result_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

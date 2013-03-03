@@ -1,0 +1,17 @@
+{% extends "eALPSPortalBundle::ealpsportallayout.html.twig" %}
+
+{# メインコンテンツ #}
+{% block content %}
+
+	{# お知らせ #}
+	{% include "eALPSPortalBundle:Info:local.html.twig" %}
+	
+	
+	{# 時間割 #}
+	{% render "eALPSPortalBundle:Schedule:index" %}
+	
+	
+	{# グローバルなお知らせ #}
+	{% include "eALPSPortalBundle:Info:global.html.twig" %}
+
+{% endblock %}

@@ -1,0 +1,224 @@
+@charset "utf-8";
+
+body {
+	font-family: "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic Pro", "Hiragino Kaku Gothic Pro W3", "メイリオ", "Helvetica Neue", Helvetica, Arial, "ＭＳ Ｐゴシック", "Osaka", sans-serif;
+	color:#333;
+	background: #FFF url(../image/background/bg_jp.png) repeat;
+}
+
+header h1 {
+	background-image: url(../image/logo/eALPS_auth_logo.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	width: 100%;
+	height: 60px;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+section {
+	margin-top: 12px;
+}
+
+	section > h1 {
+		font-size: medium;
+		line-height: normal;
+		padding-top: 4px;
+		padding-bottom: 4px;
+		border-top: 2px solid #30512F;
+	}
+
+	section > h2 {
+		font-size: medium;
+		line-height: normal;
+		padding-top: 4px;
+		padding-bottom: 4px;
+		border-top: 2px solid #426f32;
+	}
+
+	section > h3 {
+		font-size: small;
+		line-height: normal;
+		padding-top: 4px;
+		padding-bottom: 4px;
+		border-top: 2px solid #508731;
+	}
+	
+	section > h4 {
+		font-size: small;
+		line-height: normal;
+		padding-top: 4px;
+		padding-bottom: 4px;
+		border-left: 2px solid #508731;
+		margin-bottom: 12px;
+	}
+	
+.alert section {
+	margin-top: 0;
+}
+
+	.alert section > h1 {
+		font-size: smaller;
+		border: none;
+		padding: 0;
+	}
+
+	.alert section > h2 {
+		font-size: smaller;
+		border: none;
+		padding: 0;
+	}
+
+	.alert section > h3 {
+		font-size: smaller;
+		border: none;
+		padding: 0;
+	}
+	
+	.alert section > h4 {
+		font-size: smaller;
+		border: none;
+		padding: 0;
+	}
+	
+#info table th {
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+#info table td {
+	vertical-align: middle;
+}
+
+	#info table td.info-label {
+		text-align: center;
+		width: 40px;
+	}
+	
+	#info table td.info-date {
+		width: 80px;
+	}
+	
+	#info table td.info-edit {
+		width: 24px;
+	}
+	
+	#info table td.info-delete {
+		width: 24px;
+	}
+	
+	#info table td.info-datetime {
+		width: 90px;
+	}
+
+	#info table td h1 {
+		font-size: small;
+		line-height: 1;
+	}
+
+.nav-tabs > li.tab_ealps > a {
+	background-image: url(../image/logo/eALPS_auth_logo.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 280px;
+	height: 45px;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.nav-tabs > li.tab_gakunin > a {
+	background-image: url(../img/GakuNin_logo_yoko4.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 280px;
+	height: 45px;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+dt.logo {
+	width: 120px;
+	height: 60px;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+dt.cinii-logo {
+	background: url(../img/logo/cinii.jpg) no-repeat center center;
+	background-size: contain;
+}
+
+dt.niileo-logo {
+	background: url(../img/logo/nii-reo.jpg) no-repeat center center;
+	background-size: contain;
+}
+
+dt.ebscohost-logo {
+	background: url(../img/logo/ebscohost.jpg) no-repeat center center;
+	background-size: contain;
+}
+
+dt.ovid-logo {
+	background: url(../img/logo/wkh-ovidsp-logo-r-500.gif) no-repeat center center;
+	background-size: contain;
+}
+
+dt.sciverse-sd-logo {
+	background: url(../img/logo/sv-sd-rev-rgb.png) no-repeat center center;
+	background-size: contain;
+}
+
+dt.springer-logo {
+	background: url(../img/logo/springer.png) no-repeat center center;
+	background-size: contain;
+}
+
+dt.web-of-knowledge-logo {
+	background: url(../img/logo/web-of-knowledge2.jpg) no-repeat center center;
+	background-size: contain;
+}
+
+dt.dream-spark-logo {
+	background: url(../img/logo/dreamspark.png) no-repeat center center;
+	background-size: contain;
+}
+
+table.schedule thead tr th {
+	width: 18%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+table.schedule thead tr th.courseHour, table.schedule tbody tr td.courseHour {
+	width: 10%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+table.schedule dl dt {
+	width: 15px;
+}
+
+table.schedule dl dd {
+	margin-left: 20px;
+}
+
+span.loader {
+	background: url(../img/loader.gif) no-repeat left center;
+}
+
+div.schedule {
+	margin-top: 12px;
+}
+
+textarea.editInfoBody {
+	width: 900px;
+	height: 300px;
+}

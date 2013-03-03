@@ -1,0 +1,48 @@
+{# グローバルなお知らせ #}
+{% block globalinfo %}
+
+	<section class="well">
+		<a class="close" data-dismiss="alert" href="#">×</a>
+		<h1>eALPSを利用する上での注意事項</h1>
+		<div class="alert alert-block fade in" data-alert="alert">
+
+			<section>
+				<h2 class="alert-heading info-tab"><i class="icon-exclamation-sign"></i><a href="#">&nbsp;教員の皆様</a></h2>
+				<div class="info-detail">
+					<ul>
+						<li>下記コース一覧に，ご自身の担当するコースが表示されない場合は，e-Learningセンターまで御連絡ください．</li>
+						<li>同一内容のコースを複数運用する場合には，便利な運用方法があります．コース作成前にe-Learningセンターまで御連絡ください．詳しくはこちらをご覧ください．</li>
+						<li>教員，TA，CP をコースに追加登録する場合はe-Learningセンターまで御連絡ください．（御連絡のないユーザは，コース内の一部コンテンツの利用ができない場合があります）</li>
+						<li>学生は履修登録により自動的にコースに登録されますので，削除が必要な場合にはe-Learningセンターまで御連絡ください．（御連絡のない場合は，再登録されることがあります）</li>
+					</ul>
+				</div>
+			</section>
+
+			<section>
+				<h2 class="alert-heading info-tab"><a href="#"><i class="icon-exclamation-sign"></i>&nbsp;教員及び学生の皆様</a></h2>
+				<div class="info-detail">
+					<p>現段階で，日本語を含む名前のつけられたファイルをeALPS上にアップロードすると，そのファイルをダウンロードできないブラウザがあります．このため，各コースサイトにアップロードするファイル名は，半角英数字を使用してください．</p>
+				</div>
+			</section>
+		</div>
+		
+		<div class="alert alert-error fade in" data-alert="alert">
+			<section>
+				<h2 class="alert-heading alert-important info-tab"><i class="icon-exclamation-sign"></i><a href="#">&nbsp;教材等の無断転用は禁止されています</a></h2>
+				<div class="info-detail">
+					<p>教材やデータは著作物であり，教員等その著作権者の許可を得ずに転用することは禁止されています．にもかかわらず，eALPS等で提供している教材コンテンツ等を無断で外部サーバ等に転用しているケースが見られました．そのような行為が見られた場合には，著作権者は転用者に対して対処をする場合もあります．</p>
+				</div>
+			</section>
+		</div>
+	</section>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.info-tab').next().hide();
+		});
+		$('.info-tab').click(function () {
+			$(this).next().slideToggle('fast');
+		});
+	</script>
+
+{% endblock %}

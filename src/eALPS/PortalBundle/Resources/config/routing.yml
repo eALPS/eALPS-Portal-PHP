@@ -1,0 +1,11 @@
+e_alps_portal_schedule:
+    pattern:  /
+    defaults: { _controller: eALPSPortalBundle:Default:index }
+
+e_alps_portal_schedule_admin:
+    pattern:  /scheduleAdmin
+    defaults: { _controller: eALPSPortalBundle:Default:scheduleAdmin }
+    
+e_alps_portal_schedule_admin_accountid:
+    pattern:  /scheduleAdmin/{accountId}
+    defaults: { _controller: eALPSPortalBundle:Default:scheduleAdminAccountId }

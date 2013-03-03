@@ -1,0 +1,167 @@
+@charset "utf-8";
+
+form {
+	margin: 18px 0 0;
+}
+
+.container {
+	margin-top: 18px;
+	margin-bottom: 72px;
+	padding: 12px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	background-color: rgba(255, 255, 255, 0.5);
+	background-color: rgba(255, 255, 255, 0.5);
+	
+	filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7FFFFFFF, endcolorstr=#7FFFFFFF, gradienttype=0);
+}
+
+.well {
+	margin-bottom: 0;
+	padding-top: 9px;
+	padding-bottom: 0;
+}
+
+.form-actions {
+	margin-top: 18px;
+	margin-bottom: 0;
+	padding: 17px 20px 0;
+	border-top: 1px solid #E5E5E5;
+	background-color: whiteSmoke;
+}
+
+.tab-content {
+	padding: 18px;
+	border-right: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	-webkit-border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
+}
+
+.nav-list > li > span {
+  display: block;
+  padding: 3px 15px;
+}
+.nav-list > li > span:hover {
+  background-color: #eeeeee;
+  text-decoration: none;
+}
+
+.nav-tabs {
+	margin-bottom: 0;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.nav-tabs a {
+	background-color: rgba(0, 0, 0, 0.2);
+	filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#33000000, endcolorstr=#33000000, gradienttype=0);
+}
+
+.nav-tabs > li > label {
+	margin-right: 2px;
+	padding: 8px 12px 0;
+
+	border: 1px solid transparent;
+
+	-webkit-border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0;
+	line-height: 18px;
+}
+
+.nav-tabs > li > a:hover {
+	background: none;
+	background-color: rgba(0, 0, 0, 0.1);
+	
+	filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#19000000, endcolorstr=#19000000, gradienttype=0);
+}
+
+.nav-tabs > .active > a > [class^="icon-"], .nav-tabs > .active > a > [class*=" icon-"] {
+	background-image: url("../bootstrap/img/glyphicons-halflings.png");
+}
+
+.nav-tabs > li.active > a {
+	border: 1px solid #CCCCCC;
+	border-bottom-color: rgba(255, 255, 255, 0.7);
+	background: none;
+	background-color: rgba(255,255,255,0.1);
+	
+	filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#19FFFFFF, endcolorstr=#19FFFFFF, gradienttype=0);
+}
+
+.nav-tabs > li.active > a:hover {
+	border: 1px solid #CCCCCC;
+	border-bottom-color: rgba(255, 255, 255, 0.7);
+
+	background-color: rgba(255,255,255,0.1);
+		
+	filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#19FFFFFF, endcolorstr=#19FFFFFF, gradienttype=0);
+}
+
+.label {
+	padding: 3px 4px 2px;
+}
+
+a {
+	color: #076500;
+}
+
+a:link, a:hover, a:active, a:visited {
+	color: #076500;
+	font-weight: bold;
+}
+
+.table-condensed th, .table-condensed td {
+	padding: 2px 4px;
+}
+
+section .close {
+	font-size: large;
+	line-height: 48px;
+}
+
+.alert {
+	margin-bottom: 9px;
+	padding: 0 35px 0 14px;
+	color: #b07000;
+}
+
+.alert-success {
+	color: #468847;
+}
+
+.alert-info {
+	color: #3a87ad;
+}
+
+.alert-danger, .alert-error {
+	color: #ba4a48;
+}
+
+.alert-heading a {
+	color: inherit;
+}
+
+.info-detail {
+	margin: 12px 12px 0;
+	font-size: 12px;
+}
+
+.info-detail p {
+	text-indent: 1em;
+}
+
+.hide {
+	display: none;
+}
+
+.modal {
+	margin: -400px 0 0 -640px;
+	width: 1280px;
+}
+.modal-body {
+	max-height: 700px;
+}
