@@ -16,7 +16,7 @@ use eALPS\PortalBundle\Entity\RelationRole;
 class ScheduleController extends Controller
 {
 	// 表示する年の最大数
-	const COUNT_YEAR = 6;
+	const COUNT_YEAR = 3;
 	// 表示する年の最小値
 	const MIN_YEAR = 2010;
 
@@ -46,8 +46,8 @@ class ScheduleController extends Controller
 		$courseYearViewArray = array();
 		
 		// 年度
-		$fiscalYear = 2014;
 		$fiscalYear = Utility::getFiscalYear();
+		$fiscalYear = 2013;
 		
 		// 表示用の初期インスタンスを生成
 		for($i = $fiscalYear; $i >= self::MIN_YEAR && $fiscalYear - $i < self::COUNT_YEAR; $i--) {
@@ -75,13 +75,16 @@ class ScheduleController extends Controller
 					AND relation.course = courseattr.course
 					AND courseattr.courseAttrType = courseattrtype
 					AND courseattrtype.id = 4
-					AND courseattr.value = 1
+					AND NOT courseattr.value = 0
 					AND course.enable = 1
+					AND course.name BETWEEN :minYear AND :fiscalYear
 					AND relation.enable = 1
 					ORDER BY course.name
 				')
 				-> setParameters(array(
 					'accountUId' => $accountId,
+					'minYear' => $fiscalYear - 2,
+					'fiscalYear' => $fiscalYear,
 				))
 				-> getResult();
 		
