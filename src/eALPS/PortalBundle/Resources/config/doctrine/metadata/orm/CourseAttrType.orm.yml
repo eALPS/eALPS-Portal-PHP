@@ -1,0 +1,23 @@
+CourseAttrType:
+    type: entity
+    table: Course_Attr_Type
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        name:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        caption:
+            type: text
+            nullable: false
+        multi:
+            type: boolean
+            nullable: false
+    lifecycleCallbacks: {  }

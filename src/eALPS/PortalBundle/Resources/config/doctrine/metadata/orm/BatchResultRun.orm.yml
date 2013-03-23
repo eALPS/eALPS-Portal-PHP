@@ -1,0 +1,61 @@
+BatchResultRun:
+    type: entity
+    table: Batch_Result_Run
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        operation:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        tableName:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: table_name
+        dataId:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: data_id
+        fields:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        newValues:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: new_values
+        state:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        message:
+            type: text
+            nullable: true
+        finishedat:
+            type: datetime
+            nullable: true
+            column: finishedAt
+    manyToOne:
+        batchResult:
+            targetEntity: BatchResult
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                batch_result_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

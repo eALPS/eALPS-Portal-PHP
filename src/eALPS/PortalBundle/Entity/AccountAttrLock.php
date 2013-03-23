@@ -43,16 +43,6 @@ class AccountAttrLock
     private $updatedat;
 
     /**
-     * @var \Account
-     *
-     * @ORM\ManyToOne(targetEntity="Account")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="account_id", referencedColumnName="id")
-     * })
-     */
-    private $account;
-
-    /**
      * @var \AccountAttrType
      *
      * @ORM\ManyToOne(targetEntity="AccountAttrType")
@@ -61,6 +51,16 @@ class AccountAttrLock
      * })
      */
     private $accountAttrType;
+
+    /**
+     * @var \Account
+     *
+     * @ORM\ManyToOne(targetEntity="Account")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="account_id", referencedColumnName="id")
+     * })
+     */
+    private $account;
 
 
 
@@ -144,29 +144,6 @@ class AccountAttrLock
     }
 
     /**
-     * Set account
-     *
-     * @param \eALPS\PortalBundle\Entity\Account $account
-     * @return AccountAttrLock
-     */
-    public function setAccount(\eALPS\PortalBundle\Entity\Account $account = null)
-    {
-        $this->account = $account;
-    
-        return $this;
-    }
-
-    /**
-     * Get account
-     *
-     * @return \eALPS\PortalBundle\Entity\Account 
-     */
-    public function getAccount()
-    {
-        return $this->account;
-    }
-
-    /**
      * Set accountAttrType
      *
      * @param \eALPS\PortalBundle\Entity\AccountAttrType $accountAttrType
@@ -187,5 +164,28 @@ class AccountAttrLock
     public function getAccountAttrType()
     {
         return $this->accountAttrType;
+    }
+
+    /**
+     * Set account
+     *
+     * @param \eALPS\PortalBundle\Entity\Account $account
+     * @return AccountAttrLock
+     */
+    public function setAccount(\eALPS\PortalBundle\Entity\Account $account = null)
+    {
+        $this->account = $account;
+    
+        return $this;
+    }
+
+    /**
+     * Get account
+     *
+     * @return \eALPS\PortalBundle\Entity\Account 
+     */
+    public function getAccount()
+    {
+        return $this->account;
     }
 }

@@ -1,0 +1,28 @@
+Account:
+    type: entity
+    table: Account
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        uid:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        enable:
+            type: boolean
+            nullable: false
+        createdat:
+            type: datetime
+            nullable: false
+            column: createdAt
+        updatedat:
+            type: datetime
+            nullable: false
+            column: updatedAt
+    lifecycleCallbacks: {  }

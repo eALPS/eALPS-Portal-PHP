@@ -1,0 +1,28 @@
+RelationRole:
+    type: entity
+    table: Relation_Role
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        name:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        caption:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        moodlename:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+            column: moodleName
+    lifecycleCallbacks: {  }

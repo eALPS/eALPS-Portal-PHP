@@ -1,0 +1,42 @@
+AccountAttrLock:
+    type: entity
+    table: Account_Attr_Lock
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        synlock:
+            type: boolean
+            nullable: false
+        createdat:
+            type: datetime
+            nullable: false
+            column: createdAt
+        updatedat:
+            type: datetime
+            nullable: false
+            column: updatedAt
+    manyToOne:
+        accountAttrType:
+            targetEntity: AccountAttrType
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                account_attr_type_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        account:
+            targetEntity: Account
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                account_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

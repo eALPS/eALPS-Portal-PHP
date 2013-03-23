@@ -36,6 +36,13 @@ class Course
     private $enable;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="closed", type="boolean", nullable=false)
+     */
+    private $closed;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="createdAt", type="datetime", nullable=false)
@@ -119,6 +126,29 @@ class Course
     public function getEnable()
     {
         return $this->enable;
+    }
+
+    /**
+     * Set closed
+     *
+     * @param boolean $closed
+     * @return Course
+     */
+    public function setClosed($closed)
+    {
+        $this->closed = $closed;
+    
+        return $this;
+    }
+
+    /**
+     * Get closed
+     *
+     * @return boolean 
+     */
+    public function getClosed()
+    {
+        return $this->closed;
     }
 
     /**

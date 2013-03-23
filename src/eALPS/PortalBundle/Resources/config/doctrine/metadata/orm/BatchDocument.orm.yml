@@ -1,0 +1,22 @@
+BatchDocument:
+    type: entity
+    table: Batch_Document
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        type:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+        hash:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+    lifecycleCallbacks: {  }

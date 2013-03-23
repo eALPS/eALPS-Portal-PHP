@@ -1,0 +1,42 @@
+RelationCourseLock:
+    type: entity
+    table: Relation_Course_Lock
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        synlock:
+            type: boolean
+            nullable: false
+        createdat:
+            type: datetime
+            nullable: false
+            column: createdAt
+        updatedat:
+            type: datetime
+            nullable: false
+            column: updatedAt
+    manyToOne:
+        course:
+            targetEntity: Course
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                course_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        relationRole:
+            targetEntity: RelationRole
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                relation_role_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

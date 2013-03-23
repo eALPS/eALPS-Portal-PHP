@@ -1,0 +1,28 @@
+BatchResult:
+    type: entity
+    table: Batch_Result
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        message:
+            type: text
+            nullable: true
+        startedat:
+            type: datetime
+            nullable: true
+            column: startedAt
+        finishedat:
+            type: datetime
+            nullable: true
+            column: finishedAt
+        trigger:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+    lifecycleCallbacks: {  }
