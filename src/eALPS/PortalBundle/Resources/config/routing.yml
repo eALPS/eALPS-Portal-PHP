@@ -9,3 +9,7 @@ e_alps_portal_schedule_admin:
 e_alps_portal_schedule_admin_accountid:
     pattern:  /scheduleAdmin/{accountId}
     defaults: { _controller: eALPSPortalBundle:Default:scheduleAdminAccountId }
+    
+e_alps_portal_admin_login:
+    pattern:  /adminLogin
+    defaults: { _controller: eALPSPortalBundle:Default:adminLogin }

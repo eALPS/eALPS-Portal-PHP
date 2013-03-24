@@ -1,0 +1,76 @@
+{% extends "eALPSPortalBundle::ealpsportallayout.html.twig" %}
+
+{# メインコンテンツ #}
+{% block content %}	
+
+	<div class="schedule">
+		
+		<ul id="yearTab" class="nav nav-tabs">
+			{% for fiscalYear, URLYearArray in URLArray %}
+			<li class="tab_{{ fiscalYear }}"><a href="#{{ fiscalYear }}"><i class="icon-tag"></i>&nbsp;{{ fiscalYear }}</a></li>
+			{% endfor %}
+		</ul>
+	
+		<div class="tab-content">
+			{% for fiscalYear, URLYearArray in URLArray %}
+			<div id="{{ fiscalYear }}" class="tab-pane fade">
+				<section id="info" class="well">
+					<h1>管理者ログインフォーム</h1>
+					<form class="form-horizontal adminLoginForm" method="post" target="_blank">
+						<fieldset>
+							<div class="control-group">
+								<label class="control-label">ログインするサイト</label>
+								<div class="controls">
+									<select class="span3">
+										{% for site, url in URLYearArray %}
+										<option label="{{site}}" value="{{url}}"></option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+							
+							<div class="control-group">
+								<label class="control-label">ユーザID</label>
+								<div class="controls">
+									<input type="text" name="username" class="input-large" alt="UserID" />
+								</div>
+							</div>
+								
+							<div class="control-group">
+								<label class="control-label">パスワード</label>
+								<div class="controls">
+									<input type="password" name="password" class="input-large" alt="Password" />
+								</div>
+							</div>
+								
+							<div class="form-actions">
+								<button type="submit" class="btn">ログイン</button>
+							</div>
+						</fieldset>
+					</form>
+					<br />
+				</section>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// 初期表示のタブ
+			$('#yearTab a:first').tab('show');
+		});
+		
+		// 年度タブ制御（bootstrap.js）
+		$('#yearTab a').click(function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+		});
+		
+		$('select').change(function() {
+			var loginURL = $(this).val();
+			$(this).parents('form').attr('action', loginURL);
+		});
+	</script>
+
+{% endblock %}

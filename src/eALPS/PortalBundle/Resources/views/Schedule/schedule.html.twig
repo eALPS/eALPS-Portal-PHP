@@ -97,7 +97,7 @@
 										&nbsp;&nbsp;
 										{% if course.teacherArray %}<i class="icon-user"></i>&nbsp;{{ course.teacherArray | first }}&nbsp;&nbsp;{% endif %}
 										{% if course.subTeacherArray %}<i class="icon-user"></i><span class="toolTip" data-toggle="tooltip" title="{{ course.subTeachers }}">&nbsp;...</span>&nbsp;&nbsp;{% endif %}
-										<i class="icon-time"></i>&nbsp;{{ course.opYear }}&nbsp;{{ course.lecPeriod }}&nbsp;{{ course.opDay }}&nbsp;&nbsp;{{ course.opHour }}&nbsp;&nbsp;
+										<i class="icon-time"></i>&nbsp;{{ course.opYear }}&nbsp;{{ course.lecPeriod }}&nbsp;{{ course.opDay }}&nbsp;{{ course.opHour }}&nbsp;&nbsp;
 										<a href="{{ course.informationURL }}" target="{{ course.URLTarget }}">
 											<i class="icon-info-sign"></i>&nbsp;コース情報
 										</a>
@@ -121,7 +121,7 @@
 									&nbsp;&nbsp;
 									{% if course.teacherArray %}<i class="icon-user"></i>&nbsp;{{ course.teacherArray | first }}&nbsp;&nbsp;{% endif %}
 									{% if course.subTeacherArray %}<i class="icon-user"></i><span class="toolTip" data-toggle="tooltip" title="{{ course.subTeachers }}">&nbsp;...</span>&nbsp;&nbsp;{% endif %}
-									<i class="icon-time"></i>&nbsp;{{ course.opYear }}&nbsp;{{ course.lecPeriod }}&nbsp;{{ course.opDay }}&nbsp;&nbsp;{{ course.opHour }}&nbsp;&nbsp;
+									<i class="icon-time"></i>&nbsp;{{ course.opYear }}&nbsp;{{ course.lecPeriod }}&nbsp;{{course.opDay}}&nbsp;{{ course.opHour }}&nbsp;&nbsp;
 									<a href="{{ course.informationURL }}" target="{{ course.URLTarget }}">
 										<i class="icon-info-sign"></i>&nbsp;コース情報
 									</a>
@@ -143,7 +143,7 @@
 							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2012/l/" target="_blank"><i class="icon-bookmark"></i>&nbsp;人文学部・人文科学研究科</a></li>
 							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2012/m/" target="_blank"><i class="icon-bookmark"></i>&nbsp;医学部・医学研究科</a></li>
 							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2012/s/" target="_blank"><i class="icon-bookmark"></i>&nbsp;理学部・理工学系研究科[理学]</a></li>
-							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2012/t/" target="_blank"><i class="icon-bookmark"></i>&nbsp;工学部・理工学系研究科[工学]</a></li>
+							<li><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2013/t/" target="_blank"><i class="icon-bookmark"></i>&nbsp;工学部・理工学系研究科[工学]</a></li>
 						</ul>
 					</div>
 					{% endif %}

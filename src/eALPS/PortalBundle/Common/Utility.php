@@ -13,13 +13,14 @@ class Utility
 	/**
 	 * getFiscalYear function.
 	 * 現在の年度を取得する．
+	 * 運用上の問題で3月は次年度とする．
 	 * 
 	 * @access public
 	 * @return int, 年度
 	 */
 	public static function getFiscalYear()
 	{
-		if(date('n') < 4) {
+		if(date('n') < 3) {
 			return date('Y') - 1;
 		} else {
 			return date('Y');
@@ -47,6 +48,27 @@ class Utility
 			$semester = 'irregularSemester';
 		}
 		return $semester;
+	}
+	
+	public static function getMoodleURL($year, $ssl)
+	{
+		$protocol = '';
+		$URL = '';
+		
+		if($ssl)
+		{
+			$protocol = 'https://';
+		} else {
+			$protocol = 'http://';
+		}
+		
+		if($year >= 2013)
+		{
+			$URL = $protocol.'moodle-cloud.ealps.shinshu-u.ac.jp';
+		} else {
+			$URL = $protocol.'moodle.ealps.shinshu-u.ac.jp';
+		}
+		return $URL;
 	}
 
 }

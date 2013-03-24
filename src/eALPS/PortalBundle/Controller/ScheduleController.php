@@ -31,6 +31,8 @@ class ScheduleController extends Controller
 		$accountId = '48806437';
 		$accountId = 'niimura225';
 		$accountId = '12L1081J';
+		$accountId = $_SERVER['id'];
+		//$accountUId = $_SERVER['uid'];
 		
 		return $this->render('eALPSPortalBundle:Schedule:schedule.html.twig', $this -> createView($accountId));
 	}
@@ -47,7 +49,6 @@ class ScheduleController extends Controller
 		
 		// 年度
 		$fiscalYear = Utility::getFiscalYear();
-		$fiscalYear = 2013;
 		
 		// 表示用の初期インスタンスを生成
 		for($i = $fiscalYear; $i >= self::MIN_YEAR && $fiscalYear - $i < self::COUNT_YEAR; $i--) {
@@ -90,6 +91,9 @@ class ScheduleController extends Controller
 		
 		foreach($relationArray as $relation) {
 			$course = array();
+			$course['opDayHour'] = array();
+			$course['opDay'] = '';
+			$course['opHour'] = '';
 			
 			$courseAttrArray = $this -> getDoctrine()
 				-> getRepository('eALPSPortalBundle:CourseAttr')
@@ -99,7 +103,12 @@ class ScheduleController extends Controller
 				$courseAttrName = $courseAttr 
 					-> getCourseAttrType() 
 					-> getName();
-				$course[$courseAttrName] = $courseAttr -> getValue();
+				if($courseAttr -> getCourseAttrType() -> getId() == 10)
+				{
+					$course[$courseAttrName][] = $courseAttr -> getValue();
+				} else {
+					$course[$courseAttrName] = $courseAttr -> getValue();
+				}
 			}
 			unset($courseAttr);
 			
@@ -112,6 +121,7 @@ class ScheduleController extends Controller
 			$courseDepCode = strtolower($course['depCode'][0]);
 			$courseOpYear = $course['opYear'];
 			$courseTitleCode = $course['titleCode'];
+			$moodleURL = Utility::getMoodleURL($courseOpYear, true);
 			
 			// 担当教員を取得
 			$courseTeacherArray = $this
@@ -152,8 +162,9 @@ class ScheduleController extends Controller
 				->getResult();
 			
 			// 年度，学部，titleCodeからMoodle上のコースIDを取得
-			$jsonCourseId = @file_get_contents("http://moodle.ealps.shinshu-u.ac.jp/$courseOpYear/$courseDepCode/api/getInnerCode.php?code=$courseTitleCode");
+			$jsonCourseId = @file_get_contents("$moodleURL/$courseOpYear/$courseDepCode/api/getInnerCode.php?code=$courseTitleCode");
 			$courseIdArray = json_decode($jsonCourseId, true);
+			//$courseIdArray = null;
 			
 			// 必要な情報をコースに追加
 			//$course['id'] = $relation -> getCourse() -> getId();
@@ -174,8 +185,8 @@ class ScheduleController extends Controller
 				$course['informationURL'] = '#';
 				$course['URLTarget'] = '_self';
 			} else {
-				$course['URL'] = "http://moodle.ealps.shinshu-u.ac.jp/$courseOpYear/$courseDepCode/course/view.php?id=$courseIdArray[$courseTitleCode]";
-				$course['informationURL'] = "http://moodle.ealps.shinshu-u.ac.jp/$courseOpYear/$courseDepCode/course/info.php?id=$courseIdArray[$courseTitleCode]";
+				$course['URL'] = "$moodleURL/$courseOpYear/$courseDepCode/course/view.php?id=$courseIdArray[$courseTitleCode]";
+				$course['informationURL'] = "$moodleURL/$courseOpYear/$courseDepCode/course/info.php?id=$courseIdArray[$courseTitleCode]";
 				$course['URLTarget'] = '_blank';
 			}
 			
@@ -197,18 +208,30 @@ class ScheduleController extends Controller
 			
 			// コースを表示表の配列にに追加
 			// 時間割
-			if($course['opHour'] == '' || $course['opHour'] == '不定') {
-				$courseViewArray[$course['opYear']]['courseSchedule'] -> otherCourseArray[] = $course;
-			} else {
-				//$courseViewArray[$course['opYear']]['schedule'] -> table[$course['opHour']][$course['opDay']][] = $course;
-				$courseViewArray[$course['opYear']]['courseSchedule'] -> table[$course['opHour']]['木曜'][] = $course;
+			//$opDayHourArray = $course['opDayHour'];
+			foreach($course['opDayHour'] as $opDayHour)
+			{
+				$opDayHourArray = explode('-', $opDayHour);
+				$course['opDay'] = $opDayHourArray[0];
+				$course['opHour'] = $opDayHourArray[1];
+				
+				if($course['opDay'] == '集中' || $course['opHour'] == '' || $course['opHour'] == '不定') {
+					$courseViewArray[$course['opYear']]['courseSchedule'] -> otherCourseArray[] = $course;
+				} else {
+					$courseViewArray[$course['opYear']]['courseSchedule'] -> table[$course['opHour']][$course['opDay']][] = $course;
+				//	$courseViewArray[$course['opYear']]['courseSchedule'] -> table[$course['opHour']]['木曜'][] = $course;
+				}
+			
 			}
+			unset($opDayHour);
 			
 			// コースリスト
 			$courseViewArray[$course['opYear']]['courseList'][] = $course;
 		
 		}
 		unset($relation);
+		
+		//var_dump($courseViewArray['2013']);
 		
 		return array('courseViewArray' => $courseViewArray);
 	}
