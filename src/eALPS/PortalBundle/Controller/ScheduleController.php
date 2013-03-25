@@ -231,9 +231,9 @@ class ScheduleController extends Controller
 		}
 		unset($relation);
 		
-		$hogehoge = $this->get('request')->headers->get('id');
+		$id = $this->get('request')->server->get('id');
 		
-		return array('courseViewArray' => $courseViewArray, 'hogehoge' => $hogehoge);
+		return array('courseViewArray' => $courseViewArray, 'id' => $id);
 	}
 }
  

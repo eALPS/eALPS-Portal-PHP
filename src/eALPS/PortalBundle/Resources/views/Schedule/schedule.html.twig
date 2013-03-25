@@ -198,7 +198,10 @@
 	
 	<section class="well">
 		<pre>
-			{{ hogehoge }}
+			id:{{ id }}
+			{% if not app.request.secure %}
+			secure:{{app.request.secure}}
+			{% endif %}
 		</pre>
 	</section>
 	
