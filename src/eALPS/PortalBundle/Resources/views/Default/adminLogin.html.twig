@@ -14,7 +14,7 @@
 		<div class="tab-content">
 			{% for fiscalYear, URLYearArray in URLArray %}
 			<div id="{{ fiscalYear }}" class="tab-pane fade">
-				<section id="info" class="well">
+				<section class="well">
 					<h1>管理者ログインフォーム</h1>
 					<form class="form-horizontal adminLoginForm" method="post" target="_blank">
 						<fieldset>
@@ -23,7 +23,7 @@
 								<div class="controls">
 									<select class="span3">
 										{% for site, url in URLYearArray %}
-										<option label="{{site}}" value="{{url}}"></option>
+										<option label="{{ site }}" value="{{ url }}">{{ site }}</option>
 										{% endfor %}
 									</select>
 								</div>
