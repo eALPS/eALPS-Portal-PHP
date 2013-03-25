@@ -20,7 +20,7 @@
 			</dd>
 		</dl>
 	</section>
-	
+	<?php var_dump($_SERVER['id']) ?>
 	<div class="schedule">
 		
 		<ul id="yearTab" class="nav nav-tabs">
@@ -135,10 +135,10 @@
 					{% if viewType == 'ealpsList' %}
 					<div class="{{ viewType }}">
 						<ul class="nav nav-list">
-							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2012/g/" target="_blank"><i class="icon-bookmark"></i>&nbsp;共通教育</a></li>
-							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2012/a/" target="_blank"><i class="icon-bookmark"></i>&nbsp;農学部・農学研究科</a></li>
-							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2012/e/" target="_blank"><i class="icon-bookmark"></i>&nbsp;教育学部・教育学研究科</a></li>
-							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2012/f/" target="_blank"><i class="icon-bookmark"></i>&nbsp;繊維学部・理工学系研究科[繊維]</a></li>
+							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/{{ fiscalYear }}/g/" target="_blank"><i class="icon-bookmark"></i>&nbsp;共通教育</a></li>
+							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/{{ fiscalYear }}/a/" target="_blank"><i class="icon-bookmark"></i>&nbsp;農学部・農学研究科</a></li>
+							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/{{ fiscalYear }}/e/" target="_blank"><i class="icon-bookmark"></i>&nbsp;教育学部・教育学研究科</a></li>
+							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/{{ fiscalYear }}/f/" target="_blank"><i class="icon-bookmark"></i>&nbsp;繊維学部・理工学系研究科[繊維]</a></li>
 							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2012/k/" target="_blank"><i class="icon-bookmark"></i>&nbsp;経済学部・経済社会政策科学研究科</a></li>
 							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2012/l/" target="_blank"><i class="icon-bookmark"></i>&nbsp;人文学部・人文科学研究科</a></li>
 							<li><a href="http://moodle.ealps.shinshu-u.ac.jp/2012/m/" target="_blank"><i class="icon-bookmark"></i>&nbsp;医学部・医学研究科</a></li>
