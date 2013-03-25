@@ -121,7 +121,7 @@ class DoctrineStep implements StepInterface
     /**
      * @return array
      */
-    public static function getDriverKeys()
+    static public function getDriverKeys()
     {
         return array_keys(static::getDrivers());
     }
@@ -129,7 +129,7 @@ class DoctrineStep implements StepInterface
     /**
      * @return array
      */
-    public static function getDrivers()
+    static public function getDrivers()
     {
         return array(
             'pdo_mysql'  => 'MySQL (PDO)',

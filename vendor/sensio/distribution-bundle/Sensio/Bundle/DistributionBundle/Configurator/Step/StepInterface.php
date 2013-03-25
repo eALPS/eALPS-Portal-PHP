@@ -25,41 +25,41 @@ interface StepInterface
      *
      * @param array $parameters
      */
-    public function __construct(array $parameters);
+    function __construct(array $parameters);
 
     /**
      * Returns the form used for configuration.
      *
      * @return FormTypeInterface
      */
-    public function getFormType();
+    function getFormType();
 
     /**
      * Checks for requirements.
      *
      * @return array
      */
-    public function checkRequirements();
+    function checkRequirements();
 
     /**
      * Checks for optional setting it could be nice to have.
      *
      * @return array
      */
-    public function checkOptionalSettings();
+    function checkOptionalSettings();
 
     /**
      * Returns the template to be renderer for this step.
      *
      * @return string
      */
-    public function getTemplate();
+    function getTemplate();
 
     /**
      * Updates form data parameters.
      *
-     * @param  array $parameters
+     * @param array $parameters
      * @return array
      */
-    public function update(StepInterface $data);
+    function update(StepInterface $data);
 }

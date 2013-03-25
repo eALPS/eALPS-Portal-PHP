@@ -24,8 +24,6 @@ use Symfony\Component\Templating\TemplateNameParserInterface;
 class AsseticExtension extends BaseAsseticExtension
 {
     private $useController;
-    private $templateNameParser;
-    private $enabledBundles;
 
     public function __construct(AssetFactory $factory, TemplateNameParserInterface $templateNameParser, $useController = false, $functions = array(), $enabledBundles = array(), ValueSupplierInterface $valueSupplier = null)
     {

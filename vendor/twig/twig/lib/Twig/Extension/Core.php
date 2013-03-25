@@ -157,8 +157,6 @@ class Twig_Extension_Core extends Twig_Extension
             new Twig_SimpleFilter('reverse', 'twig_reverse_filter', array('needs_environment' => true)),
             new Twig_SimpleFilter('length', 'twig_length_filter', array('needs_environment' => true)),
             new Twig_SimpleFilter('slice', 'twig_slice', array('needs_environment' => true)),
-            new Twig_SimpleFilter('first', 'twig_first', array('needs_environment' => true)),
-            new Twig_SimpleFilter('last', 'twig_last', array('needs_environment' => true)),
 
             // iteration and runtime
             new Twig_SimpleFilter('default', '_twig_default_filter', array('node_class' => 'Twig_Node_Expression_Filter_Default')),
@@ -469,15 +467,13 @@ function twig_date_converter(Twig_Environment $env, $date = null, $timezone = nu
 
     $asString = (string) $date;
     if (ctype_digit($asString) || (!empty($asString) && '-' === $asString[0] && ctype_digit(substr($asString, 1)))) {
-        $date = '@'.$date;
-    }
-
-    $date = new DateTime($date, $defaultTimezone);
-    if (false !== $timezone) {
+        $date = new DateTime('@'.$date);
         $date->setTimezone($defaultTimezone);
+
+        return $date;
     }
 
-    return $date;
+    return new DateTime($date, $defaultTimezone);
 }
 
 /**
@@ -630,36 +626,6 @@ function twig_slice(Twig_Environment $env, $item, $start, $length = null, $prese
     }
 
     return null === $length ? substr($item, $start) : substr($item, $start, $length);
-}
-
-/**
- * Returns the first element of the item.
- *
- * @param Twig_Environment $env  A Twig_Environment instance
- * @param mixed            $item A variable
- *
- * @return mixed The first element of the item
- */
-function twig_first(Twig_Environment $env, $item)
-{
-    $elements = twig_slice($env, $item, 0, 1, false);
-
-    return is_string($elements) ? $elements[0] : current($elements);
-}
-
-/**
- * Returns the last element of the item.
- *
- * @param Twig_Environment $env  A Twig_Environment instance
- * @param mixed            $item A variable
- *
- * @return mixed The last element of the item
- */
-function twig_last(Twig_Environment $env, $item)
-{
-    $elements = twig_slice($env, $item, -1, 1, false);
-
-    return is_string($elements) ? $elements[0] : current($elements);
 }
 
 /**
@@ -1301,9 +1267,10 @@ function twig_include(Twig_Environment $env, $context, $template, $variables = a
  */
 function twig_constant($constant, $object = null)
 {
-    if (null !== $object) {
-        $constant = get_class($object).'::'.$constant;
+    if (!$object) {
+        return constant($constant);
     }
+    $class = get_class($object);
 
-    return constant($constant);
+    return constant($class.'::'.$constant);
 }
