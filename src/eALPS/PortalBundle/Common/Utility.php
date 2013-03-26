@@ -50,6 +50,14 @@ class Utility
 		return $semester;
 	}
 	
+	/**
+	 * getMoodleURL function.
+	 * 年度からMoodleのURLを取得する．
+	 * 
+	 * @access public
+	 * @param int $year(xxxx)
+	 * @return boolean $ssl
+	 */
 	public static function getMoodleURL($year, $ssl)
 	{
 		$protocol = '';
@@ -69,6 +77,23 @@ class Utility
 			$URL = $protocol.'moodle.ealps.shinshu-u.ac.jp';
 		}
 		return $URL;
+	}
+	
+	public static function getDepartmentArray() 
+	{
+		$departmentArray = array(
+			'全学教育機構' => 'g',
+			'人文学部・人文科学研究科' => 'l',
+			'教育学部・教育学研究科' => 'e',
+			'経済学部・経済社会政策科学研究科' => 'k',
+			'理学部・理工学研究科【理学】' => 's',
+			'医学部・医学研究科' => 'm',
+			'工学部・理工学研究科【工学】' => 't',
+			'農学部・農学研究科' => 'a',
+			'繊維学部・理工学研究科【繊維】' => 'f',
+		);
+
+		return $departmentArray;
 	}
 
 }

@@ -58,8 +58,12 @@ class ScheduleController extends Controller
 			$courseList = array();
 			$courseYearViewArray['courseList'] = $courseList;
 			
-			$ealpsList = array();
-			$courseYearViewArray['ealpsList'] = $ealpsList;
+			$ealpsList = Utility::getDepartmentArray();
+			$ealpsListURL = Utility::getMoodleURL($i, true);
+			$courseYearViewArray['ealpsList'] = array(
+				$ealpsListURL => $ealpsList,
+			);
+			//$courseYearViewArray['ealpsList']['ealpsListURL'] = $ealpsListURL;
 			
 			$courseViewArray[$i] = $courseYearViewArray;
 		}
@@ -225,7 +229,6 @@ class ScheduleController extends Controller
 					$courseViewArray[$course['opYear']]['courseSchedule'] -> otherCourseArray[] = $course;
 				} else {
 					$courseViewArray[$course['opYear']]['courseSchedule'] -> table[$course['opHour']][$course['opDay']][] = $course;
-				//	$courseViewArray[$course['opYear']]['courseSchedule'] -> table[$course['opHour']]['木曜'][] = $course;
 				}
 			
 			}
