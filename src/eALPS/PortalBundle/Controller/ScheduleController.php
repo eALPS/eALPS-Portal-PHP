@@ -161,10 +161,6 @@ class ScheduleController extends Controller
 				))
 				->getResult();
 			
-			// 年度，学部，titleCodeからMoodle上のコースIDを取得
-			$jsonCourseId = @file_get_contents("$moodleURL/$courseOpYear/$courseDepCode/api/getInnerCode.php?code=$courseTitleCode");
-			$courseIdArray = json_decode($jsonCourseId, true);
-			//$courseIdArray = null;
 			
 			// 必要な情報をコースに追加
 			//$course['id'] = $relation -> getCourse() -> getId();
@@ -175,19 +171,29 @@ class ScheduleController extends Controller
 			$course['subTeachers'] = '';
 			$course['subTeacherArray'] = array();
 			
+			// 年度，学部，titleCodeからMoodle上のコースIDを取得
+			//$moodleURL = "https://moodle-cloud.ealps.shinshu-u.ac.jp";
+			//$moodleURL = "https://moodleLB-221852614.ap-northeast-1.elb.amazonaws.com";
+			$jsonCourseId = @file_get_contents("$moodleURL/$courseOpYear/$courseDepCode/api/getInnerCode.php?code=$courseTitleCode", true);
 			
-			//if(is_null($courseIdArray[$course['titleCode']]))
-			//var_dump($http_response_header[0]);
-			//var_dump($courseIdArray);
-			if(is_null($courseIdArray) || ($http_response_header[0] == 'HTTP/1.1 404 Not Found') || !array_key_exists($courseTitleCode, $courseIdArray))
+			$courseIdArray = null;
+			if($jsonCourseId == false)
 			{
 				$course['URL'] = '#';
 				$course['informationURL'] = '#';
 				$course['URLTarget'] = '_self';
 			} else {
-				$course['URL'] = "$moodleURL/$courseOpYear/$courseDepCode/course/view.php?id=$courseIdArray[$courseTitleCode]";
-				$course['informationURL'] = "$moodleURL/$courseOpYear/$courseDepCode/course/info.php?id=$courseIdArray[$courseTitleCode]";
-				$course['URLTarget'] = '_blank';
+				$courseIdArray = json_decode($jsonCourseId, true);
+				if(is_null($courseIdArray) || ($http_response_header[0] == 'HTTP/1.1 404 Not Found') || !array_key_exists($courseTitleCode, $courseIdArray))
+				{
+					$course['URL'] = '#';
+					$course['informationURL'] = '#';
+					$course['URLTarget'] = '_self';
+				} else {
+					$course['URL'] = "$moodleURL/$courseOpYear/$courseDepCode/course/view.php?id=$courseIdArray[$courseTitleCode]";
+					$course['informationURL'] = "$moodleURL/$courseOpYear/$courseDepCode/course/info.php?id=$courseIdArray[$courseTitleCode]";
+					$course['URLTarget'] = '_blank';
+				}
 			}
 			
 			foreach($courseTeacherArray as $courseTeacher)
