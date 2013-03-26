@@ -63,7 +63,6 @@ class ScheduleController extends Controller
 			$courseYearViewArray['ealpsList'] = array(
 				$ealpsListURL => $ealpsList,
 			);
-			//$courseYearViewArray['ealpsList']['ealpsListURL'] = $ealpsListURL;
 			
 			$courseViewArray[$i] = $courseYearViewArray;
 		}
@@ -167,7 +166,6 @@ class ScheduleController extends Controller
 			
 			
 			// 必要な情報をコースに追加
-			//$course['id'] = $relation -> getCourse() -> getId();
 			$course['semester'] = Utility::toENSemester($course['lecPeriod']);
 			$course['relation'] = $relation;
 			$course['teachers'] = '';
