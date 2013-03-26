@@ -2,5 +2,38 @@
 
 {# メインコンテンツ #}
 {% block content %}	
+	<div class="schedule">
+		<section class="well">
+			<h1>ログインフォーム</h1>
+			<form class="form-horizontal facilityLoginForm" method="post" action="{{ URL }}/{{ fiscalYear }}/facility/login/index.php" target="_blank">
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label">ログインするサイト</label>
+						<div class="controls">
+							<span class="input-xlarge uneditable-input">大学施設</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">ユーザID</label>
+						<div class="controls">
+							<input type="text" name="username" class="input-large" alt="UserID" />
+						</div>
+					</div>
+						
+					<div class="control-group">
+						<label class="control-label">パスワード</label>
+						<div class="controls">
+							<input type="password" name="password" class="input-large" alt="Password" />
+						</div>
+					</div>
+						
+					<div class="form-actions">
+						<button type="submit" class="btn">ログイン</button>
+					</div>
+				</fieldset>
+			</form>
+			<br />
+		</section>
+	</div>
 
 {% endblock %}
