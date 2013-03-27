@@ -1,4 +1,76 @@
 {# ローカルなお知らせ #}
 {% block localinfo %}
 
+<section id="info" class="well">
+	<a class="hide close" data-dismiss="alert" href="#">×</a>
+	<h1 class="hide">お知らせ</h1>
+	
+	<table class="table table-striped table-condensed table-hover infoTable">
+		<thead>
+			<tr>
+				<th class="sortInfoToolTip" rel="tooltip" data-placement="top" data-original-title="クリックでソート">&nbsp;</th>
+				<th class="sortInfoToolTip" rel="tooltip" data-placement="top" data-original-title="クリックでソート">&nbsp;</th>
+				<th class="sortInfoToolTip" rel="tooltip" data-placement="top" data-original-title="クリックでソート">更新日</th>
+				<th class="sortInfoToolTip" rel="tooltip" data-placement="top" data-original-title="クリックでソート">内容</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for info in infoArray %}
+			<tr class="{% if info.availability != 1 %}error{% endif %}">
+				<td class="info-label">
+					<span id="infoLabelType-{{ info.id }}" class="{{info.getLabelType}}">
+						{{ info.importance }}
+					</span>
+				</td>
+				<td class="info-label">
+					<span id="infoAddress-{{ info.id }}" class="label">
+						{{ info.address }}
+					</span>
+				</td>
+				<td class="info-date">
+					<time id="infoInsertDate-{{ info.id }}">
+						{{ info.getUpdatedateDatetime }}
+					</time>
+				</td>
+				<td>
+					<article>
+						<a class="info-tab" >
+							<h1 id="infoTitle-{{ info.id }}">
+								{{ info.title | raw }}
+							</h1>
+						</a>
+						<div class="info-detail">
+							<p id="infoBody-{{ info.id }}">
+								{{ info.body | replace({'\r\n': '<br />', '\n': '<br />', '\r': '<br />'}) | raw  }}
+							</p>
+						</div>
+					</article>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</section>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.info-detail').hide();
+		$('table.infoTable').dataTable({
+			aaSorting : [[ 2, 'desc']],
+			aLengthMenu : [ 1, 2, 3, 5, 8, 13, 21, 34, 55, 89 ],
+			iDisplayLength : 5,
+			sPaginationType : 'bootstrap',
+			oLanguage : {
+				sLengthMenu : '_MENU_ 件表示',
+				sZeroRecords : '該当するレコードがありません',
+				sInfo : '_TOTAL_ 件中 _START_ 〜 _END_ を表示しています．',
+				sInfoEmpty : '0件',
+				sInfoFiltered : "（全 _MAX_ 件のレコードからフィルタリングされました）"
+			}
+		});
+		// ToolTips
+		$('.sortInfoToolTip').tooltip();
+	});
+</script>
+
 {% endblock %}

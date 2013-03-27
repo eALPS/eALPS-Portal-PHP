@@ -82,7 +82,7 @@ class Utility
 	public static function getDepartmentArray() 
 	{
 		$departmentArray = array(
-			'全学教育機構' => 'g',
+			'共通教育' => 'g',
 			'人文学部・人文科学研究科' => 'l',
 			'教育学部・教育学研究科' => 'e',
 			'経済学部・経済社会政策科学研究科' => 'k',

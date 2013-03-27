@@ -12,7 +12,7 @@ parameters:
     info_database_name:     ealps-info.db
     info_database_user:     null
     info_database_password: null
-    info_database_path:     src/eALPS/PortalBundle/Resources/data/ealps-info.db
+    info_database_path:     Resources/data/ealps-info.db
 
     mailer_transport:  smtp
     mailer_host:       127.0.0.1

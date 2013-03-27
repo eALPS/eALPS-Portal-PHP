@@ -68,7 +68,7 @@ class ScheduleController extends Controller
 
 		$relationArray = $this
 				-> getDoctrine()
-				-> getEntityManager()
+				-> getEntityManager('adb')
 				-> createQuery('
 					SELECT relation 
 					FROM eALPSPortalBundle:Relation relation, eALPSPortalBundle:Account account, eALPSPortalBundle:Course course, eALPSPortalBundle:CourseAttr courseattr, eALPSPortalBundle:CourseAttrType courseattrtype
@@ -97,7 +97,9 @@ class ScheduleController extends Controller
 			$course['opDay'] = '';
 			$course['opHour'] = '';
 			
-			$courseAttrArray = $this -> getDoctrine()
+			$courseAttrArray = $this
+				-> getDoctrine()
+				-> getEntityManager('adb')
 				-> getRepository('eALPSPortalBundle:CourseAttr')
 				-> findByCourse($relation -> getCourse());
 				
@@ -128,7 +130,7 @@ class ScheduleController extends Controller
 			// 担当教員を取得
 			$courseTeacherArray = $this
 				-> getDoctrine()
-				-> getEntityManager()
+				-> getEntityManager('adb')
 				-> createQuery('
 					SELECT aa
 					FROM eALPSPortalBundle:Relation r, eALPSPortalBundle:RelationRole rr, eALPSPortalBundle:AccountAttr aa, eALPSPortalBundle:AccountAttrType aat
@@ -147,7 +149,7 @@ class ScheduleController extends Controller
 			// 副担当教員を取得
 			$courseSubTeacherArray = $this
 				-> getDoctrine()
-				-> getEntityManager()
+				-> getEntityManager('adb')
 				-> createQuery('
 					SELECT aa
 					FROM eALPSPortalBundle:Relation r, eALPSPortalBundle:RelationRole rr, eALPSPortalBundle:AccountAttr aa, eALPSPortalBundle:AccountAttrType aat

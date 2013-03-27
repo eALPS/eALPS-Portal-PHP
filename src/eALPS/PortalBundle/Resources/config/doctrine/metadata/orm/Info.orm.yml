@@ -1,0 +1,39 @@
+Info:
+    type: entity
+    table: info
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: true
+            generator:
+                strategy: IDENTITY
+        title:
+            type: text
+            nullable: true
+        body:
+            type: text
+            nullable: true
+        importance:
+            type: text
+            nullable: true
+        address:
+            type: text
+            nullable: true
+        insertdate:
+            type: date
+            nullable: true
+        updatedate:
+            type: date
+            nullable: true
+        deletedate:
+            type: date
+            nullable: true
+        term:
+            type: date
+            nullable: true
+        availability:
+            type: boolean
+            nullable: false
+    lifecycleCallbacks: {  }

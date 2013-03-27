@@ -23,18 +23,18 @@ assetic:
     use_controller: true
     
 # Doctrine Configuration
-doctrine:
-    dbal:
+#doctrine:
+#    dbal:
 #        default_connection: adb
 #        connections:
 #            adb:
-                driver:   "%database_driver%"
-                host:     "%database_host%"
-                port:     "%database_port%"
-                dbname:   "%database_name%"
-                user:     "%database_user%"
-                password: "%database_password%"
-                charset:  UTF8
+#                driver:   "%database_driver%"
+#                host:     "%database_host%"
+#                port:     "%database_port%"
+#                dbname:   "%database_name%"
+#                user:     "%database_user%"
+#                password: "%database_password%"
+#                charset:  UTF8
 #            info:
 #                driver:   "%info_database_driver%"
 #                host:     "%info_database_host%"
@@ -45,9 +45,9 @@ doctrine:
 #                password: "%info_database_password%"
 #                charset:  UTF8
 
-    orm:
-        auto_generate_proxy_classes: "%kernel.debug%"
-        auto_mapping: true
+#    orm:
+#        auto_generate_proxy_classes: "%kernel.debug%"
+#        auto_mapping: true
 #        default_entity_manager: adb
 #        entity_managers:
 #            adb:
