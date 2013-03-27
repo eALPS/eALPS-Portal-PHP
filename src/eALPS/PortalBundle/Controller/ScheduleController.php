@@ -31,7 +31,7 @@ class ScheduleController extends Controller
 		$accountId = '48806437';
 		$accountId = 'niimura225';
 		$accountId = '12L1081J';
-		$accountId = $this->get('request')->headers->get('id');
+		$accountId = $this->get('request')->headers->get('uid');
 		//$accountUId = $this->get('request')->headers->get('uid');
 		
 		return $this->render('eALPSPortalBundle:Schedule:schedule.html.twig', $this -> createView($accountId));
@@ -238,9 +238,7 @@ class ScheduleController extends Controller
 		}
 		unset($relation);
 		
-		$id = $this->get('request')->server->get('uid');
-		
-		return array('courseViewArray' => $courseViewArray, 'id' => $id);
+		return array('courseViewArray' => $courseViewArray, 'accountUId' => $accountId);
 	}
 }
  
