@@ -238,7 +238,7 @@ class ScheduleController extends Controller
 		}
 		unset($relation);
 		
-		$id = $this->get('request')->server->get('id');
+		$id = $this->get('request')->server->get('uid');
 		
 		return array('courseViewArray' => $courseViewArray, 'id' => $id);
 	}
