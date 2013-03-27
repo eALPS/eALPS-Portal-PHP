@@ -18,6 +18,11 @@ class DefaultController extends Controller
 		return $this->render('eALPSPortalBundle:Default:index.html.twig');
 	}
 	
+	public function scheduleAction()
+	{
+		return $this->render('eALPSPortalBundle:Default:index.html.twig');
+	}
+	
 	public function scheduleAdminAction()
 	{
 		$request = $this->get('request');
