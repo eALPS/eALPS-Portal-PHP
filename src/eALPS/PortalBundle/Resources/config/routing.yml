@@ -1,4 +1,4 @@
-e_alps_portal_schedule:
+e_alps_portal:
     pattern:  /
     defaults: { _controller: eALPSPortalBundle:Default:index }
 
