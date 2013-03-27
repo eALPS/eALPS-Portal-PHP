@@ -18,3 +18,4 @@ CVS
 /app/logs/*
 /web/bundles/
 /app/config/parameters.yml
+/vendor/
