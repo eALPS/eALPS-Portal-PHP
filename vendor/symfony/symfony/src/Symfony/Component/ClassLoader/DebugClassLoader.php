@@ -53,7 +53,7 @@ class DebugClassLoader
         }
 
         foreach ($functions as $function) {
-            if (is_array($function) && method_exists($function[0], 'findFile')) {
+            if (is_array($function) && !$function[0] instanceof self && method_exists($function[0], 'findFile')) {
                 $function = array(new static($function[0]), 'loadClass');
             }
 
@@ -67,6 +67,18 @@ class DebugClassLoader
     public function unregister()
     {
         spl_autoload_unregister(array($this, 'loadClass'));
+    }
+
+    /**
+     * Finds a file by class name
+     *
+     * @param string $class A class name to resolve to file
+     *
+     * @return string|null
+     */
+    public function findFile($class)
+    {
+        return $this->classFinder->findFile($class);
     }
 
     /**

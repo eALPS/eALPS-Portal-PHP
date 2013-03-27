@@ -1,0 +1,61 @@
+{% extends "eALPSPortalBundle::ealpsportallayout.html.twig" %}
+
+{# メインコンテンツ #}
+{% block content %}	
+	<div>
+		<section class="well">
+			<h1>ログインに失敗しました</h1>
+			<div class="tabbable tabs-left">
+				<ul id="loginErrorTab" class="nav nav-tabs">
+					<li><a href="#tab1" data-toggle="tab">学生のみなさまへ</a></li>
+					<li><a href="#tab2" data-toggle="tab">教職員のみなさまへ</a></li>
+					<li><a href="#tab3" data-toggle="tab">附属病院のみなさまへ</a></li>
+					<li><a href="#tab4" data-toggle="tab">市民開放授業受講のみなさまへ</a></li>
+					<li><a href="#tab5" data-toggle="tab">eChesをご利用のみなさまへ</a></li>
+				</ul>
+				<div class="tab-content">
+					<div id="tab1" class="tab-pane fade">
+						<p><a href="https://acsu.shinshu-u.ac.jp/ActiveCampus/">ACSU</a>にログインして，左のメニューにある「eALPSサイト一覧」よりご利用ください．</p>
+					</div>
+					<div id="tab2" class="tab-pane fade">
+						<p><a href="https://acsu.shinshu-u.ac.jp/ActiveCampus/">ACSU</a>に業務IDでログインして，左のメニューにある「eALPSサイト一覧」よりご利用ください．</p>
+						<h3>（業務アカウントへのメールアドレスが未登録の方）</h3>
+						eALPSをご利用いただくには，業務アカウントへのメールアドレスの登録が必要です．ACSUにてメールアドレスをご登録の上，ご利用ください．
+					</div>
+					<div id="tab3" class="tab-pane fade">
+						<p><a href="https://acsu.shinshu-u.ac.jp/ActiveCampus/">ACSU</a>にログインして，左のメニューにある「eALPSサイト一覧」よりご利用ください．</p>
+					</div>
+					<div id="tab4" class="tab-pane fade">
+						<p>ログインIDとパスワードをご確認の上，こちらからログインして下さい．[<a href="http://moodle.ealps.shinshu-u.ac.jp">市民開放授業入り口</a>]</p>
+					</div>
+					<div id="tab5" class="tab-pane fade">
+						<p>ログインIDとパスワードをご確認の上，こちらからログインして下さい．[<a href="https://eches.shinshu-u.ac.jp">eChes入り口</a>]</p>
+					</div>
+				</div>
+			</div>
+			<br />
+		</section>
+	</div>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// 初期表示のタブ
+			$('#loginErrorTab a:first').tab('show');
+		});
+		
+		// 年度タブ制御（bootstrap.js）
+		$('#loginErrorTab a').click(function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+		});
+	</script>
+	
+	<?php
+//if( $_SERVER['HTTP_REFERER'] == 'https://acsu.shinshu-u.ac.jp/ActiveCampus/module/eALPS2Connect.php?id=101'){
+if( $_GET['auth'] != 'error'){
+	header('HTTP/1.1 301 Moved Permanently');
+	header('Location: https://idp.ealps.shinshu-u.ac.jp/idp/Authn/UserPassword?auth=manual');
+}
+?>
+
+{% endblock %}
