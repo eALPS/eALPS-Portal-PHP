@@ -163,7 +163,7 @@
 		</ul>
 	</section>
 	
-	<section class="well">
+	<section id="accountUIdDump" class="well">
 		<pre>
 			accountUId:{{ accountUId }}
 			{% if not app.request.secure %}
@@ -182,6 +182,9 @@
 			
 			// 表示オプション非表示
 			$('#viewOption').hide();
+			
+			// ダンプ用コンテナ非表示
+			$('#accountUIdDump').hide();
 			
 			var date = new Date();
 			if(date.getMonth() > 2 && date.getMonth() < 9) {
