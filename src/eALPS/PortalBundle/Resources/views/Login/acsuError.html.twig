@@ -49,13 +49,4 @@
 			$(this).tab('show');
 		});
 	</script>
-	
-	<?php
-//if( $_SERVER['HTTP_REFERER'] == 'https://acsu.shinshu-u.ac.jp/ActiveCampus/module/eALPS2Connect.php?id=101'){
-if( $_GET['auth'] != 'error'){
-	header('HTTP/1.1 301 Moved Permanently');
-	header('Location: https://idp.ealps.shinshu-u.ac.jp/idp/Authn/UserPassword?auth=manual');
-}
-?>
-
 {% endblock %}

@@ -62,6 +62,9 @@ class LoginController extends Controller
 	
 	public function acsuErrorAction() {
 		$auth = $this->get('request')->query->get('auth');
+		if( $auth != 'error'){
+			return $this->redirect('https://idp-cloud.ealps.shinshu-u.ac.jp/idp/Authn/UserPassword?auth=manual');
+		}
 		
 		return $this->render('eALPSPortalBundle:Login:acsuError.html.twig', array('auth' => $auth));
 	}
