@@ -36,7 +36,7 @@ class InfoController extends Controller
 		$infoArray = $this
 				-> getDoctrine()
 				-> getEntityManager('info')
-				-> getRepository('eALPSPortalBundle:info')
+				-> getRepository('eALPSPortalBundle:Info')
 				-> findByAvailability(1);
 				/*
 					-> createQuery("

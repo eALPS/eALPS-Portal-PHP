@@ -52,28 +52,28 @@ class Info
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="insertdate", type="string", nullable=true)
+     * @ORM\Column(name="insertdate", type="text", nullable=true)
      */
     private $insertdate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updatedate", type="string", nullable=true)
+     * @ORM\Column(name="updatedate", type="text", nullable=true)
      */
     private $updatedate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="deletedate", type="string", nullable=true)
+     * @ORM\Column(name="deletedate", type="text", nullable=true)
      */
     private $deletedate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="term", type="string", nullable=true)
+     * @ORM\Column(name="term", type="text", nullable=true)
      */
     private $term;
 
