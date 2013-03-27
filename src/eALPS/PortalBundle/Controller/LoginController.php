@@ -60,6 +60,12 @@ class LoginController extends Controller
 		return $this->render('eALPSPortalBundle:Login:admin.html.twig', array('URLArray' => $URLArray));
 	}
 	
+	public function acsuErrorAction() {
+		$auth = $this->get('request')->query->get('auth');
+		
+		return $this->render('eALPSPortalBundle:Login:acsuError.html.twig', array('auth' => $auth));
+	}
+	
 	public function facilityAction()
 	{
 		// 年度
