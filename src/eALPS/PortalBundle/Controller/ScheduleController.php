@@ -31,8 +31,7 @@ class ScheduleController extends Controller
 		$accountId = '48806437';
 		$accountId = 'niimura225';
 		$accountId = '12L1081J';
-		$accountId = $this->get('request')->headers->get('uid');
-		//$accountUId = $this->get('request')->headers->get('uid');
+		$accountId = $id = $this->get('request')->server->get('uid');
 		
 		return $this->render('eALPSPortalBundle:Schedule:schedule.html.twig', $this -> createView($accountId));
 	}
