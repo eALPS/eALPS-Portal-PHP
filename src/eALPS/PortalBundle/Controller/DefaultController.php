@@ -20,7 +20,7 @@ class DefaultController extends Controller
 	
 	public function scheduleAction()
 	{
-		return $this->render('eALPSPortalBundle:Default:index.html.twig');
+		return $this->render('eALPSPortalBundle:Default:schedule.html.twig');
 	}
 	
 	public function scheduleAdminAction()

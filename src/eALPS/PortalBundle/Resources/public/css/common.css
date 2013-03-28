@@ -82,6 +82,30 @@ section {
 		padding: 0;
 	}
 	
+section.alert  {
+	margin-top: 0;
+}
+
+	section.alert  > h1 {
+		border: none;
+		padding: 0;
+	}
+
+	section.alert  > h2 {
+		border: none;
+		padding: 0;
+	}
+
+	section.alert  > h3 {
+		border: none;
+		padding: 0;
+	}
+	
+	section.alert  > h4 {
+		border: none;
+		padding: 0;
+	}
+	
 #info table th {
 	vertical-align: middle;
 	font-weight: bold;

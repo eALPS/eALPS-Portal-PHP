@@ -186,15 +186,15 @@
 			// ダンプ用コンテナ非表示
 			$('#accountUIdDump').hide();
 			
-			var currentDate = new Date();
+			var currentDate = new Date('2013-3-21');
 			var firstSemesterDate = new Date();
 			var secondSemesterDate = new Date();
 			
 			firstSemesterDate.setMonth(2);
-			secondSemesterDate.setMonth(9);
+			secondSemesterDate.setMonth(8);
 			
-			firstSemesterDate.setDate(20);
-			secondSemesterDate.setDate(21);
+			firstSemesterDate.setDate(19);
+			secondSemesterDate.setDate(20);
 			
 			if(currentDate > firstSemesterDate && currentDate < secondSemesterDate) {
 				$('.firstSemesterCheck').addClass('active');

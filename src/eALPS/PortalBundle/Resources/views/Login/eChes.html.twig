@@ -1,0 +1,54 @@
+{% extends "eALPSPortalBundle::eChesPortalLayout.html.twig" %}
+
+{# メインコンテンツ #}
+{% block content %}	
+	<div class="schedule">
+		<section class="well">
+			<h1>eChes ログインフォーム</h1>
+			<form class="form-horizontal eChesLoginForm" method="post" action="{{ URL }}/{{ fiscalYear }}/eChes/login/index.php" target="_blank">
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label">ユーザID</label>
+						<div class="controls">
+							<input type="text" name="username" class="input-large" alt="UserID" />
+						</div>
+					</div>
+						
+					<div class="control-group">
+						<label class="control-label">パスワード</label>
+						<div class="controls">
+							<input type="password" name="password" class="input-large" alt="Password" />
+						</div>
+					</div>
+					<div class="form-actions">
+						<button type="submit" class="btn">ログイン</button>
+					</div>
+				</fieldset>
+			</form>
+			<br />
+			<section class="alert alert-error" data-alert="alert">
+				<h2 class="alert-heading alert-important"><i class="icon-exclamation-sign"></i>&nbsp;信州大学の教職員及び学生は&nbsp;<i class="icon-hand-right"></i><a href="https://acsu.shinshu-u.ac.jp/" target="_blank">ACSU</a><i class="icon-hand-left"></i>&nbsp;からログインしてください．</h2>
+			</section>
+			<br />
+		</section>
+		
+		<section class="well">
+			<h1>ゲストとしてログインする</h1>
+			<form class="form-horizontal eChesLoginForm" method="post" action="{{ URL }}/{{ fiscalYear }}/eChes/login/index.php" target="_blank">
+				<fieldset>
+					<input type="hidden" name="username" class="input-large" value="guest" alt="UserID" />
+					<input type="hidden" name="password" class="input-large" value="guest" alt="Password" />
+					<div class="form-actions">
+						<button type="submit" class="btn">ゲストログイン</button>
+					</div>
+				</fieldset>
+			</form>
+			<br />
+			<section class="alert alert-info" data-alert="alert">
+				<h2 class="alert-heading alert-important"><i class="icon-exclamation-sign"></i>&nbsp;「たてなおしの英語（GUEST）」を含むいくつかのコースはどなたでも利用できます．</h2>
+			</section>
+			<br />
+		</section>
+	</div>
+
+{% endblock %}

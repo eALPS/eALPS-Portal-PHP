@@ -69,6 +69,16 @@ class LoginController extends Controller
 		return $this->render('eALPSPortalBundle:Login:acsuError.html.twig', array('auth' => $auth));
 	}
 	
+	public function eChesAction()
+	{
+		// 年度
+		$fiscalYear = Utility::getFiscalYear();
+		// URL
+		$URL = Utility::getMoodleURL($fiscalYear, true);
+		
+		return $this->render('eALPSPortalBundle:Login:eChes.html.twig', array('fiscalYear' => $fiscalYear, 'URL' => $URL));
+	}
+	
 	public function facilityAction()
 	{
 		// 年度
