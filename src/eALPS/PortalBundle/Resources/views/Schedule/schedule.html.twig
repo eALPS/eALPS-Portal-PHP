@@ -186,16 +186,30 @@
 			// ダンプ用コンテナ非表示
 			$('#accountUIdDump').hide();
 			
-			var date = new Date();
-			if(date.getMonth() > 2 && date.getMonth() < 9) {
+			var currentDate = new Date();
+			var firstSemesterDate = new Date();
+			var secondSemesterDate = new Date();
+			
+			firstSemesterDate.setMonth(2);
+			secondSemesterDate.setMonth(9);
+			
+			firstSemesterDate.setDate(20);
+			secondSemesterDate.setDate(21);
+			
+			if(currentDate > firstSemesterDate && currentDate < secondSemesterDate) {
 				$('.firstSemesterCheck').addClass('active');
 				$('.firstSemesterCheck').children().toggleClass('icon-check icon-white');
 			} else {
 				$('.secondSemesterCheck').addClass('active');
 				$('.secondSemesterCheck').children().toggleClass('icon-check icon-white');
 			}
+			// 通年表示
 			$('.throughSemesterCheck').addClass('active');
 			$('.throughSemesterCheck').children().toggleClass('icon-check icon-white');
+			
+			//不定期表示
+			$('.irregularSemesterCheck').addClass('active');
+			$('.irregularSemesterCheck').children().toggleClass('icon-check icon-white');
 			
 			viewTypeHideCheck();
 			semesterHideCheck();
