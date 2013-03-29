@@ -80,6 +80,7 @@ class ScheduleController extends Controller
 					AND courseattrtype.id = 4
 					AND NOT courseattr.value = 0
 					AND course.enable = 1
+					AND courseattr.enable = 1
 					AND course.name BETWEEN :minYear AND :fiscalYear
 					AND relation.enable = 1
 					ORDER BY course.name
