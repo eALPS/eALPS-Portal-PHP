@@ -92,7 +92,7 @@
 								<li class="{{ course.semester }}">
 									<span>
 										<a href="{{ course.URL }}" target="{{ course.URLTarget }}" class="toolTip" data-toggle="tooltip" title="{{ course.relation.getRelationRole().getCaption() }}">
-											<i class="icon-book"></i>&nbsp;{{ course.titleName }}{{ course.relation.getCourse().getId() }}
+											<i class="icon-book"></i>&nbsp;{{ course.titleName }}
 										</a>
 										&nbsp;&nbsp;
 										{% if course.teacherArray %}<i class="icon-user"></i>&nbsp;{{ course.teacherArray | first }}&nbsp;&nbsp;{% endif %}
@@ -116,7 +116,7 @@
 							<li class="{{ course.semester }}">
 								<span>
 									<a href="{{ course.URL }}" target="{{ course.URLTarget }}" class="toolTip" data-toggle="tooltip" title="{{ course.relation.getRelationRole().getCaption() }}">
-										<i class="icon-book"></i>&nbsp;{{ course.titleName }}{{ course.relation.getCourse().getId() }}
+										<i class="icon-book"></i>&nbsp;{{ course.titleName }}
 									</a>
 									&nbsp;&nbsp;
 									{% if course.teacherArray %}<i class="icon-user"></i>&nbsp;{{ course.teacherArray | first }}&nbsp;&nbsp;{% endif %}
