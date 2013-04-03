@@ -23,8 +23,8 @@
 								<label class="control-label">ログインするサイト</label>
 								<div class="controls">
 									<select class="span3">
-										{% for site, url in URLYearArray %}
-										<option label="{{ site }}" value="{{ url }}">{{ site }}</option>
+										{% for siteName, site in URLYearArray %}
+										<option name="{{ site.siteENName }}" label="{{ siteName }}" value="{{ site.url }}">{{ siteName }}</option>
 										{% endfor %}
 									</select>
 								</div>

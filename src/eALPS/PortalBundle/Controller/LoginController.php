@@ -52,7 +52,8 @@ class LoginController extends Controller
 			
 			foreach($siteArray as $key => $site)
 			{
-				$URLArray[$i][$key] = $moodleURL.'/'.$i.'/'.$site.'/login/index.php';
+				$URLArray[$i][$key]['url'] = $moodleURL.'/'.$i.'/'.$site.'/login/index.php';
+				$URLArray[$i][$key]['siteENName'] = $site;
 			}
 			unset($key, $site);
 		}
