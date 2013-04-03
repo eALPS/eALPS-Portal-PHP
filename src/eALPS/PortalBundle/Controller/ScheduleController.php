@@ -117,7 +117,12 @@ class ScheduleController extends Controller
 					-> getName();
 				if($courseAttr -> getCourseAttrType() -> getId() == 10)
 				{
-					$course[$courseAttrName][] = $courseAttr -> getValue();
+					$opDayHourTmpArray = explode(',', $courseAttr -> getValue());
+					foreach($opDayHourTmpArray as $opDayHourTmp) {
+						$course[$courseAttrName][] = $opDayHourTmp;
+					}
+					unset($opDayHourTmp);
+					//$course[$courseAttrName] = explode(',', $courseAttr -> getValue());
 				} else {
 					$course[$courseAttrName] = $courseAttr -> getValue();
 				}
