@@ -17,14 +17,14 @@
 			<div id="{{ fiscalYear }}" class="tab-pane fade">
 				<section class="well">
 					<h1>管理者ログインフォーム</h1>
-					<form class="form-horizontal adminLoginForm" method="post" target="_blank">
+					<form class="form-horizontal adminLoginForm" method="post" target="_self">
 						<fieldset>
 							<div class="control-group">
 								<label class="control-label">ログインするサイト</label>
 								<div class="controls">
-									<select class="span3">
+									<select class="span3" name="{{ fiscalYear }}_loginSite">
 										{% for siteName, site in URLYearArray %}
-										<option name="{{ site.siteENName }}" label="{{ siteName }}" value="{{ site.url }}">{{ siteName }}</option>
+										<option name="{{ fiscalYear }}_{{ site.siteENName }}" label="{{ siteName }}" value="{{ site.url }}">{{ siteName }}</option>
 										{% endfor %}
 									</select>
 								</div>
@@ -43,6 +43,13 @@
 									<input type="password" name="password" class="input-large" alt="Password" />
 								</div>
 							</div>
+							
+							<div class="control-group">
+								<label class="control-label">新しいタブで開く</label>
+								<div class="controls">
+									<input class="windowCheck" type="checkbox" />
+								</div>
+							</div>
 								
 							<div class="form-actions">
 								<button type="submit" class="btn">ログイン</button>
@@ -56,7 +63,7 @@
 			<div id="other" class="tab-pane fade">
 				<section class="well">
 					<h1>管理者ログインフォーム</h1>
-					<form class="form-horizontal adminLoginForm" method="post" target="_blank">
+					<form class="form-horizontal adminLoginForm" method="post" target="_self">
 						<fieldset>
 							<div class="control-group">
 								<label class="control-label">ログインするサイト</label>
@@ -76,6 +83,13 @@
 								<label class="control-label">パスワード</label>
 								<div class="controls">
 									<input type="password" name="password" class="input-large" alt="Password" />
+								</div>
+							</div>
+							
+							<div class="control-group">
+								<label class="control-label">新しいタブで開く</label>
+								<div class="controls">
+									<input class="windowCheck" type="checkbox" />
 								</div>
 							</div>
 								
@@ -113,6 +127,16 @@
 			$(this).parents('form').attr('action', $(this).val());
 		});
 		
+		// チェックボックス操作時
+		$('.windowCheck').click(function() {
+			if($(this).prop('checked')) {
+				$('form').attr('target', '_blank');
+				$('.windowCheck').prop('checked', true);
+			} else {
+				$('form').attr('target', '_self');
+				$('.windowCheck').prop('checked', false);
+			}
+		});
 	</script>
 
 {% endblock %}
