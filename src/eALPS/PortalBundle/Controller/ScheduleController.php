@@ -102,7 +102,14 @@ class ScheduleController extends Controller
 				-> getDoctrine()
 				-> getEntityManager('adb')
 				-> getRepository('eALPSPortalBundle:CourseAttr')
-				-> findByCourse($relation -> getCourse());
+				-> createQueryBuilder('course_attr')
+				-> where('course_attr.course = :course')
+				-> andWhere('course_attr.enable = 1')
+				-> setParameter('course', $relation -> getCourse())
+				-> orderBy('course_attr.original', 'DESC')
+				-> getQuery()
+				-> getResult();
+				//-> findByCourse($relation -> getCourse());
 				
 			foreach($courseAttrArray as $courseAttr) {
 				$courseAttrName = $courseAttr 
