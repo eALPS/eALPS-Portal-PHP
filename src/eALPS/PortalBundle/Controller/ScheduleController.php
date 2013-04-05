@@ -138,7 +138,7 @@ class ScheduleController extends Controller
 			$courseDepCode = strtolower($course['depCode'][0]);
 			$courseOpYear = $course['opYear'];
 			$courseTitleCode = $course['titleCode'];
-			$moodleURL = Utility::getMoodleURL($courseOpYear, true);
+			//$moodleURL = Utility::getMoodleURL($courseOpYear, true);
 			
 			// 担当教員を取得
 			$courseTeacherArray = $this
