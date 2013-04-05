@@ -190,6 +190,7 @@ class ScheduleController extends Controller
 			// 年度，学部，titleCodeからMoodle上のコースIDを取得
 			//$moodleURL = "https://moodle-cloud.ealps.shinshu-u.ac.jp";
 			//$moodleURL = "https://moodleLB-221852614.ap-northeast-1.elb.amazonaws.com";
+			/*
 			$jsonCourseId = @file_get_contents("$moodleURL/$courseOpYear/$courseDepCode/api/getInnerCode.php?code=$courseTitleCode", true);
 			
 			$courseIdArray = null;
@@ -211,6 +212,11 @@ class ScheduleController extends Controller
 					$course['URLTarget'] = '_blank';
 				}
 			}
+			*/
+			
+			$course['URL'] = $this->get('router')->generate('e_alps_portal_redirect_moodle_course', array('opYear' => $courseOpYear, 'depCode' => $courseDepCode, 'titleCode' => $courseTitleCode));
+			$course['informationURL'] = $this->get('router')->generate('e_alps_portal_redirect_moodle_course_info', array('opYear' => $courseOpYear, 'depCode' => $courseDepCode, 'titleCode' => $courseTitleCode));
+			$course['URLTarget'] = '_blank';
 			
 			foreach($courseTeacherArray as $courseTeacher)
 			{

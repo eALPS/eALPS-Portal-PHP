@@ -1,7 +1,7 @@
 e_alps_portal:
     pattern:  /
     defaults: { _controller: eALPSPortalBundle:Default:index }
-
+    
 e_alps_portal_schedule:
     pattern:  /schedule
     defaults: { _controller: eALPSPortalBundle:Default:schedule }
@@ -13,6 +13,14 @@ e_alps_portal_schedule_admin:
 e_alps_portal_schedule_admin_accountid:
     pattern:  /scheduleAdmin/{accountId}
     defaults: { _controller: eALPSPortalBundle:Default:scheduleAdminAccountId }
+    
+e_alps_portal_redirect_moodle_course:
+    pattern:  /redirectMoodleCourse/{opYear}/{depCode}/{titleCode}
+    defaults: { _controller: eALPSPortalBundle:Redirect:redirectMoodleCourse }
+    
+e_alps_portal_redirect_moodle_course_info:
+    pattern:  /redirectMoodleCourseInfo/{opYear}/{depCode}/{titleCode}
+    defaults: { _controller: eALPSPortalBundle:Redirect:redirectMoodleCourseInfo }
     
 e_alps_portal_login_admin:
     pattern:  /login/admin
