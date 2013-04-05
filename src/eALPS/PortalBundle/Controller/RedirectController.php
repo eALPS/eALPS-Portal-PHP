@@ -28,12 +28,12 @@ class RedirectController extends Controller
 		$courseIdArray = null;
 		if($jsonCourseId == false)
 		{
-			return $this->render('eALPSPortalBundle:Error:redirectMoodleCourseError.html.twig');
+			return $this->render('eALPSPortalBundle:Error:redirectMoodleCourseError.html.twig', array('opYear' => $opYear, 'depCode' => $depCode, 'titleCode' => $titleCode));
 		} else {
 			$courseIdArray = json_decode($jsonCourseId, true);
 			if(is_null($courseIdArray) || ($http_response_header[0] == 'HTTP/1.1 404 Not Found') || !array_key_exists($titleCode, $courseIdArray))
 			{
-				return $this->render('eALPSPortalBundle:Error:redirectMoodleCourseError.html.twig');
+				return $this->render('eALPSPortalBundle:Error:redirectMoodleCourseError.html.twig', array('opYear' => $opYear, 'depCode' => $depCode, 'titleCode' => $titleCode));
 			} else {
 				$redirectURL = "$moodleURL/$opYear/$depCode/course/view.php?id=$courseIdArray[$titleCode]";
 			}
@@ -52,12 +52,12 @@ class RedirectController extends Controller
 		$courseIdArray = null;
 		if($jsonCourseId == false)
 		{
-			return $this->render('eALPSPortalBundle:Error:redirectMoodleCourseError.html.twig');
+			return $this->render('eALPSPortalBundle:Error:redirectMoodleCourseError.html.twig', array('opYear' => $opYear, 'depCode' => $depCode, 'titleCode' => $titleCode));
 		} else {
 			$courseIdArray = json_decode($jsonCourseId, true);
 			if(is_null($courseIdArray) || ($http_response_header[0] == 'HTTP/1.1 404 Not Found') || !array_key_exists($titleCode, $courseIdArray))
 			{
-				return $this->render('eALPSPortalBundle:Error:redirectMoodleCourseError.html.twig');
+				return $this->render('eALPSPortalBundle:Error:redirectMoodleCourseError.html.twig', array('opYear' => $opYear, 'depCode' => $depCode, 'titleCode' => $titleCode));
 			} else {
 				$redirectURL = "$moodleURL/$opYear/$depCode/course/info.php?id=$courseIdArray[$titleCode]";
 			}
