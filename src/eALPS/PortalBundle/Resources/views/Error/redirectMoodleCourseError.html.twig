@@ -6,7 +6,15 @@
 		<section class="well">
 			<h1>リダイレクトエラー</h1>
 			<p>&nbsp;該当するコースが見つかりませんでした．</p>
-			<button class="btn" type="button">ウィンドウを閉じる</button>
+			<dl class="dl-horizontal">
+				<dt>開講年度</dt>
+				<dd>{{ opYear }}</dd>
+				<dt>開講学部</dt>
+				<dd>{{ depCode }}</dd>
+				<dt>題目コード</dt>
+				<dd>{{ titleCode }}</dd>
+			</dl>
+			<button class="btn" type="button" onclick="window.close();">ウィンドウを閉じる</button>
 			<br />
 			<br />
 		</section>
