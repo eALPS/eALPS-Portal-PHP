@@ -20,8 +20,7 @@ class ScheduleController extends Controller
 	// 表示する年の最小値
 	const MIN_YEAR = 2010;
 
-	public function indexAction()
-	{
+	public function indexAction() {
 		// アカウントID
 		$accountId = '11TA110E';
 		$accountId = '10S5601G';
@@ -36,8 +35,7 @@ class ScheduleController extends Controller
 		return $this->render('eALPSPortalBundle:Schedule:schedule.html.twig', $this -> createView($accountId));
 	}
 
-	public function adminAction($accountId)
-	{
+	public function adminAction($accountId) {
 		return $this->render('eALPSPortalBundle:Schedule:schedule.html.twig', $this -> createView($accountId));
 	}
 	
@@ -129,8 +127,7 @@ class ScheduleController extends Controller
 			}
 			unset($courseAttr);
 			
-			if(($course['opYear'] < self::MIN_YEAR) || ($course['opYear'] < ($fiscalYear - self::COUNT_YEAR)) )
-			{
+			if(($course['opYear'] < self::MIN_YEAR) || ($course['opYear'] < ($fiscalYear - self::COUNT_YEAR)) ) {
 				continue;
 			}
 			
@@ -138,7 +135,6 @@ class ScheduleController extends Controller
 			$courseDepCode = strtolower($course['depCode'][0]);
 			$courseOpYear = $course['opYear'];
 			$courseTitleCode = $course['titleCode'];
-			//$moodleURL = Utility::getMoodleURL($courseOpYear, true);
 			
 			// 担当教員を取得
 			$courseTeacherArray = $this
@@ -185,49 +181,19 @@ class ScheduleController extends Controller
 			$course['teachers'] = '';
 			$course['teacherArray'] = array();
 			$course['subTeachers'] = '';
-			$course['subTeacherArray'] = array();
-			
-			// 年度，学部，titleCodeからMoodle上のコースIDを取得
-			//$moodleURL = "https://moodle-cloud.ealps.shinshu-u.ac.jp";
-			//$moodleURL = "https://moodleLB-221852614.ap-northeast-1.elb.amazonaws.com";
-			/*
-			$jsonCourseId = @file_get_contents("$moodleURL/$courseOpYear/$courseDepCode/api/getInnerCode.php?code=$courseTitleCode", true);
-			
-			$courseIdArray = null;
-			if($jsonCourseId == false)
-			{
-				$course['URL'] = '#';
-				$course['informationURL'] = '#';
-				$course['URLTarget'] = '_self';
-			} else {
-				$courseIdArray = json_decode($jsonCourseId, true);
-				if(is_null($courseIdArray) || ($http_response_header[0] == 'HTTP/1.1 404 Not Found') || !array_key_exists($courseTitleCode, $courseIdArray))
-				{
-					$course['URL'] = '#';
-					$course['informationURL'] = '#';
-					$course['URLTarget'] = '_self';
-				} else {
-					$course['URL'] = "$moodleURL/$courseOpYear/$courseDepCode/course/view.php?id=$courseIdArray[$courseTitleCode]";
-					$course['informationURL'] = "$moodleURL/$courseOpYear/$courseDepCode/course/info.php?id=$courseIdArray[$courseTitleCode]";
-					$course['URLTarget'] = '_blank';
-				}
-			}
-			*/
-			
+			$course['subTeacherArray'] = array();			
 			$course['URL'] = $this->get('router')->generate('e_alps_portal_redirect_moodle_course', array('opYear' => $courseOpYear, 'depCode' => $courseDepCode, 'titleCode' => $courseTitleCode));
 			$course['informationURL'] = $this->get('router')->generate('e_alps_portal_redirect_moodle_course_info', array('opYear' => $courseOpYear, 'depCode' => $courseDepCode, 'titleCode' => $courseTitleCode));
 			$course['URLTarget'] = '_blank';
 			
-			foreach($courseTeacherArray as $courseTeacher)
-			{
+			foreach($courseTeacherArray as $courseTeacher) {
 				$course['teacherArray'][] = mb_convert_kana($courseTeacher -> getValue(), "s", "UTF-8");
 				$course['teachers'] = $course['teachers'].'，'.mb_convert_kana($courseTeacher -> getValue(), "s");
 			}
 			unset($courseTeacher);
 			$course['teachers'] = ltrim($course['teachers'], "，");
 			
-			foreach($courseSubTeacherArray as $courseSubTeacher)
-			{
+			foreach($courseSubTeacherArray as $courseSubTeacher) {
 				$course['subTeacherArray'][] = mb_convert_kana($courseSubTeacher -> getValue(), "s", "UTF-8");
 				$course['subTeachers'] = $course['subTeachers'].'，'.mb_convert_kana($courseSubTeacher -> getValue(), "s", "UTF-8");
 			}
@@ -237,8 +203,7 @@ class ScheduleController extends Controller
 			// コースを表示表の配列にに追加
 			// 時間割
 			//$opDayHourArray = $course['opDayHour'];
-			foreach($course['opDayHour'] as $opDayHour)
-			{
+			foreach($course['opDayHour'] as $opDayHour) {
 				$opDayHourArray = explode('-', $opDayHour);
 				$course['opDay'] = $opDayHourArray[0];
 				$course['opHour'] = $opDayHourArray[1];
