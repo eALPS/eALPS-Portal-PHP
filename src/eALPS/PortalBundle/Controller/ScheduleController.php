@@ -203,21 +203,23 @@ class ScheduleController extends Controller
 			// コースを表示表の配列にに追加
 			// 時間割
 			//$opDayHourArray = $course['opDayHour'];
-			foreach($course['opDayHour'] as $opDayHour) {
-				$opDayHourArray = explode('-', $opDayHour);
-				$course['opDay'] = $opDayHourArray[0];
-				$course['opHour'] = $opDayHourArray[1];
+			if(empty($course['opDayHour'])) {
+				$courseViewArray[$course['opYear']]['courseSchedule'] -> otherCourseArray[] = $course;
+			} else {
+				foreach($course['opDayHour'] as $opDayHour) {
+					$opDayHourArray = explode('-', $opDayHour);
+					$course['opDay'] = $opDayHourArray[0];
+					$course['opHour'] = $opDayHourArray[1];
+					
+					if($course['opDay'] == '' || $course['opDay'] == '集中' || $course['opHour'] == '' || $course['opHour'] == '不定') {
+						$courseViewArray[$course['opYear']]['courseSchedule'] -> otherCourseArray[] = $course;
+					} else {
+						$courseViewArray[$course['opYear']]['courseSchedule'] -> table[$course['opHour']][$course['opDay']][] = $course;
+					}
 				
-				if(empty($opDayHourArray)) {
-					$courseViewArray[$course['opYear']]['courseSchedule'] -> otherCourseArray[] = $course;
-				} else if($course['opDay'] == '' || $course['opDay'] == '集中' || $course['opHour'] == '' || $course['opHour'] == '不定') {
-					$courseViewArray[$course['opYear']]['courseSchedule'] -> otherCourseArray[] = $course;
-				} else {
-					$courseViewArray[$course['opYear']]['courseSchedule'] -> table[$course['opHour']][$course['opDay']][] = $course;
 				}
-			
+				unset($opDayHour);
 			}
-			unset($opDayHour);
 			
 			// コースリスト
 			$courseViewArray[$course['opYear']]['courseList'][] = $course;
