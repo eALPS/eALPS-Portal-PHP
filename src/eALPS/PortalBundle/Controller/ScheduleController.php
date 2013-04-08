@@ -208,7 +208,7 @@ class ScheduleController extends Controller
 				$course['opDay'] = $opDayHourArray[0];
 				$course['opHour'] = $opDayHourArray[1];
 				
-				if($course['opDay'] == '集中' || $course['opHour'] == '' || $course['opHour'] == '不定') {
+				if($course['opDay'] == '' || $course['opDay'] == '集中' || $course['opHour'] == '' || $course['opHour'] == '不定') {
 					$courseViewArray[$course['opYear']]['courseSchedule'] -> otherCourseArray[] = $course;
 				} else {
 					$courseViewArray[$course['opYear']]['courseSchedule'] -> table[$course['opHour']][$course['opDay']][] = $course;
