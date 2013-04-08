@@ -30,6 +30,10 @@ e_alps_portal_login_acsu_error:
     pattern:  /login/acsuError
     defaults: { _controller: eALPSPortalBundle:Login:acsuError }
     
+e_alps_portal_login_citizen:
+    pattern:  /login/citizen
+    defaults: { _controller: eALPSPortalBundle:Login:citizen }
+    
 e_alps_portal_login_eches:
     pattern:  /login/eChes
     defaults: { _controller: eALPSPortalBundle:Login:eChes }

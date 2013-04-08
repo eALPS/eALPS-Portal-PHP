@@ -1,0 +1,18 @@
+{% extends "eALPSPortalBundle::eALPSPortalLayout.html.twig" %}
+
+{# メインコンテンツ #}
+{% block content %}	
+	<div class="schedule">
+		<section class="well">
+			<h1>eALPSにログインする</h1>
+			<form class="form-horizontal facilityLoginForm">
+				<fieldset>
+					<div class="form-actions">
+						<button type="button" class="btn" onclick="location.href='{{ URL }}/ealps-portal/schedule'">ログインはこちら</button>
+					</div>
+				</fieldset>
+			</form>
+			<br />
+		</section>
+	</div>
+{% endblock %}
