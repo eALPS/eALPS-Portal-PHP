@@ -149,6 +149,7 @@ class ScheduleController extends Controller
 					AND r.account = aa.account
 					AND aa.accountAttrType  = aat
 					AND aat.id = 4
+					AND aa.enable = 1
 				')
 				-> setParameters(array(
 					'course' => $relation -> getCourse(),
@@ -168,6 +169,7 @@ class ScheduleController extends Controller
 					AND r.account = aa.account
 					AND aa.accountAttrType  = aat
 					AND aat.id = 4
+					AND aa.enable = 1
 				')
 				-> setParameters(array(
 					'course' => $relation -> getCourse(),
