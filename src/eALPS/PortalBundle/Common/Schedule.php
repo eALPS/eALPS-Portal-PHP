@@ -49,6 +49,13 @@ class Schedule {
 			'木曜' => array(),
 			'金曜' => array(),
 		),
+		'６時限' => array(
+			'月曜' => array(),
+			'火曜' => array(),
+			'水曜' => array(),
+			'木曜' => array(),
+			'金曜' => array(),
+		),
 	);
 }
 
