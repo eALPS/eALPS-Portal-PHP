@@ -135,6 +135,7 @@ class ScheduleController extends Controller
 			$courseDepCode = strtolower($course['depCode'][0]);
 			$courseOpYear = $course['opYear'];
 			$courseTitleCode = $course['titleCode'];
+			$courseSiteCode = $course['site'];
 			
 			// 担当教員を取得
 			$courseTeacherArray = $this
@@ -184,8 +185,8 @@ class ScheduleController extends Controller
 			$course['teacherArray'] = array();
 			$course['subTeachers'] = '';
 			$course['subTeacherArray'] = array();			
-			$course['URL'] = $this->get('router')->generate('e_alps_portal_redirect_moodle_course', array('opYear' => $courseOpYear, 'depCode' => $courseDepCode, 'titleCode' => $courseTitleCode));
-			$course['informationURL'] = $this->get('router')->generate('e_alps_portal_redirect_moodle_course_info', array('opYear' => $courseOpYear, 'depCode' => $courseDepCode, 'titleCode' => $courseTitleCode));
+			$course['URL'] = $this->get('router')->generate('e_alps_portal_redirect_moodle_course', array('opYear' => $courseOpYear, 'siteCode' => $courseSiteCode, 'titleCode' => $courseTitleCode));
+			$course['informationURL'] = $this->get('router')->generate('e_alps_portal_redirect_moodle_course_info', array('opYear' => $courseOpYear, 'siteCode' => $courseSiteCode, 'titleCode' => $courseTitleCode));
 			$course['URLTarget'] = '_blank';
 			
 			foreach($courseTeacherArray as $courseTeacher) {

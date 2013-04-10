@@ -15,11 +15,11 @@ e_alps_portal_schedule_admin_accountid:
     defaults: { _controller: eALPSPortalBundle:Default:scheduleAdminAccountId }
     
 e_alps_portal_redirect_moodle_course:
-    pattern:  /redirectMoodleCourse/{opYear}/{depCode}/{titleCode}
+    pattern:  /redirectMoodleCourse/{opYear}/{siteCode}/{titleCode}
     defaults: { _controller: eALPSPortalBundle:Redirect:redirectMoodleCourse }
     
 e_alps_portal_redirect_moodle_course_info:
-    pattern:  /redirectMoodleCourseInfo/{opYear}/{depCode}/{titleCode}
+    pattern:  /redirectMoodleCourseInfo/{opYear}/{siteCode}/{titleCode}
     defaults: { _controller: eALPSPortalBundle:Redirect:redirectMoodleCourseInfo }
     
 e_alps_portal_login_admin:
