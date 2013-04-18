@@ -72,6 +72,8 @@ class ScheduleController extends Controller
 					FROM eALPSPortalBundle:Relation relation, eALPSPortalBundle:Account account, eALPSPortalBundle:Course course, eALPSPortalBundle:CourseAttr courseattr, eALPSPortalBundle:CourseAttrType courseattrtype
 					WHERE account.uid = :accountUId
 					AND relation.account = account
+					AND relation.enable = 1
+					AND relation.closed = 0
 					AND relation.course = course
 					AND relation.course = courseattr.course
 					AND courseattr.courseAttrType = courseattrtype
@@ -80,7 +82,6 @@ class ScheduleController extends Controller
 					AND course.enable = 1
 					AND courseattr.enable = 1
 					AND course.name BETWEEN :minYear AND :fiscalYear
-					AND relation.enable = 1
 					ORDER BY course.name
 				')
 				-> setParameters(array(
@@ -91,7 +92,29 @@ class ScheduleController extends Controller
 				-> getResult();
 		
 		foreach($relationArray as $relation) {
+		
+			try {
+				$relationCourseLock = $this
+					-> getDoctrine()
+					-> getEntityManager('adb')
+					-> getRepository('eALPSPortalBundle:RelationCourseLock')
+					-> createQueryBuilder('relation_course_lock')
+					-> where('relation_course_lock.course  = :course')
+					-> andWhere('relation_course_lock.relationRole = :relationRole')
+					-> setParameter('course', $relation -> getCourse())
+					-> setParameter('relationRole', $relation -> getRelationRole())
+					-> getQuery()
+					-> getSingleResult();
+			} catch  (\Doctrine\Orm\NoResultException $e){
+				$relationCourseLock = null;
+			}
+				
+			if(!empty($relationCourseLock) && $relationCourseLock -> getSynlock() && $relation -> getOriginal()) {
+				continue;
+			}
+		
 			$course = array();
+			$course['id'] = $relation -> getCourse() -> getId();
 			$course['opDayHour'] = array();
 			$course['opDay'] = '';
 			$course['opHour'] = '';
@@ -127,7 +150,7 @@ class ScheduleController extends Controller
 			}
 			unset($courseAttr);
 			
-			if(($course['opYear'] < self::MIN_YEAR) || ($course['opYear'] < ($fiscalYear - self::COUNT_YEAR)) ) {
+			if(($course['opYear'] < self::MIN_YEAR) || ($course['opYear'] < ($fiscalYear - self::COUNT_YEAR)) || ($course['opFlag'] == 0) ) {
 				continue;
 			}
 			
@@ -211,8 +234,12 @@ class ScheduleController extends Controller
 			} else {
 				foreach($course['opDayHour'] as $opDayHour) {
 					$opDayHourArray = explode('-', $opDayHour);
-					$course['opDay'] = $opDayHourArray[0];
-					$course['opHour'] = $opDayHourArray[1];
+					if(!empty($opDayHourArray[0])) {
+						$course['opDay'] = $opDayHourArray[0];
+					}
+					if(!empty($opDayHourArray[1])) {
+						$course['opHour'] = $opDayHourArray[1];
+					}
 					
 					if($course['opDay'] == '' || $course['opDay'] == '集中' || $course['opHour'] == '' || $course['opHour'] == '不定') {
 						$courseViewArray[$course['opYear']]['courseSchedule'] -> otherCourseArray[] = $course;
