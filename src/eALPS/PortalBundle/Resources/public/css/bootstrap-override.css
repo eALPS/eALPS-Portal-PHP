@@ -170,7 +170,7 @@ section .close {
 }
 
 .modal {
-	margin: -400px 0 0 -640px;
+	margin-left: -640px;
 	width: 1280px;
 }
 .modal-body {
