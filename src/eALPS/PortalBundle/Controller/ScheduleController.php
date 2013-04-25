@@ -211,6 +211,10 @@ class ScheduleController extends Controller
 			$course['URL'] = $this->get('router')->generate('e_alps_portal_redirect_moodle_course', array('opYear' => $courseOpYear, 'siteCode' => $courseSiteCode, 'titleCode' => $courseTitleCode));
 			$course['informationURL'] = $this->get('router')->generate('e_alps_portal_redirect_moodle_course_info', array('opYear' => $courseOpYear, 'siteCode' => $courseSiteCode, 'titleCode' => $courseTitleCode));
 			$course['URLTarget'] = '_blank';
+			$course['attachmentArray'] = array();
+			if(strncmp($course['titleName'], 'ＦＡＥ', 3) == 0) {
+				$course['attachmentArray'][] = 'ALCNetAcademy.pdf';
+			}
 			
 			foreach($courseTeacherArray as $courseTeacher) {
 				$course['teacherArray'][] = mb_convert_kana($courseTeacher -> getValue(), "s", "UTF-8");

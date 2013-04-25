@@ -76,6 +76,12 @@
 													{% endif %}
 													<dt><i class="icon-info-sign"></i>&nbsp;</dt>
 													<dd><a href="{{ course.informationURL }}" target="{{ course.URLTarget }}">コース情報</a></dd>
+													{% if course.attachmentArray %}
+													{% for attachment in course.attachmentArray %}
+													<dt><i class="icon-file"></i>&nbsp;</dt>
+													<dd><a href="{{ asset('bundles/ealpsportal/file/') }}{{ attachment }}" target="{{ course.URLTarget }}">添付ファイル</a></dd>
+													{% endfor %}
+													{% endif %}
 												</dl>
 											</li>
 											{% endfor %}
@@ -101,6 +107,14 @@
 										<a href="{{ course.informationURL }}" target="{{ course.URLTarget }}">
 											<i class="icon-info-sign"></i>&nbsp;コース情報
 										</a>
+										&nbsp;&nbsp;
+										{% if course.attachmentArray %}
+										{% for attachment in course.attachmentArray %}
+										<a href="{{ asset('bundles/ealpsportal/file/') }}{{ attachment }}" target="{{ course.URLTarget }}">
+											<i class="icon-file"></i>&nbsp;添付ファイル
+										</a>
+										{% endfor %}
+										{% endif %}
 									</span>
 								</li>
 								{% endfor %}
@@ -125,6 +139,14 @@
 									<a href="{{ course.informationURL }}" target="{{ course.URLTarget }}">
 										<i class="icon-info-sign"></i>&nbsp;コース情報
 									</a>
+									&nbsp;&nbsp;
+									{% if course.attachmentArray %}
+									{% for attachment in course.attachmentArray %}
+									<a href="{{ asset('bundles/ealpsportal/file/') }}{{ attachment }}" target="{{ course.URLTarget }}">
+										<i class="icon-file"></i>&nbsp;添付ファイル
+									</a>
+									{% endfor %}
+									{% endif %}
 								</span>
 							</li>
 							{% endfor %}
