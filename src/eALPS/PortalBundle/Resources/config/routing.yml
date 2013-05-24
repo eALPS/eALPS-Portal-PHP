@@ -45,3 +45,7 @@ e_alps_portal_login_eches:
 e_alps_portal_login_facility:
     pattern:  /login/facility
     defaults: { _controller: eALPSPortalBundle:Login:facility }
+    
+e_alps_portal_login_other:
+    pattern:  /login/other
+    defaults: { _controller: eALPSPortalBundle:Login:other }

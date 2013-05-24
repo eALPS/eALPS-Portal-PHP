@@ -99,4 +99,14 @@ class LoginController extends Controller
 		
 		return $this->render('eALPSPortalBundle:Login:facility.html.twig', array('fiscalYear' => $fiscalYear, 'URL' => $URL));
 	}
+	
+	public function otherAction()
+	{
+		// 年度
+		$fiscalYear = Utility::getFiscalYear();
+		// URL
+		$URL = Utility::getMoodleURL($fiscalYear, true);
+		
+		return $this->render('eALPSPortalBundle:Login:other.html.twig', array('fiscalYear' => $fiscalYear, 'URL' => $URL));
+	}
 }
