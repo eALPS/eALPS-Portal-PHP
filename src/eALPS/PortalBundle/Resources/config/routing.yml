@@ -49,3 +49,7 @@ e_alps_portal_login_facility:
 e_alps_portal_login_other:
     pattern:  /login/other
     defaults: { _controller: eALPSPortalBundle:Login:other }
+    
+e_alps_portal_login_teaching_credential:
+    pattern:  /login/teachingCredential
+    defaults: { _controller: eALPSPortalBundle:Login:teachingCredential }
