@@ -154,6 +154,11 @@ class ScheduleController extends Controller
 				continue;
 			}
 			
+			// 時間割に表示するのは学部サイト+eChesに制限する
+			if(($course['site'] == 'facility') || ($course['site'] == 'fdsd') || ($course['site'] == 'help') || ($course['site'] == 'hospital') || ($course['site'] == 'mv') || ($course['site'] == 'other') || ($course['site'] == 'photo') || ($course['site'] == 'teachingCredential')) {
+				continue;
+			}
+			
 			// ソースが読みづらくなるので必要な変数を定義
 			$courseDepCode = strtolower($course['depCode'][0]);
 			$courseOpYear = $course['opYear'];
@@ -248,7 +253,16 @@ class ScheduleController extends Controller
 					if($course['opDay'] == '' || $course['opDay'] == '集中' || $course['opHour'] == '' || $course['opHour'] == '不定') {
 						$courseViewArray[$course['opYear']]['courseSchedule'] -> otherCourseArray[] = $course;
 					} else {
-						$courseViewArray[$course['opYear']]['courseSchedule'] -> table[$course['opHour']][$course['opDay']][] = $course;
+						$courseTmpArray = $courseViewArray[$course['opYear']]['courseSchedule'] -> table[$course['opHour']][$course['opDay']];
+						$repeated = false;
+						foreach($courseTmpArray as $courseTmp) {
+							if($courseTmp['titleCode'] == $course['titleCode']) {
+								$repeated = true;
+							}
+						}
+						if(!$repeated) {
+							$courseViewArray[$course['opYear']]['courseSchedule'] -> table[$course['opHour']][$course['opDay']][] = $course;
+						}
 					}
 				
 				}
