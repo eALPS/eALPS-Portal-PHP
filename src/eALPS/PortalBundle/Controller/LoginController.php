@@ -42,9 +42,9 @@ class LoginController extends Controller
 			'附属病院' => 'hospital',
 			'大学施設' => 'facility',
 			'教員免許講習' => 'teachingCredential',
+			'学外連携・その他' => 'other',
 			'eChes' => 'eChes',
 			'フォト' => 'photo',
-			'その他' => 'other',
 		);
 		
 		for($i = $fiscalYear; $i >= self::MIN_YEAR && $fiscalYear - $i < self::COUNT_YEAR; $i--) {
