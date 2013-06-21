@@ -1,0 +1,25 @@
+{% extends "eALPSPortalBundle::eALPSPortalLayout.html.twig" %}
+
+{# メインコンテンツ #}
+{% block content %}	
+	<div class="schedule">
+		<section class="well">
+			<h1>ヘルプ&サポートページ自動ログイン</h1>
+			<form id="autoLoginForm" class="form-horizontal eChesLoginForm" method="post" action="{{ URL }}/{{ fiscalYear }}/help/login/index.php" target="_blank">
+				<fieldset>
+					<input type="hidden" name="username" value="guest" />
+					<input type="hidden" name="password" value="guest" />
+				</fieldset>
+			</form>
+			<br />
+		</section>
+	</div>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// 自動ログイン
+			$('#autoLoginForm').submit();
+		});
+	</script>
+
+{% endblock %}

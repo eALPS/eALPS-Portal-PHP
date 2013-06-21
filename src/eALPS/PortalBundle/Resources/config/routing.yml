@@ -53,3 +53,7 @@ e_alps_portal_login_other:
 e_alps_portal_login_teaching_credential:
     pattern:  /login/teachingCredential
     defaults: { _controller: eALPSPortalBundle:Login:teachingCredential }
+    
+e_alps_portal_login_help:
+    pattern:  /login/help
+    defaults: { _controller: eALPSPortalBundle:Login:help }
