@@ -36,7 +36,7 @@ class LoginController extends Controller
 			'工学部・理工学研究科【工学】' => 't',
 			'農学部・農学研究科' => 'a',
 			'繊維学部・理工学研究科【繊維】' => 'f',
-			'医学部閲覧用' => 'mv',
+			'総合工学系研究科' => 'mv',
 			'eALPSヘルプ' => 'help',
 			'eALPS教職員サイト' => 'fdsd',
 			'附属病院' => 'hospital',
