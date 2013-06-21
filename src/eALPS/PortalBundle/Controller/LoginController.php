@@ -129,4 +129,14 @@ class LoginController extends Controller
 		
 		return $this->render('eALPSPortalBundle:Login:help.html.twig', array('fiscalYear' => $fiscalYear, 'URL' => $URL));
 	}
+	
+	public function hospitalAction()
+	{
+		// 年度
+		$fiscalYear = Utility::getFiscalYear();
+		// URL
+		$URL = Utility::getMoodleURL($fiscalYear, true);
+		
+		return $this->render('eALPSPortalBundle:Login:hospital.html.twig', array('fiscalYear' => $fiscalYear, 'URL' => $URL));
+	}
 }

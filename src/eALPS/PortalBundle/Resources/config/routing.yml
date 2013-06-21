@@ -57,3 +57,7 @@ e_alps_portal_login_teaching_credential:
 e_alps_portal_login_help:
     pattern:  /login/help
     defaults: { _controller: eALPSPortalBundle:Login:help }
+    
+e_alps_portal_login_hospital:
+    pattern:  /login/hospital
+    defaults: { _controller: eALPSPortalBundle:Login:hospital }
