@@ -25,7 +25,7 @@
 		
 		<ul id="yearTab" class="nav nav-tabs">
 			{% for fiscalYear, courseYearViewArray in courseViewArray %}
-			<li class="tab_{{ fiscalYear }}"><a href="#{{ fiscalYear }}"><i class="icon-tag"></i>&nbsp;{{ fiscalYear }}</a></li>
+			<li class="tab_{{ fiscalYear }}{% if loop.first %}active{% endif %}"><a href="#{{ fiscalYear }}"><i class="icon-tag"></i>&nbsp;{{ fiscalYear }}</a></li>
 			{% endfor %}
 			<li class="pull-right"><button class="btn btn-success ealpsListButton toolTip" rel="tooltip" data-toggle="tooltip" data-placement="top" data-html="true" data-title="このボタンをクリックすると以前のバージョンと同様の学部毎eALPS一覧を表示することができます．<br />クリック後，再び時間割表示に戻すには，左の表示オプションボタンをクリックして設定を変更してください．"><i class="icon-white icon-backward"></i>&nbsp;学部一覧</button></li>
 			<li class="pull-right">&nbsp;</li>
@@ -37,7 +37,7 @@
 		<div class="tab-content">
 		
 			{% for fiscalYear, courseYearViewArray in courseViewArray %}
-			<div id="{{ fiscalYear }}" class="tab-pane fade">
+			<div id="{{ fiscalYear }}" class="tab-pane fade{% if loop.first %} active in{% endif %}">
 				
 				{% for viewType, view in courseYearViewArray %}
 				<div>
