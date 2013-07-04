@@ -1,0 +1,220 @@
+{% extends "eALPSPortalBundle::eALPSPortalLayout.html.twig" %}
+
+{# メインコンテンツ #}
+{% block content %}	
+	<div>
+		<section class="well">
+			<h1>eALPSからログアウトしました．</h1>
+			<p>統合認証からログアウトする場合は&nbsp;<i class="icon-hand-right"></i><a href="https://idp.ealps.shinshu-u.ac.jp/idp/logout.jsp?return=https%3a%2f%2facsu%2eshinshu%2du%2eac%2ejp%2fActiveCampus%2fmodule%2fLogin%2ephp%3fmode%3dLogout" target="_self">こちら</a><i class="icon-hand-left"></i>&nbsp;をクリックしてください．</p>
+		</section>
+		
+		<section class="well">
+			<h1>再度eALPSを利用する場合はこちら</h1>
+			<div class="tabbable tabs-left">
+				<ul id="loginErrorTab" class="nav nav-tabs">
+					<li class="active"><a href="#tab1" data-toggle="tab">学生・教職員の皆様</a></li>
+					<li><a href="#tab2" data-toggle="tab">市民開放授業受講の皆様</a></li>
+					<li><a href="#tab3" data-toggle="tab">附属病院をご利用の皆様</a></li>
+					<li><a href="#tab4" data-toggle="tab">大学施設をご利用の皆様</a></li>
+					<li><a href="#tab5" data-toggle="tab">学外連携・その他をご利用の皆様</a></li>
+					<li><a href="#tab6" data-toggle="tab">教員免許更新講習をご利用の皆様</a></li>
+					<li><a href="#tab7" data-toggle="tab">eChesをご利用の皆様</a></li>
+				</ul>
+				<div class="tab-content">
+					<div id="tab1" class="tab-pane fade active in">
+						<section class="well">
+							<h2>学生・教職員</h2>
+							<section class="alert alert-block alert-success" data-alert="alert">
+								<h3 class="alert-important"><i class="icon-exclamation-sign"></i>&nbsp;<i class="icon-hand-right"></i><a href="https://acsu.shinshu-u.ac.jp/" target="_blank">ACSU</a><i class="icon-hand-left"></i>&nbsp;にログインして，左メニューにある「eALPSサイト一覧」よりご利用ください．</h3>
+							</section>
+							<section class="alert alert-block alert-error" data-alert="alert">
+								<h3 class="alert-heading alert-important"><i class="icon-exclamation-sign"></i>&nbsp;業務アカウントへのメールアドレスが未登録の教職員の方</h3>
+								<p>eALPSをご利用いただくには，業務アカウントへのメールアドレスの登録が必要です．ACSUにてメールアドレスをご登録の上，ご利用ください．</p>
+								<br />
+							</section>
+						</section>
+					</div>
+					
+					<div id="tab2" class="tab-pane fade">
+						<section class="well">
+							<h2>eALPSにログインする</h2>
+							<form class="form-horizontal facilityLoginForm">
+								<fieldset>
+									<div class="form-actions">
+										<button type="button" class="btn" onclick="location.href='{{ URL }}/ealps-portal/schedule'">ログインはこちら</button>
+									</div>
+								</fieldset>
+							</form>
+							<br />
+						</section>
+					</div>
+
+					<div id="tab3" class="tab-pane fade">
+						<section class="well">
+							<h2>附属病院&nbsp;ログインフォーム</h2>
+							<form class="form-horizontal eChesLoginForm" method="post" action="{{ URL }}/{{ fiscalYear }}/hospital/login/index.php" target="_blank">
+								<fieldset>
+									<div class="control-group">
+										<label class="control-label">ユーザID</label>
+										<div class="controls">
+											<input type="text" name="username" class="input-large" alt="UserID" />
+										</div>
+									</div>
+										
+									<div class="control-group">
+										<label class="control-label">パスワード</label>
+										<div class="controls">
+											<input type="password" name="password" class="input-large" alt="Password" />
+										</div>
+									</div>
+									<div class="form-actions">
+										<button type="submit" class="btn">ログイン</button>
+									</div>
+								</fieldset>
+							</form>
+							<br />
+							<section class="alert alert-error" data-alert="alert">
+								<h3 class="alert-heading alert-important"><i class="icon-exclamation-sign"></i>&nbsp;信州大学の教職員及び学生は&nbsp;<i class="icon-hand-right"></i><a href="https://acsu.shinshu-u.ac.jp/" target="_blank">ACSU</a><i class="icon-hand-left"></i>&nbsp;からログインしてください．</h3>
+							</section>
+							<br />
+						</section>
+					</div>
+					
+					<div id="tab4" class="tab-pane fade">
+						<section class="well">
+							<h1>大学施設にログインする</h1>
+							<form class="form-horizontal facilityLoginForm">
+								<fieldset>
+									<div class="form-actions">
+										<button type="button" class="btn" onclick="location.href='{{ URL }}/{{ fiscalYear }}/facility/auth/shibboleth/'">ログインはこちら</button>
+									</div>
+								</fieldset>
+							</form>
+							<br />
+						</section>
+					</div>
+					
+					<div id="tab5" class="tab-pane fade">
+						<section class="well">
+							<h1>学外連携・その他&nbsp;ログインフォーム</h1>
+							<form class="form-horizontal eChesLoginForm" method="post" action="{{ URL }}/{{ fiscalYear }}/other/login/index.php" target="_blank">
+								<fieldset>
+									<div class="control-group">
+										<label class="control-label">ユーザID</label>
+										<div class="controls">
+											<input type="text" name="username" class="input-large" alt="UserID" />
+										</div>
+									</div>
+										
+									<div class="control-group">
+										<label class="control-label">パスワード</label>
+										<div class="controls">
+											<input type="password" name="password" class="input-large" alt="Password" />
+										</div>
+									</div>
+									<div class="form-actions">
+										<button type="submit" class="btn">ログイン</button>
+									</div>
+								</fieldset>
+							</form>
+							<br />
+							<section class="alert alert-error" data-alert="alert">
+								<h2 class="alert-heading alert-important"><i class="icon-exclamation-sign"></i>&nbsp;信州大学の教職員及び学生は&nbsp;<i class="icon-hand-right"></i><a href="https://acsu.shinshu-u.ac.jp/" target="_blank">ACSU</a><i class="icon-hand-left"></i>&nbsp;からログインしてください．</h2>
+							</section>
+							<br />
+						</section>
+					</div>
+					
+					<div id="tab6" class="tab-pane fade">
+						<section class="well">
+							<h1>教員免許更新講習&nbsp;ログインフォーム</h1>
+							<form class="form-horizontal eChesLoginForm" method="post" action="{{ URL }}/{{ fiscalYear }}/teachingCredential/login/index.php" target="_blank">
+								<fieldset>
+									<div class="control-group">
+										<label class="control-label">ユーザID</label>
+										<div class="controls">
+											<input type="text" name="username" class="input-large" alt="UserID" />
+										</div>
+									</div>
+										
+									<div class="control-group">
+										<label class="control-label">パスワード</label>
+										<div class="controls">
+											<input type="password" name="password" class="input-large" alt="Password" />
+										</div>
+									</div>
+									<div class="form-actions">
+										<button type="submit" class="btn">ログイン</button>
+									</div>
+								</fieldset>
+							</form>
+							<br />
+						</section>
+					</div>
+					
+					<div id="tab7" class="tab-pane fade">
+						<section class="well">
+							<h2>eChes ログインフォーム</h2>
+							<form class="form-horizontal eChesLoginForm" method="post" action="{{ URL }}/{{ fiscalYear }}/eChes/login/index.php" target="_blank">
+								<fieldset>
+									<div class="control-group">
+										<label class="control-label">ユーザID</label>
+										<div class="controls">
+											<input type="text" name="username" class="input-large" alt="UserID" />
+										</div>
+									</div>
+										
+									<div class="control-group">
+										<label class="control-label">パスワード</label>
+										<div class="controls">
+											<input type="password" name="password" class="input-large" alt="Password" />
+										</div>
+									</div>
+									<div class="form-actions">
+										<button type="submit" class="btn">ログイン</button>
+									</div>
+								</fieldset>
+							</form>
+							<br />
+							<section class="alert alert-error" data-alert="alert">
+								<h3 class="alert-heading alert-important"><i class="icon-exclamation-sign"></i>&nbsp;信州大学の教職員及び学生は&nbsp;<i class="icon-hand-right"></i><a href="https://acsu.shinshu-u.ac.jp/" target="_blank">ACSU</a><i class="icon-hand-left"></i>&nbsp;からログインしてください．</h3>
+							</section>
+							<br />
+						</section>
+						<section class="well">
+							<h2>ゲストとしてログインする</h2>
+							<form class="form-horizontal eChesLoginForm" method="post" action="{{ URL }}/{{ fiscalYear }}/eChes/login/index.php" target="_blank">
+								<fieldset>
+									<input type="hidden" name="username" class="input-large" value="guest" alt="UserID" />
+									<input type="hidden" name="password" class="input-large" value="guest" alt="Password" />
+									<div class="form-actions">
+										<button type="submit" class="btn">ゲストログイン</button>
+									</div>
+								</fieldset>
+							</form>
+							<br />
+							<section class="alert alert-info" data-alert="alert">
+								<h3 class="alert-heading alert-important"><i class="icon-exclamation-sign"></i>&nbsp;「たてなおしの英語（GUEST）」を含むいくつかのコースはどなたでも利用できます．</h3>
+							</section>
+							<br />
+						</section>
+					</div>
+				</div>
+			</div>
+			<br />
+		</section>
+	</div>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// 初期表示のタブ
+			$('#loginErrorTab a:first').tab('show');
+		});
+		
+		// 年度タブ制御（bootstrap.js）
+		$('#loginErrorTab a').click(function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+		});
+	</script>
+{% endblock %}

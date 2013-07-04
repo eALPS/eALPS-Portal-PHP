@@ -61,3 +61,7 @@ e_alps_portal_login_help:
 e_alps_portal_login_hospital:
     pattern:  /login/hospital
     defaults: { _controller: eALPSPortalBundle:Login:hospital }
+    
+e_alps_portal_logout_ealps:
+    pattern:  /logout/eALPS
+    defaults: { _controller: eALPSPortalBundle:Logout:eALPS }
