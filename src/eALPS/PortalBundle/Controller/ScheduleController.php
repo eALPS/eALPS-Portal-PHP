@@ -155,7 +155,7 @@ class ScheduleController extends Controller
 			}
 			
 			// 時間割に表示するのは学部サイト+eChesに制限する
-			if(($course['site'] == 'facility') || ($course['site'] == 'fdsd') || ($course['site'] == 'help') || ($course['site'] == 'hospital') || ($course['site'] == 'mv') || ($course['site'] == 'other') || ($course['site'] == 'photo') || ($course['site'] == 'teachingCredential')) {
+			if(($course['site'] == 'facility') || ($course['site'] == 'fdsd') || ($course['site'] == 'help') || ($course['site'] == 'hospital') || ($course['site'] == 'other') || ($course['site'] == 'photo') || ($course['site'] == 'teachingCredential')) {
 				continue;
 			}
 			
