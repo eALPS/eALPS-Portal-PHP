@@ -55,11 +55,11 @@ e_alps_portal_login_teaching_credential:
     defaults: { _controller: eALPSPortalBundle:Login:teachingCredential }
     
 e_alps_portal_auto_login_teaching_credential:
-    pattern:  /login/aTC
+    pattern:  /l/aTC
     defaults: { _controller: eALPSPortalBundle:Login:autoTeachingCredentialAction }
     
 e_alps_portal_login_help:
-    pattern:  /login/aH
+    pattern:  /l/aH
     defaults: { _controller: eALPSPortalBundle:Login:help }
     
 e_alps_portal_login_hospital:
