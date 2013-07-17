@@ -56,7 +56,7 @@ e_alps_portal_login_teaching_credential:
     
 e_alps_portal_auto_login_teaching_credential:
     pattern:  /l/aTC
-    defaults: { _controller: eALPSPortalBundle:Login:autoTeachingCredentialAction }
+    defaults: { _controller: eALPSPortalBundle:Login:autoTeachingCredential }
     
 e_alps_portal_login_help:
     pattern:  /l/aH
