@@ -128,8 +128,10 @@ class LoginController extends Controller
 		$URL = Utility::getMoodleURL($fiscalYear, true);
 		// Request
 		$request = $this->getRequest();
+		// siteCode
+		$siteCode = 'teachingCredential';
 		// リダイレクトURL
-		$redirectURL = "$moodleURL/$opYear/$siteCode/course/view.php?id=$courseIdArray[$titleCode]";
+		$redirectURL = "$moodleURL/$fiscalYear/$siteCode/login/index.php";
 
 		return $this->forward($redirectURL, array('request' => $request));
 		//return $this->redirect($redirectURL, array('request' => $request));
