@@ -131,11 +131,11 @@ class LoginController extends Controller
 		// siteCode
 		$siteCode = 'teachingCredential';
 		// リダイレクトURL
-		$redirectURL = "$moodleURL/$fiscalYear/$siteCode/login/index.php";
+		$redirectURL = "$URL/$fiscalYear/$siteCode/login/index.php";
 
 		//return $this->forward($redirectURL, array('request' => $request));
-		//return $this->redirect($redirectURL, array('request' => $request));
-		return $this->redirect('http://google.ac.jp/');
+		return $this->redirect($redirectURL, array('request' => $request));
+		//return $this->redirect('http://google.ac.jp/');
 		//return $this->render('eALPSPortalBundle:Login:teachingCredential.html.twig', array('fiscalYear' => $fiscalYear, 'URL' => $URL));
 	}
 	
