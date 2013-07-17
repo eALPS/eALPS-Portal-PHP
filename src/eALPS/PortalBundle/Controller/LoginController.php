@@ -134,8 +134,8 @@ class LoginController extends Controller
 		$redirectURL = "$URL/$fiscalYear/$siteCode/login/index.php";
 
 		//return $this->forward($redirectURL, array('request' => $request));
-		//return $this->redirect($redirectURL, array('request' => $request));
-		return $this->forward('http://google.co.jp/');
+		return $this->redirect($redirectURL, array('request' => $request));
+		//return $this->forward('http://google.co.jp/');
 		//return $this->redirect('http://google.co.jp/');
 		//return $this->render('eALPSPortalBundle:Login:teachingCredential.html.twig', array('fiscalYear' => $fiscalYear, 'URL' => $URL));
 	}
