@@ -120,6 +120,22 @@ class LoginController extends Controller
 		return $this->render('eALPSPortalBundle:Login:teachingCredential.html.twig', array('fiscalYear' => $fiscalYear, 'URL' => $URL));
 	}
 	
+	public function autoTeachingCredentialAction()
+	{
+		// 年度
+		$fiscalYear = Utility::getFiscalYear();
+		// URL
+		$URL = Utility::getMoodleURL($fiscalYear, true);
+		// Request
+		$request = $this->getRequest();
+		// リダイレクトURL
+		$redirectURL = "$moodleURL/$opYear/$siteCode/course/view.php?id=$courseIdArray[$titleCode]";
+
+		return $this->forward($redirectURL, array('request' => $request));
+		//return $this->redirect($redirectURL, array('request' => $request));
+		//return $this->render('eALPSPortalBundle:Login:teachingCredential.html.twig', array('fiscalYear' => $fiscalYear, 'URL' => $URL));
+	}
+	
 	public function helpAction()
 	{
 		// 年度
