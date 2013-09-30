@@ -59,17 +59,31 @@ class InfoController extends Controller
 			->add('term')
 			->add('availability')
 			->getForm();
+		
+		return $this->render('eALPSPortalBundle:Info:localAdmin.html.twig', array('infoArray' => $infoArray, 'insertForm' => $insertForm->createView(),));
+	}
+	
+	public function insertAction(Request $request)
+	{
+		$info = new Info();
+	
+		$insertForm = $this->createFormBuilder($info)
+			->add('title', 'text')
+			->add('body', 'textarea')
+			->add('importance')
+			->add('address')
+			->add('term')
+			->add('availability')
+			->getForm();
 			
 		if ($request->getMethod() == 'POST') {
 			$insertForm->bindRequest($request);
 			if ($insertForm->isValid()) {
 				// データベースへの保存など、何らかのアクションを実行する
 				
-				return $this->redirect($this->generateUrl('store_product_success'));
+				return $this->render('eALPSPortalBundle:Default:infoLocalAdmin');
 			}
 		}
-		
-		return $this->render('eALPSPortalBundle:Info:localAdmin.html.twig', array('infoArray' => $infoArray, 'insertForm' => $insertForm->createView(),));
 	}
 }
  

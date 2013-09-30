@@ -18,6 +18,10 @@ e_alps_portal_info_local_admin:
     pattern:  /infoLocalAdmin
     defaults: { _controller: eALPSPortalBundle:Default:infoLocalAdmin }
     
+e_alps_portal_info_insert:
+    pattern:  /info/insert
+    defaults: { _controller: eALPSPortalBundle:Info:insert }
+    
 e_alps_portal_redirect_moodle_course:
     pattern:  /redirectMoodleCourse/{opYear}/{siteCode}/{titleCode}
     defaults: { _controller: eALPSPortalBundle:Redirect:redirectMoodleCourse }
