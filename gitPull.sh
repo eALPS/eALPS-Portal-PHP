@@ -2,9 +2,11 @@
 
 echo 作業ディレクトリに移動します．
 # cd /var/www/html/ealps-portal/
+# cd /Users/osamu/Development/Github/eALPS/eALPS-Portal
 
 echo git pull を実行します．
 git pull
+# git pull
 
 echo vendor ディレクトリを消去します．
 rm -rf vendor/*
