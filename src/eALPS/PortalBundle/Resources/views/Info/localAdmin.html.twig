@@ -67,17 +67,17 @@
 				</td>
 				<td class="info-date">
 					<time id="infoInsertDateTime-{{ info.id }}">
-						{{ info.getUpdatedate }}
+						{{ info.getInsertdateDatetime }}
 					</time>
 				</td>
 				<td class="info-date">
 					<time id="infoUpdateDateTime-{{ info.id }}">
-						{{ info.getUpdatedate }}
+						{{ info.getUpdatedateDatetime }}
 					</time>
 				</td>
 				<td class="info-date">
 					<time id="infoDeleteDateTime-{{ info.id }}">
-						{{ info.getDeletedate }}
+						{{ info.getDeletedateDatetime }}
 					</time>
 				</td>
 			</tr>
@@ -244,6 +244,9 @@
 		});
 		// ToolTips
 		$('.sortInfoToolTip').tooltip();
+	});
+	$('.info-tab').click(function () {
+		$(this).next().slideToggle('fast');
 	});
 </script>
 
