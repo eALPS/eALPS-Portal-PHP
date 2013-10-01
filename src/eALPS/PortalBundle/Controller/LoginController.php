@@ -100,6 +100,35 @@ class LoginController extends Controller
 		return $this->render('eALPSPortalBundle:Login:facility.html.twig', array('fiscalYear' => $fiscalYear, 'URL' => $URL));
 	}
 	
+	public function fdsdAction()
+	{
+		// 年度
+		$fiscalYear = Utility::getFiscalYear();
+		// URL
+		$URL = Utility::getMoodleURL($fiscalYear, true);
+		
+		return $this->render('eALPSPortalBundle:Login:fdsd.html.twig', array('fiscalYear' => $fiscalYear, 'URL' => $URL));
+	}
+	
+	public function autoFdSdAction()
+	{
+		// 年度
+		$fiscalYear = Utility::getFiscalYear();
+		// URL
+		$URL = Utility::getMoodleURL($fiscalYear, true);
+		// Request
+		$username = $this->getRequest()->request->get('username');
+		$password = $this->getRequest()->request->get('password');
+		// siteCode
+		$siteCode = 'fdsd';
+		// サイト名
+		$siteName = '教職員 FD SD'
+		// リダイレクトURL
+		$redirectURL = "$URL/$fiscalYear/$siteCode/login/index.php";
+
+		return $this->render('eALPSPortalBundle:Login:auto.html.twig', array('redirectURL' => $redirectURL, 'siteName' => $siteName, 'username' => $username, 'password' => $password ));
+	}
+	
 	public function otherAction()
 	{
 		// 年度
@@ -131,15 +160,12 @@ class LoginController extends Controller
 		$password = $this->getRequest()->request->get('password');
 		// siteCode
 		$siteCode = 'teachingCredential';
+		// サイト名
+		$siteName = '教職員免許更新講習'
 		// リダイレクトURL
 		$redirectURL = "$URL/$fiscalYear/$siteCode/login/index.php";
 
-		//return $this->forward($redirectURL, array('request' => $request));
-		//return $this->redirect($redirectURL);
-		//return $this->forward('http://google.co.jp/');
-		//return $this->redirect('http://google.co.jp/');
-		return $this->render('eALPSPortalBundle:Login:autoTeachingCredential.html.twig', array('redirectURL' => $redirectURL, 'username' => $username, 'password' => $password ));
-		//return $this->render('eALPSPortalBundle:Login:autoTeachingCredential2.html.twig', array('URL' => $URL, 'fiscalYear' => $fiscalYear, 'username' => $username, 'password' => $password ));
+		return $this->render('eALPSPortalBundle:Login:auto.html.twig', array('redirectURL' => $redirectURL, 'siteName' => $siteName, 'username' => $username, 'password' => $password ));
 	}
 	
 	public function helpAction()

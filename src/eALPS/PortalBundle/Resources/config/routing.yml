@@ -49,6 +49,22 @@ e_alps_portal_login_eches:
 e_alps_portal_login_facility:
     pattern:  /login/facility
     defaults: { _controller: eALPSPortalBundle:Login:facility }
+
+e_alps_portal_login_fdsd:
+    pattern:  /login/fdsd
+    defaults: { _controller: eALPSPortalBundle:Login:fdsd }
+
+e_alps_portal_auto_login_fdsd:
+    pattern:  /l/aFS
+    defaults: { _controller: eALPSPortalBundle:Login:autoFdSd }
+
+e_alps_portal_login_help:
+    pattern:  /l/aH
+    defaults: { _controller: eALPSPortalBundle:Login:help }
+    
+e_alps_portal_login_hospital:
+    pattern:  /login/hospital
+    defaults: { _controller: eALPSPortalBundle:Login:hospital }
     
 e_alps_portal_login_other:
     pattern:  /login/other
@@ -61,14 +77,6 @@ e_alps_portal_login_teaching_credential:
 e_alps_portal_auto_login_teaching_credential:
     pattern:  /l/aTC
     defaults: { _controller: eALPSPortalBundle:Login:autoTeachingCredential }
-    
-e_alps_portal_login_help:
-    pattern:  /l/aH
-    defaults: { _controller: eALPSPortalBundle:Login:help }
-    
-e_alps_portal_login_hospital:
-    pattern:  /login/hospital
-    defaults: { _controller: eALPSPortalBundle:Login:hospital }
     
 e_alps_portal_logout_ealps:
     pattern:  /logout/eALPS
