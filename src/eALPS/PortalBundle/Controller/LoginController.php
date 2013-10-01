@@ -138,7 +138,7 @@ class LoginController extends Controller
 		//return $this->redirect($redirectURL);
 		//return $this->forward('http://google.co.jp/');
 		//return $this->redirect('http://google.co.jp/');
-		return $this->render('eALPSPortalBundle:Login:autoTeachingCredential2.html.twig', array('redirectURL' => $redirectURL, 'username' => $username, 'password' => $password ));
+		//return $this->render('eALPSPortalBundle:Login:autoTeachingCredential2.html.twig', array('redirectURL' => $redirectURL, 'username' => $username, 'password' => $password ));
 		return $this->render('eALPSPortalBundle:Login:autoTeachingCredential2.html.twig', array('URL' => $URL, 'fiscalYear' => $fiscalYear, 'username' => $username, 'password' => $password ));
 	}
 	
