@@ -161,7 +161,7 @@ class LoginController extends Controller
 		// siteCode
 		$siteCode = 'teachingCredential';
 		// サイト名
-		$siteName = '教職員免許更新講習'
+		$siteName = '教職員免許更新講習';
 		// リダイレクトURL
 		$redirectURL = "$URL/$fiscalYear/$siteCode/login/index.php";
 
