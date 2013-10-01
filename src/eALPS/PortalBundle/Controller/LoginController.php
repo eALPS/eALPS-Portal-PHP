@@ -127,7 +127,8 @@ class LoginController extends Controller
 		// URL
 		$URL = Utility::getMoodleURL($fiscalYear, true);
 		// Request
-		$request = $this->getRequest()->request->get('j_username');
+		//$request = $this->getRequest()->request->get('j_username');
+		$request = $this->getRequest()->request;
 		// siteCode
 		$siteCode = 'teachingCredential';
 		// リダイレクトURL
