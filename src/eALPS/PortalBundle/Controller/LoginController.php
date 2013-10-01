@@ -127,8 +127,8 @@ class LoginController extends Controller
 		// URL
 		$URL = Utility::getMoodleURL($fiscalYear, true);
 		// Request
-		//$request = $this->getRequest()->request->get('j_username');
-		$request = $this->getRequest()->request;
+		$j_username = $this->getRequest()->request->get('j_username');
+		$j_password = $this->getRequest()->request->get('j_password');
 		// siteCode
 		$siteCode = 'teachingCredential';
 		// リダイレクトURL
@@ -138,7 +138,7 @@ class LoginController extends Controller
 		//return $this->redirect($redirectURL);
 		//return $this->forward('http://google.co.jp/');
 		//return $this->redirect('http://google.co.jp/');
-		return $this->render('eALPSPortalBundle:Login:autoTeachingCredential.html.twig', array('request' => $request, 'redirectURL' => $redirectURL));
+		return $this->render('eALPSPortalBundle:Login:autoTeachingCredential.html.twig', array('redirectURL' => $redirectURL, 'j_username' => $j_username, 'j_password' => $j_password ));
 	}
 	
 	public function helpAction()
