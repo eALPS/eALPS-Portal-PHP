@@ -79,6 +79,15 @@ class Utility
 		return $URL;
 	}
 	
+	public static function getHostNameArray() 
+	{
+		$hostNameArray = array(
+			'WEB1' => 'ec2-54-250-120-41.ap-northeast-1.compute.amazonaws.com',
+			'WEB2' => 'ec2-54-250-120-128.ap-northeast-1.compute.amazonaws.com',
+		);
+		return $hostNameArray;
+	}
+	
 	public static function getDepartmentArray() 
 	{
 		$departmentArray = array(
@@ -95,6 +104,25 @@ class Utility
 		);
 
 		return $departmentArray;
+	}
+	
+	/**
+	 * getHttpStatusCode function
+	 * 引数で与えられたURLのステータスコードを取得する
+	 * 
+	 * @access public
+	 * @param string $url
+	 * @return int $statusCode
+	 */
+	public function getHttpStatusCode($url)
+	{
+		if(($fp=fopen($url,'r',false,stream_context_create(array('http'=>array('ignore_errors'=>true)))))!==false)
+		{
+			fclose($fp);
+			return preg_match('#^HTTP/\d\.\d (\d+) .+$#',$http_response_header[0],$matches)===1?(int)$matches[1]:false;
+		} else {
+			return false;
+		}
 	}
 
 }

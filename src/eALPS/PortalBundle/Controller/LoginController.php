@@ -23,7 +23,12 @@ class LoginController extends Controller
 		// 年度
 		$fiscalYear = Utility::getFiscalYear();
 		
+		$hostNameArray = Utility::getHostNameArray();
+		
 		$URLArray;
+		
+		$notELBURL = false;
+		
 		$siteArray = array(
 			'ログイン先を選択してください...' => '',
 			'デフォルトサイト' => 'd',
@@ -58,7 +63,18 @@ class LoginController extends Controller
 			unset($key, $site);
 		}
 		
-		return $this->render('eALPSPortalBundle:Login:admin.html.twig', array('URLArray' => $URLArray));
+		for($hostNameArray as $key => $hostName)
+		{
+			$statusCode = Utility::getgetHttpStatusCode($hostName);
+			if(strncmp("2xx", $statusCode, 1) == 0)
+			{
+				$notELBURL = 'https://'.$hostName;
+			} else {
+				$notELBURL = false;
+			}
+		}
+		
+		return $this->render('eALPSPortalBundle:Login:admin.html.twig', array('URLArray' => $URLArray, 'notELBURL' => $notELBURL));
 	}
 	
 	public function acsuErrorAction() {
