@@ -62,7 +62,7 @@
 					<br />
 				</section>
 			</div>
-			{% if fiscalYear >= 2013 %}
+			{% if fiscalYear >= 2013 and not notELBURL == false %}
 			<div id="{{ fiscalYear }}_notELB" class="tab-pane fade">
 				<section class="well">
 					<h1>管理者ログインフォーム（ELBなし）</h1>
