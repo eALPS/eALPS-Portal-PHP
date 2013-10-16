@@ -114,7 +114,7 @@ class Utility
 	 * @param string $url
 	 * @return int $statusCode
 	 */
-	public function getHttpStatusCode($url)
+	public static function getHttpStatusCode($url)
 	{
 		if(($fp=fopen($url,'r',false,stream_context_create(array('http'=>array('ignore_errors'=>true)))))!==false)
 		{
