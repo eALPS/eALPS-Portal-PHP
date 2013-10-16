@@ -25,6 +25,8 @@ class LoginController extends Controller
 		
 		$hostNameArray = Utility::getHostNameArray();
 		
+		$helthCheckPage = '/misc/healthcheck.html';
+		
 		$URLArray;
 		
 		$notELBURL = false;
@@ -64,9 +66,10 @@ class LoginController extends Controller
 		}
 		
 		foreach($hostNameArray as $key => $hostName) {
-			$statusCode = Utility::getHttpStatusCode('http://'.$hostName);
+			$statusCode = Utility::getHttpStatusCode('http://'.$hostName.$helthCheckPage);
 			if(strncmp("2xx", $statusCode, 1) == 0) {
 				$notELBURL = 'https://'.$hostName;
+				break;
 			} else {
 				$notELBURL = false;
 			}
