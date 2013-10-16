@@ -64,7 +64,7 @@ class LoginController extends Controller
 		}
 		
 		foreach($hostNameArray as $key => $hostName) {
-			$statusCode = Utility::getgetHttpStatusCode($hostName);
+			$statusCode = Utility::getHttpStatusCode($hostName);
 			if(strncmp("2xx", $statusCode, 1) == 0) {
 				$notELBURL = 'https://'.$hostName;
 			} else {
