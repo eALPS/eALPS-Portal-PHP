@@ -27,10 +27,6 @@
 			{% for fiscalYear, courseYearViewArray in courseViewArray %}
 			<li class="tab_{{ fiscalYear }}{% if loop.first %}active{% endif %}"><a href="#{{ fiscalYear }}"><i class="icon-tag"></i>&nbsp;{{ fiscalYear }}</a></li>
 			{% endfor %}
-			<li class="pull-right"><button class="btn btn-success scheduleHelpFolderButton" rel="tooltip" data-placement="top" data-original-title="hogehoge"><i class="icon-white icon-backward"></i>&nbsp;フォルダリンクテスト</button></li>
-			<li class="pull-right">&nbsp;</li>
-			<li class="pull-right"><button class="btn btn-success scheduleHelpFileButton" rel="tooltip" data-placement="top" data-original-title="hogehoge"><i class="icon-white icon-backward"></i>&nbsp;ファイルリンクテスト</button></li>
-			<li class="pull-right">&nbsp;</li>
 			
 			<li class="pull-right"><button class="btn btn-success ealpsListButton toolTip" rel="tooltip" data-toggle="tooltip" data-placement="top" data-html="true" data-title="このボタンをクリックすると以前のバージョンと同様の学部毎eALPS一覧を表示することができます．<br />クリック後，再び時間割表示に戻すには，左の表示オプションボタンをクリックして設定を変更してください．"><i class="icon-white icon-backward"></i>&nbsp;学部一覧</button></li>
 			<li class="pull-right">&nbsp;</li>
@@ -38,6 +34,13 @@
 			<li class="pull-right">&nbsp;</li>
 			
 			<li class="pull-right"><button class="btn btn-success viewOptionCheck"><i class="icon-cog"></i>&nbsp;表示オプション</button></li>
+		
+		{#
+<li class="pull-right">&nbsp;</li>
+<li class="pull-right"><button class="btn btn-success scheduleHelpFolderButton" rel="tooltip" data-placement="top" data-original-title="hogehoge"><i class="icon-white icon-folder-open"></i>&nbsp;フォルダリンクテスト</button></li>
+			<li class="pull-right">&nbsp;</li>
+			<li class="pull-right"><button class="btn btn-success scheduleHelpFileButton" rel="tooltip" data-placement="top" data-original-title="hogehoge"><i class="icon-white icon-file"></i>&nbsp;ファイルリンクテスト</button></li>
+#}
 		</ul>
 	
 		<div class="tab-content">
@@ -261,12 +264,12 @@
 		
 		// ファイルリンクテスト
 		$('.scheduleHelpFileButton').click(function() {
-			window.open('https://moodle-cloud.ealps.shinshu-u.ac.jp/2013/help/pluginfile.php/170/mod_resource/content/1/%E6%99%82%E9%96%93%E5%89%B2%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95.pdf');
+			window.open('https://moodle-cloud.ealps.shinshu-u.ac.jp/2013/help/pluginfile.php/171/mod_folder/content/0/%E5%90%84%E7%A8%AE%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B%E5%AD%A6%E7%94%9F%E7%94%A8/%E6%99%82%E9%96%93%E5%89%B2%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95.pdf');
 		});
 		
 		// フォルダリンクテスト
 		$('.scheduleHelpFolderButton').click(function() {
-			window.open('https://moodle-cloud.ealps.shinshu-u.ac.jp/2013/help/mod/folder/view.php?id=62');
+			window.open('https://moodle-cloud.ealps.shinshu-u.ac.jp/2013/help/mod/folder/view.php?id=66');
 		});
 		
 		// 学部一覧ボタン
