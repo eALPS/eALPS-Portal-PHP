@@ -20,7 +20,13 @@ class RedirectController extends Controller
 	
 	public function redirectMoodleCourseAction($opYear, $siteCode, $titleCode)
 	{
-		$moodleURL = Utility::getMoodleURL($opYear, true);
+		$ssl = true;
+		if($year < 2013)
+		{
+			$ssl = false;
+		}
+		
+		$moodleURL = Utility::getMoodleURL($opYear, $ssl);
 		$jsonCourseId = @file_get_contents("$moodleURL/$opYear/$siteCode/api/getInnerCode.php?code=$titleCode", true);
 		
 		$redirectURL;
@@ -44,7 +50,13 @@ class RedirectController extends Controller
 	
 	public function redirectMoodleCourseInfoAction($opYear, $siteCode, $titleCode)
 	{
-		$moodleURL = Utility::getMoodleURL($opYear, true);
+		$ssl = true;
+		if($year < 2013)
+		{
+			$ssl = false;
+		}
+		
+		$moodleURL = Utility::getMoodleURL($opYear, $ssl);
 		$jsonCourseId = @file_get_contents("$moodleURL/$opYear/$siteCode/api/getInnerCode.php?code=$titleCode", true);
 		
 		$redirectURL;
