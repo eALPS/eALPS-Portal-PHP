@@ -27,9 +27,9 @@
 			{% for fiscalYear, courseYearViewArray in courseViewArray %}
 			<li class="tab_{{ fiscalYear }}{% if loop.first %}active{% endif %}"><a href="#{{ fiscalYear }}"><i class="icon-tag"></i>&nbsp;{{ fiscalYear }}</a></li>
 			{% endfor %}
-			<li class="pull-right"><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2013/help/mod/folder/view.php?id=62"><button class="btn btn-success" rel="tooltip" data-placement="top" data-original-title="hogehoge"><i class="icon-white icon-backward"></i>&nbsp;フォルダリンクテスト</button></li>
+			<li class="pull-right"><button class="btn btn-success scheduleHelpFolderButton" rel="tooltip" data-placement="top" data-original-title="hogehoge"><i class="icon-white icon-backward"></i>&nbsp;フォルダリンクテスト</button></li>
 			<li class="pull-right">&nbsp;</li>
-			<li class="pull-right"><a href="https://moodle-cloud.ealps.shinshu-u.ac.jp/2013/help/mod/resource/view.php?id=65"><button class="btn btn-success" rel="tooltip" data-placement="top" data-original-title="hogehoge"><i class="icon-white icon-backward"></i>&nbsp;ファイルリンクテスト</button></a></li>
+			<li class="pull-right"><button class="btn btn-success scheduleHelpFileButton" rel="tooltip" data-placement="top" data-original-title="hogehoge"><i class="icon-white icon-backward"></i>&nbsp;ファイルリンクテスト</button></li>
 			<li class="pull-right">&nbsp;</li>
 			
 			<li class="pull-right"><button class="btn btn-success ealpsListButton toolTip" rel="tooltip" data-toggle="tooltip" data-placement="top" data-html="true" data-title="このボタンをクリックすると以前のバージョンと同様の学部毎eALPS一覧を表示することができます．<br />クリック後，再び時間割表示に戻すには，左の表示オプションボタンをクリックして設定を変更してください．"><i class="icon-white icon-backward"></i>&nbsp;学部一覧</button></li>
@@ -257,6 +257,16 @@
 			$(this).children().toggleClass('icon-check icon-white');
 			$('#viewOption').fadeToggle();
 			viewTypeHideCheck();
+		});
+		
+		// ファイルリンクテスト
+		$('.scheduleHelpFileButton').click(function() {
+			window.open('https://moodle-cloud.ealps.shinshu-u.ac.jp/2013/help/mod/resource/view.php?id=65');
+		});
+		
+		// フォルダリンクテスト
+		$('.scheduleHelpFolderButton').click(function() {
+			window.open('https://moodle-cloud.ealps.shinshu-u.ac.jp/2013/help/mod/folder/view.php?id=62');
 		});
 		
 		// 学部一覧ボタン
