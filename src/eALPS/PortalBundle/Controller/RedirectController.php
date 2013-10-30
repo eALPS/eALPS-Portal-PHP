@@ -21,7 +21,7 @@ class RedirectController extends Controller
 	public function redirectMoodleCourseAction($opYear, $siteCode, $titleCode)
 	{
 		$ssl = true;
-		if($year < 2013)
+		if($opYear < 2013)
 		{
 			$ssl = false;
 		}
@@ -51,7 +51,7 @@ class RedirectController extends Controller
 	public function redirectMoodleCourseInfoAction($opYear, $siteCode, $titleCode)
 	{
 		$ssl = true;
-		if($year < 2013)
+		if($opYear < 2013)
 		{
 			$ssl = false;
 		}
