@@ -20,8 +20,8 @@ class LoginController extends Controller
 	
 	public function adminAction()
 	{
-		// 年度
-		$fiscalYear = Utility::getFiscalYear();
+		// 管理者用のログイン画面なので1月1日から次年度のタブを表示する
+		$year = date('Y');
 		
 		$hostNameArray = Utility::getHostNameArray();
 		
@@ -54,7 +54,7 @@ class LoginController extends Controller
 			'フォト' => 'photo',
 		);
 		
-		for($i = $fiscalYear; $i >= self::MIN_YEAR && $fiscalYear - $i < self::COUNT_YEAR; $i--) {
+		for($i = $year; $i >= self::MIN_YEAR && $year - $i < self::COUNT_YEAR; $i--) {
 			$moodleURL = Utility::getMoodleURL($i, true);
 			
 			foreach($siteArray as $key => $site)
