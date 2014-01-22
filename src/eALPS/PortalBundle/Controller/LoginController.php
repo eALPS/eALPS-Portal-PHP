@@ -139,7 +139,7 @@ class LoginController extends Controller
 		// siteCode
 		$siteCode = 'fdsd';
 		// サイト名
-		$siteName = '教職員 FD SD';
+		$siteName = '教職員用 FD&SD';
 		// リダイレクトURL
 		$redirectURL = "$URL/$fiscalYear/$siteCode/login/index.php";
 
