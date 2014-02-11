@@ -20,7 +20,7 @@ class ScheduleController extends Controller
 	// 表示する年の最小値
 	const MIN_YEAR = 2010;
 
-	public function indexAction() {
+	public function indexAction($appointedYear) {
 		// アカウントID
 		$accountId = '11TA110E';
 		$accountId = '10S5601G';
@@ -32,7 +32,7 @@ class ScheduleController extends Controller
 		$accountId = '12L1081J';
 		$accountId = $id = $this->get('request')->server->get('uid');
 		
-		return $this->render('eALPSPortalBundle:Schedule:schedule.html.twig', $this -> createView($accountId));
+		return $this->render('eALPSPortalBundle:Schedule:schedule.html.twig', $this -> createView($accountId, $appointedYear));
 	}
 
 	public function adminAction($accountId) {

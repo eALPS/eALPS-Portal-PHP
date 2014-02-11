@@ -6,6 +6,10 @@ e_alps_portal_schedule:
     pattern:  /schedule
     defaults: { _controller: eALPSPortalBundle:Default:schedule }
 
+e_alps_portal_schedule_appointed_year:
+    pattern:  /schedule/{appointedYear}
+    defaults: { _controller: eALPSPortalBundle:Default:appointedYearSchedule }
+
 e_alps_portal_schedule_admin:
     pattern:  /scheduleAdmin
     defaults: { _controller: eALPSPortalBundle:Default:scheduleAdmin }
