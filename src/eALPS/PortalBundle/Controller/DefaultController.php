@@ -34,9 +34,9 @@ class DefaultController extends Controller
 		return $this->render('eALPSPortalBundle:Default:scheduleAdmin.html.twig', array('accountId' => $accountId));
 	}
 	
-	public function scheduleAdminAccountIdAction($accountId)
+	public function scheduleAdminAccountIdAction($accountId, $appointedYear)
 	{
-		return $this->render('eALPSPortalBundle:Default:scheduleAdmin.html.twig', array('accountId' => $accountId));
+		return $this->render('eALPSPortalBundle:Default:scheduleAdmin.html.twig', array('accountId' => $accountId, 'appointedYear' => $appointedYear));
 	}
 	
 	public function infoLocalAdminAction()

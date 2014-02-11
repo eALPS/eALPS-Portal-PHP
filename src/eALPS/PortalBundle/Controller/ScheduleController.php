@@ -35,8 +35,8 @@ class ScheduleController extends Controller
 		return $this->render('eALPSPortalBundle:Schedule:schedule.html.twig', $this -> createView($accountId, $appointedYear));
 	}
 
-	public function adminAction($accountId) {
-		return $this->render('eALPSPortalBundle:Schedule:schedule.html.twig', $this -> createView($accountId));
+	public function adminAction($accountId, $appointedYear) {
+		return $this->render('eALPSPortalBundle:Schedule:schedule.html.twig', $this -> createView($accountId, $appointedYear));
 	}
 	
 	public function createView($accountId, $appointedYear) {
