@@ -39,7 +39,7 @@ class ScheduleController extends Controller
 		return $this->render('eALPSPortalBundle:Schedule:schedule.html.twig', $this -> createView($accountId));
 	}
 	
-	public function createView($accountId) {
+	public function createView($accountId, $appointedYear) {
 		// 表示用配列
 		$courseViewArray = array();
 		$courseYearViewArray = array();
