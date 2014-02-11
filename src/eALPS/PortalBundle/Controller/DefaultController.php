@@ -20,7 +20,7 @@ class DefaultController extends Controller
 	
 	public function scheduleAction()
 	{
-		return $this->render('eALPSPortalBundle:Default:schedule.html.twig');
+		return $this->render('eALPSPortalBundle:Default:schedule.html.twig', array('appointedYear' => 0));
 	}
 	
 	public function appointedYearScheduleAction($appointedYear) {
@@ -31,7 +31,7 @@ class DefaultController extends Controller
 	{
 		$request = $this->get('request');
 		$accountId = $request->request->get('searchText'); 
-		return $this->render('eALPSPortalBundle:Default:scheduleAdmin.html.twig', array('accountId' => $accountId));
+		return $this->render('eALPSPortalBundle:Default:scheduleAdmin.html.twig', array('accountId' => $accountId, 'appointedYear' => 0));
 	}
 	
 	public function scheduleAdminAccountIdAction($accountId)
