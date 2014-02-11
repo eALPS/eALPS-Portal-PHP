@@ -20,7 +20,7 @@ e_alps_portal_schedule_admin_accountid:
     
 e_alps_portal_schedule_admin_accountid_appointedyear:
     pattern:  /scheduleAdmin/{accountId}/{appointedYear}
-    defaults: { _controller: eALPSPortalBundle:Default:scheduleAdminAccountId }
+    defaults: { _controller: eALPSPortalBundle:Default:scheduleAdminAccountIdAppointedYear }
     
 e_alps_portal_info_local_admin:
     pattern:  /infoLocalAdmin
