@@ -45,7 +45,11 @@ class ScheduleController extends Controller
 		$courseYearViewArray = array();
 		
 		// 年度
-		$fiscalYear = Utility::getFiscalYear();
+		if(empty($appointedYear)) {
+			$fiscalYear = Utility::getFiscalYear();
+		} else {
+			$fiscalYear = $appointedYear;
+		}
 		
 		// 表示用の初期インスタンスを生成
 		for($i = $fiscalYear; $i >= self::MIN_YEAR && $fiscalYear - $i < self::COUNT_YEAR; $i--) {
