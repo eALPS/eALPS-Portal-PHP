@@ -13,15 +13,19 @@ class Utility
 	/**
 	 * getFiscalYear function.
 	 * 現在の年度を取得する．
-	 * 運用上の問題で3月は次年度とする．
+	 * 運用上の問題で3月20日以降は次年度とする．
 	 * 
 	 * @access public
 	 * @return int, 年度
 	 */
 	public static function getFiscalYear()
 	{
-		if(date('n') < 3) {
-			return date('Y') - 1;
+		if(date('n') < 4) {
+			if(date('n') = 3 && date('j') > 19) {
+				return date('Y');
+			} else {
+				return date('Y') - 1;
+			}
 		} else {
 			return date('Y');
 		}
@@ -101,6 +105,7 @@ class Utility
 			'農学部・農学研究科' => 'a',
 			'繊維学部・理工学研究科【繊維】' => 'f',
 			'総合工学系研究科' => 'mv',
+			'学部・研究科共通' => 'common',
 		);
 
 		return $departmentArray;
