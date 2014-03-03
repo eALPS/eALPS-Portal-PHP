@@ -21,7 +21,7 @@ class Utility
 	public static function getFiscalYear()
 	{
 		if(date('n') < 4) {
-			if(date('n') = 3 && date('j') > 19) {
+			if(date('n') == 3 && date('j') > 19) {
 				return date('Y');
 			} else {
 				return date('Y') - 1;
