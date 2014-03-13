@@ -31,28 +31,7 @@ class LoginController extends Controller
 		
 		$notELBURL = false;
 		
-		$siteArray = array(
-			'ログイン先を選択してください...' => '',
-			'デフォルトサイト' => 'd',
-			'共通教育' => 'g',
-			'人文学部・人文科学研究科' => 'l',
-			'教育学部・教育学研究科' => 'e',
-			'経済学部・経済社会政策科学研究科' => 'k',
-			'理学部・理工学研究科【理学】' => 's',
-			'医学部・医学研究科' => 'm',
-			'工学部・理工学研究科【工学】' => 't',
-			'農学部・農学研究科' => 'a',
-			'繊維学部・理工学研究科【繊維】' => 'f',
-			'総合工学系研究科' => 'mv',
-			'eALPSヘルプ' => 'help',
-			'eALPS教職員サイト' => 'fdsd',
-			'附属病院' => 'hospital',
-			'大学施設' => 'facility',
-			'教員免許講習' => 'teachingCredential',
-			'学外連携・その他' => 'other',
-			'eChes' => 'eChes',
-			'フォト' => 'photo',
-		);
+		$siteArray = Utility::getAllSiteArray();
 		
 		for($i = $year; $i >= self::MIN_YEAR && $year - $i < self::COUNT_YEAR; $i--) {
 			$moodleURL = Utility::getMoodleURL($i, true);
