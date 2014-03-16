@@ -8,17 +8,17 @@
 	<div class="schedule">
 	
 		<ul id="yearTab" class="nav nav-tabs">
-			{% for fiscalYear, URLYearArray in URLArray %}
+			{% for fiscalYear, URL in URLArray %}
 			<li class="tab_{{ fiscalYear }}{% if loop.first %} active{% endif %}"><a href="#{{ fiscalYear }}"><i class="icon-tag"></i>&nbsp;{{ fiscalYear }}</a></li>
 			{% endfor %}
 		</ul>
 		
 		<div class="tab-content">
-			{% for fiscalYear, URLYearArray in URLArray %}
+			{% for fiscalYear, URL in URLArray %}
 			<div id="{{ fiscalYear }}" class="tab-pane fade{% if loop.first %} active in{% endif %}">
 				<section class="well">
 					<h1>eChes ログインフォーム</h1>
-					<form class="form-horizontal eChesLoginForm" method="post" action="{{ URL }}/{{ fiscalYear }}/eChes/login/index.php" target="_blank">
+					<form class="form-horizontal eChesLoginForm" method="post" action="{{ URL }}" target="_blank">
 						<fieldset>
 							<div class="control-group">
 								<label class="control-label">ユーザID</label>
