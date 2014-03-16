@@ -20,13 +20,17 @@
 					<h1>eChes ログインフォーム</h1>
 					<form class="form-horizontal eChesLoginForm" method="post" action="{{ URL }}" target="_blank">
 						<fieldset>
-							<div class="input-prepend">
-								<span class="add-on"><i class="icon-user"></i></span>
-								<input type="text" name="username" class="input-large" alt="UserID" placeholder="ユーザID" />
+							<div class="control-group">
+								<div class="input-prepend">
+									<span class="add-on"><i class="icon-user"></i></span>
+									<input type="text" name="username" class="input-large" alt="UserID" placeholder="ユーザID" />
+								</div>
 							</div>
-							<div class="controls input-prepend">
-								<span class="add-on"><i class="icon-lock"></i></span>
-								<input type="password" name="password" class="input-large" alt="Password" placeholder="パスワード" />
+							<div class="control-group">
+								<div class="controls input-prepend">
+									<span class="add-on"><i class="icon-lock"></i></span>
+									<input type="password" name="password" class="input-large" alt="Password" placeholder="パスワード" />
+								</div>
 							</div>
 							<div class="form-actions">
 								<button type="submit" class="btn">ログイン</button>
