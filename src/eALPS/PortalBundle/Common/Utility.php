@@ -112,7 +112,7 @@ class Utility
 		return $departmentArray;
 	}
 	
-	public static function getAllSiteArray()
+	public static function getUpdateSiteArray()
 	{
 		$allSiteArray = array(
 			'ログイン先を選択してください...' => '',
@@ -128,15 +128,25 @@ class Utility
 			'農学部・農学研究科' => 'a',
 			'繊維学部・理工学研究科【繊維】' => 'f',
 			'総合工学系研究科' => 'st',
+			'eChes' => 'eChes',
+			'フォト' => 'photo',
+			'テスト' => 'test',
+		);
+		
+		return $allSiteArray;
+	}
+	
+	public static function getConstantSiteArray()
+	{
+		$allSiteArray = array(
+			'ログイン先を選択してください...' => '',
 			'学部・研究科共通' => 'common',
 			'eALPSヘルプ' => 'help',
-			'eALPS教職員サイト' => 'fdsd',
+			'eALPS教職員用サイト' => 'fdsd',
 			'附属病院' => 'hospital',
 			'大学施設' => 'facility',
 			'教員免許講習' => 'teachingCredential',
 			'学外連携・その他' => 'other',
-			'eChes' => 'eChes',
-			'フォト' => 'photo',
 		);
 		
 		return $allSiteArray;

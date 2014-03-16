@@ -23,27 +23,34 @@ class LoginController extends Controller
 		// 管理者用のログイン画面なので1月1日から次年度のタブを表示する
 		$year = date('Y');
 		
-		$hostNameArray = Utility::getHostNameArray();
-		
-		$helthCheckPage = '/misc/healthcheck.html';
-		
-		$URLArray;
-		
-		$notELBURL = false;
-		
-		$siteArray = Utility::getAllSiteArray();
-		
+		// 年度更新するサイトのURLリスト
+		$updateSiteURLArray;
+		$updateSiteArray = Utility::getUpdateSiteArray();
 		for($i = $year; $i >= self::MIN_YEAR && $year - $i < self::COUNT_YEAR; $i--) {
 			$moodleURL = Utility::getMoodleURL($i, true);
 			
-			foreach($siteArray as $key => $site)
+			foreach($updateSiteArray as $key => $site)
 			{
-				$URLArray[$i][$key]['url'] = $moodleURL.'/'.$i.'/'.$site.'/login/index.php';
-				$URLArray[$i][$key]['siteENName'] = $site;
+				$updateSiteURLArray[$i][$key]['url'] = $moodleURL.'/'.$i.'/'.$site.'/login/index.php';
+				$updateSiteURLArray[$i][$key]['siteENName'] = $site;
 			}
 			unset($key, $site);
 		}
 		
+		// 年度更新しないサイトのURLリスト
+		$constantSiteURLArray;
+		$constantSiteArray = Utility::getConstantSiteArray();
+		foreach($updateSiteArray as $key => $site)
+		{
+			$constantSiteURLArray[$key]['url'] = $moodleURL.'/'.$site.'/login/index.php';
+			$constantSiteURLArray[$key]['siteENName'] = $site;
+		}
+		unset($key, $site);
+		
+		//ロードバランサを経由しないホストのURL
+		$hostNameArray = Utility::getHostNameArray();
+		$helthCheckPage = '/misc/healthcheck.html';
+		$notELBURL = false;
 		foreach($hostNameArray as $key => $hostName) {
 			$statusCode = Utility::getHttpStatusCode('http://'.$hostName.$helthCheckPage);
 			if(strncmp("2xx", $statusCode, 1) == 0) {
@@ -54,7 +61,7 @@ class LoginController extends Controller
 			}
 		}
 		
-		return $this->render('eALPSPortalBundle:Login:admin.html.twig', array('URLArray' => $URLArray, 'notELBURL' => $notELBURL));
+		return $this->render('eALPSPortalBundle:Login:admin.html.twig', array('updateSiteURLArray' => $updateSiteURLArray, 'constantSiteURLArray' => $constantSiteURLArray, 'notELBURL' => $notELBURL));
 	}
 	
 	public function acsuErrorAction() {
