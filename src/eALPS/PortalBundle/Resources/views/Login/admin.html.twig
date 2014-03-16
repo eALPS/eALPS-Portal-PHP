@@ -122,7 +122,7 @@
 							<div class="control-group">
 								<label class="control-label">ログインするサイト</label>
 								<div class="controls">
-									<select class="span3" name="{{ fiscalYear }}_loginSite">
+									<select class="span3" name="constantSite">
 										{% for siteName, site in constantSiteURLArray %}
 										<option name="{{ site.siteENName }}" label="{{ siteName }}" value="{{ site.url }}">{{ siteName }}</option>
 										{% endfor %}
