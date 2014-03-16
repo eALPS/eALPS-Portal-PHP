@@ -40,7 +40,7 @@ class LoginController extends Controller
 		// 年度更新しないサイトのURLリスト
 		$constantSiteURLArray;
 		$constantSiteArray = Utility::getConstantSiteArray();
-		foreach($updateSiteArray as $key => $site)
+		foreach($constantSiteArray as $key => $site)
 		{
 			$constantSiteURLArray[$key]['url'] = $moodleURL.'/'.$site.'/login/index.php';
 			$constantSiteURLArray[$key]['siteENName'] = $site;
