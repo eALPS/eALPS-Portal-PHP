@@ -279,7 +279,7 @@ class ScheduleController extends Controller
 		}
 		unset($relation);
 		
-		return array('courseViewArray' => $courseViewArray, 'accountUId' => $accountId);
+		return array('fiscalYear' => $fiscalYear, 'courseViewArray' => $courseViewArray, 'accountUId' => $accountId);
 	}
 }
  
