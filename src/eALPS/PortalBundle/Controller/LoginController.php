@@ -91,7 +91,7 @@ class LoginController extends Controller
 		$URLArray;
 		for($i = $fiscalYear; $i >= self::MIN_YEAR && $fiscalYear - $i < self::COUNT_YEAR; $i--) {
 			$moodleURL = Utility::getMoodleURL($i, true);
-			$URLArray[$i]['url'] = $moodleURL.'/'.$i.'/eChes/login/index.php';
+			$URLArray[$i] = $moodleURL.'/'.$i.'/eChes/login/index.php';
 		}
 		
 		return $this->render('eALPSPortalBundle:Login:eChes.html.twig', array('URLArray' => $URLArray));
