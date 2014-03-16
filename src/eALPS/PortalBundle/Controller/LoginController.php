@@ -97,6 +97,18 @@ class LoginController extends Controller
 		return $this->render('eALPSPortalBundle:Login:eChes.html.twig', array('URLArray' => $URLArray));
 	}
 	
+	public function eChesAppointedYearAction($appointedYear)
+	{
+		// URL
+		$URLArray;
+		for($i = $appointedYear; $i >= 2013 && $appointedYear - $i < self::COUNT_YEAR; $i--) {
+			$moodleURL = Utility::getMoodleURL($i, true);
+			$URLArray[$i] = $moodleURL.'/'.$i.'/eChes/login/index.php';
+		}
+		
+		return $this->render('eALPSPortalBundle:Login:eChes.html.twig', array('URLArray' => $URLArray));
+	}
+	
 	public function facilityAction()
 	{
 		// 年度

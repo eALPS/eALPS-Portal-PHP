@@ -54,6 +54,10 @@ e_alps_portal_login_eches:
     pattern:  /login/eChes
     defaults: { _controller: eALPSPortalBundle:Login:eChes }
 
+e_alps_portal_login_eches_appointed_year:
+    pattern:  /login/eChes/{appointedYear}
+    defaults: { _controller: eALPSPortalBundle:Login:eChesAppointedYear }
+
 e_alps_portal_login_facility:
     pattern:  /login/facility
     defaults: { _controller: eALPSPortalBundle:Login:facility }
