@@ -89,7 +89,7 @@ class LoginController extends Controller
 		$fiscalYear = Utility::getFiscalYear();
 		// URL
 		$URLArray;
-		for($i = $fiscalYear; $i >= self::MIN_YEAR && $fiscalYear - $i < self::COUNT_YEAR; $i--) {
+		for($i = $fiscalYear; $i >= 2013 && $fiscalYear - $i < self::COUNT_YEAR; $i--) {
 			$moodleURL = Utility::getMoodleURL($i, true);
 			$URLArray[$i] = $moodleURL.'/'.$i.'/eChes/login/index.php';
 		}
