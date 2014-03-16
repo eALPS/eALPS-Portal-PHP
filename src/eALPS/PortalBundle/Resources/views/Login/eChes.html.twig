@@ -6,52 +6,79 @@
 {# メインコンテンツ #}
 {% block content %}	
 	<div class="schedule">
-		<section class="well">
-			<h1>eChes ログインフォーム</h1>
-			<form class="form-horizontal eChesLoginForm" method="post" action="{{ URL }}/{{ fiscalYear }}/eChes/login/index.php" target="_blank">
-				<fieldset>
-					<div class="control-group">
-						<label class="control-label">ユーザID</label>
-						<div class="controls">
-							<input type="text" name="username" class="input-large" alt="UserID" />
-						</div>
-					</div>
-						
-					<div class="control-group">
-						<label class="control-label">パスワード</label>
-						<div class="controls">
-							<input type="password" name="password" class="input-large" alt="Password" />
-						</div>
-					</div>
-					<div class="form-actions">
-						<button type="submit" class="btn">ログイン</button>
-					</div>
-				</fieldset>
-			</form>
-			<br />
-			<section class="alert alert-error" data-alert="alert">
-				<h2 class="alert-heading alert-important"><i class="icon-exclamation-sign"></i>&nbsp;信州大学の教職員及び学生は&nbsp;<i class="icon-hand-right"></i><a href="https://acsu.shinshu-u.ac.jp/" target="_blank">ACSU</a><i class="icon-hand-left"></i>&nbsp;からログインしてください．</h2>
-			</section>
-			<br />
-		</section>
+	
+		<ul id="yearTab" class="nav nav-tabs">
+			{% for fiscalYear, URLYearArray in URLArray %}
+			<li class="tab_{{ fiscalYear }}{% if loop.first %} active{% endif %}"><a href="#{{ fiscalYear }}"><i class="icon-tag"></i>&nbsp;{{ fiscalYear }}</a></li>
+			{% endfor %}
+		</ul>
 		
-		<section class="well">
-			<h1>ゲストとしてログインする</h1>
-			<form class="form-horizontal eChesLoginForm" method="post" action="{{ URL }}/{{ fiscalYear }}/eChes/login/index.php" target="_blank">
-				<fieldset>
-					<input type="hidden" name="username" class="input-large" value="guest" alt="UserID" />
-					<input type="hidden" name="password" class="input-large" value="guest" alt="Password" />
-					<div class="form-actions">
-						<button type="submit" class="btn">ゲストログイン</button>
-					</div>
-				</fieldset>
-			</form>
-			<br />
-			<section class="alert alert-info" data-alert="alert">
-				<h2 class="alert-heading alert-important"><i class="icon-exclamation-sign"></i>&nbsp;「たてなおしの英語（GUEST）」を含むいくつかのコースはどなたでも利用できます．</h2>
-			</section>
-			<br />
-		</section>
+		<div class="tab-content">
+			{% for fiscalYear, URLYearArray in URLArray %}
+			<div id="{{ fiscalYear }}" class="tab-pane fade{% if loop.first %} active in{% endif %}">
+				<section class="well">
+					<h1>eChes ログインフォーム</h1>
+					<form class="form-horizontal eChesLoginForm" method="post" action="{{ URL }}/{{ fiscalYear }}/eChes/login/index.php" target="_blank">
+						<fieldset>
+							<div class="control-group">
+								<label class="control-label">ユーザID</label>
+								<div class="controls">
+									<span class="add-on"><i class="icon-user"></i></span>
+									<input type="text" name="username" class="input-large" alt="UserID" />
+								</div>
+							</div>
+								
+							<div class="control-group">
+								<label class="control-label">パスワード</label>
+								<div class="controls">
+									<span class="add-on"><i class="icon-lock"></i></span>
+									<input type="password" name="password" class="input-large" alt="Password" />
+								</div>
+							</div>
+							<div class="form-actions">
+								<button type="submit" class="btn">ログイン</button>
+							</div>
+						</fieldset>
+					</form>
+					<br />
+					<section class="alert alert-error" data-alert="alert">
+						<h2 class="alert-heading alert-important"><i class="icon-exclamation-sign"></i>&nbsp;信州大学の教職員及び学生は&nbsp;<i class="icon-hand-right"></i><a href="https://acsu.shinshu-u.ac.jp/" target="_blank">ACSU</a><i class="icon-hand-left"></i>&nbsp;からログインしてください．</h2>
+					</section>
+					<br />
+				</section>
+				
+				<section class="well">
+					<h1>ゲストとしてログインする</h1>
+					<form class="form-horizontal eChesLoginForm" method="post" action="{{ URL }}/{{ fiscalYear }}/eChes/login/index.php" target="_blank">
+						<fieldset>
+							<input type="hidden" name="username" class="input-large" value="guest" alt="UserID" />
+							<input type="hidden" name="password" class="input-large" value="guest" alt="Password" />
+							<div class="form-actions">
+								<button type="submit" class="btn">ゲストログイン</button>
+							</div>
+						</fieldset>
+					</form>
+					<br />
+					<section class="alert alert-info" data-alert="alert">
+						<h2 class="alert-heading alert-important"><i class="icon-exclamation-sign"></i>&nbsp;「たてなおしの英語（GUEST）」を含むいくつかのコースはどなたでも利用できます．</h2>
+					</section>
+					<br />
+				</section>
+			</div>
+		</div>
 	</div>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// 初期表示のタブ
+			$('#yearTab a:first').tab('show');
+		});
+		
+		// 年度タブ制御（bootstrap.js）
+		$('#yearTab a').click(function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+		});
+	</script>
 
 {% endblock %}

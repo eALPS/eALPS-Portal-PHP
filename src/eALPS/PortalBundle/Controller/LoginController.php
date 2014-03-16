@@ -81,9 +81,13 @@ class LoginController extends Controller
 		// 年度
 		$fiscalYear = Utility::getFiscalYear();
 		// URL
-		$URL = Utility::getMoodleURL($fiscalYear, true);
+		$URLArray;
+		for($i = $fiscalYear; $i >= self::MIN_YEAR && $fiscalYear - $i < self::COUNT_YEAR; $i--) {
+			$moodleURL = Utility::getMoodleURL($i, true);
+			$URLArray[$i]['url'] = $moodleURL.'/'.$i.'/eChes/login/index.php';
+		}
 		
-		return $this->render('eALPSPortalBundle:Login:eChes.html.twig', array('fiscalYear' => $fiscalYear, 'URL' => $URL));
+		return $this->render('eALPSPortalBundle:Login:eChes.html.twig', array('URLArray' => $URLArray));
 	}
 	
 	public function facilityAction()
