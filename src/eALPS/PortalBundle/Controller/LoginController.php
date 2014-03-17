@@ -144,7 +144,7 @@ class LoginController extends Controller
 		// サイト名
 		$siteName = '教職員用 FD&SD';
 		// リダイレクトURL
-		$redirectURL = "$URL/$fiscalYear/$siteCode/login/index.php";
+		$redirectURL = "$URL/$siteCode/login/index.php";
 
 		return $this->render('eALPSPortalBundle:Login:auto.html.twig', array('redirectURL' => $redirectURL, 'siteName' => $siteName, 'username' => $username, 'password' => $password ));
 	}
@@ -183,7 +183,7 @@ class LoginController extends Controller
 		// サイト名
 		$siteName = '教職員免許更新講習';
 		// リダイレクトURL
-		$redirectURL = "$URL/$fiscalYear/$siteCode/login/index.php";
+		$redirectURL = "$URL/$siteCode/login/index.php";
 
 		return $this->render('eALPSPortalBundle:Login:auto.html.twig', array('redirectURL' => $redirectURL, 'siteName' => $siteName, 'username' => $username, 'password' => $password ));
 	}
