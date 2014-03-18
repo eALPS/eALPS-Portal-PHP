@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\StoreBundle\Form\Type;
+namespace eALPS\PortalBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
