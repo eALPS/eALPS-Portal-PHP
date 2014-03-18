@@ -25,4 +25,16 @@ class InfoType extends AbstractType
 	{
 		return 'info';
 	}
+	
+	function getInportanceArray() {
+		
+		array $importanceArray = array(
+			'通 知’ => '通知',
+			'重 要’ => '重要',
+			'警 告’ => '警告',
+			'成 功’ => '成功',
+		);
+		
+		return $importanceArray;
+	}
 }
