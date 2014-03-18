@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use eALPS\PortalBundle\Entity\Info;
+use eALPS\PortalBundle\Form\Type\InfoType;
 
 class InfoController extends Controller
 {
@@ -50,15 +51,7 @@ class InfoController extends Controller
 				*/
 				
 		$info = new Info();
-		
-		$insertForm = $this->createFormBuilder($info)
-			->add('title', 'text')
-			->add('body', 'textarea')
-			->add('importance')
-			->add('address')
-			->add('term')
-			->add('availability')
-			->getForm();
+		$insertForm = $this->createForm(new InfoType(), $info);
 		
 		return $this->render('eALPSPortalBundle:Info:localAdmin.html.twig', array('infoArray' => $infoArray, 'insertForm' => $insertForm->createView(),));
 	}

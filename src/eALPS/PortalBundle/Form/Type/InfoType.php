@@ -9,8 +9,16 @@ class InfoType extends AbstractType
 {
 	public function buildForm(FormBuilder $builder, array $options)
 	{
-		$builder->add('name');
-		$builder->add('price', 'money', array('currency' => 'USD'));
+		$builder->add('id', 'integer');
+		$builder->add('title', 'text');
+		$builder->add('body', 'textarea');
+		$builder->add('importance', 'text');
+		$builder->add('address', 'text');
+		$builder->add('insertdate', 'datetime');
+		$builder->add('updatedate', 'datetime');
+		$builder->add('deletedate', 'datetime');
+		$builder->add('term', 'datetime');
+		$builder->add('availability');
 	}
 
 	public function getName()
