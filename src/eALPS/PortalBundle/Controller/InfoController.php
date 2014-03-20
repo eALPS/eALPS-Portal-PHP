@@ -66,6 +66,8 @@ class InfoController extends Controller
 		if ($request->getMethod() == 'POST') {
 			$insertForm -> bindRequest($request);
 			
+			$info -> setInsertdate(new DateTime());
+			
 			$em = $this
 				-> getDoctrine()
 				-> getEntityManager('info');
