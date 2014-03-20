@@ -65,7 +65,7 @@ class InfoController extends Controller
 		var_dump('hogehoge');
 		if ($request->getMethod() == 'POST') {
 			$insertForm -> bindRequest($request);
-			var_dump($insertForm);
+			var_dump($info);
 			if ($insertForm -> isValid()) {
 				$em = $this
 					-> getDoctrine()
