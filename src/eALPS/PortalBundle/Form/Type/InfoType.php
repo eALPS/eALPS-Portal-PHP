@@ -30,7 +30,7 @@ class InfoType extends AbstractType
 	
 	function getInportanceArray() {
 		
-		array $importanceArray = array(
+		$importanceArray = array(
 			'通 知’ => '通知',
 			'重 要’ => '重要',
 			'警 告’ => '警告',
