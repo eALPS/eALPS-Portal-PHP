@@ -243,9 +243,9 @@
 		$(this).next().slideToggle('fast');
 	});
 	
-{#
 	// お知らせ編集モーダルへのデータ渡し
-	$(":a[id^='infoId-']").click(function(){
+	$("[id^='infoId-']").click(function(){
+{#
 		var str = $(this).attr("id");
 		var id = Number(str.substring(7));
 		
@@ -267,10 +267,10 @@
 		bodytext = bodytext.replace('<br>', '\r\n');
 		$('#editInfoBody').text(bodytext);
 		
+#}
 		$('#editModal').modal('show');
 		
 	});
-#}
 </script>
 
 {% endblock %}
