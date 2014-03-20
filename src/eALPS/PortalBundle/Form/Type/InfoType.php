@@ -15,7 +15,9 @@ class InfoType extends AbstractType
 	
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder->add('id', 'integer');
+		$builder->add('id', 'integer', array(
+			'required'  => false,
+		));
 		$builder->add('title', 'text');
 		$builder->add('body', 'textarea');
 		$builder->add('importance', 'choice', array(
@@ -40,7 +42,9 @@ class InfoType extends AbstractType
 		$builder->add('term', 'datetime', array(
 			'required'  => false,
 		));
-		$builder->add('availability');
+		$builder->add('availability', array(
+			'required'  => false,
+		));
 	}
 	
 	function getInportanceArray()
