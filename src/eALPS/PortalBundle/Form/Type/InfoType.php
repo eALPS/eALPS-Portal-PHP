@@ -14,7 +14,6 @@ class InfoType extends AbstractType
 		$builder->add('body', 'textarea');
 		$builder->add('importance', 'choice', array(
 			'choices' => getInportanceArray(),
-			'' => ,
 		));
 		$builder->add('address', 'text');
 		$builder->add('insertdate', 'datetime');
