@@ -28,10 +28,18 @@ class InfoType extends AbstractType
 			'empty_value' => '選択肢を選んで下さい',
 			'required'  => false,
 		));
-		$builder->add('insertdate', 'datetime');
-		$builder->add('updatedate', 'datetime');
-		$builder->add('deletedate', 'datetime');
-		$builder->add('term', 'datetime');
+		$builder->add('insertdate', 'datetime', array(
+			'required'  => false,
+		));
+		$builder->add('updatedate', 'datetime', array(
+			'required'  => false,
+		));
+		$builder->add('deletedate', 'datetime', array(
+			'required'  => false,
+		));
+		$builder->add('term', 'datetime', array(
+			'required'  => false,
+		));
 		$builder->add('availability');
 	}
 	

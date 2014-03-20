@@ -66,7 +66,7 @@ class InfoController extends Controller
 		if ($request->getMethod() == 'POST') {
 			$insertForm -> bindRequest($request);
 			var_dump($info);
-			//if ($insertForm -> isValid()) {
+			if ($insertForm -> isValid()) {
 				$em = $this
 					-> getDoctrine()
 					-> getEntityManager('info');
@@ -74,7 +74,7 @@ class InfoController extends Controller
 				$em -> flush();
 				
 				return $this->redirect($this->generateUrl('e_alps_portal_info_local_admin'));
-			//}
+			}
 		}
 		
 		return $this->redirect($this->generateUrl('e_alps_portal_info_local_admin'));
