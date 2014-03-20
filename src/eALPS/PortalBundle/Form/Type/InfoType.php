@@ -13,7 +13,7 @@ class InfoType extends AbstractType
 		$builder->add('title', 'text');
 		$builder->add('body', 'textarea');
 		$builder->add('importance', 'choice', array(
-			'choices' => getInportanceArray(),
+			'choices' => $this -> getInportanceArray(),
 		));
 		$builder->add('address', 'text');
 		$builder->add('insertdate', 'datetime');
@@ -28,7 +28,7 @@ class InfoType extends AbstractType
 		return 'info';
 	}
 	
-	function getInportanceArray() {
+	function static getInportanceArray() {
 		
 		$importanceArray = array(
 			'通 知' => '通知',
