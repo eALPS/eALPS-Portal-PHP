@@ -2,6 +2,8 @@
 
 namespace eALPS\PortalBundle\Controller;
 
+use \DateTime;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -66,8 +68,7 @@ class InfoController extends Controller
 		if ($request -> getMethod() == 'POST') {
 			$insertForm -> bindRequest($request);
 			
-			$date = new DateTime();
-			$info -> setInsertdate($date);
+			$info -> setInsertdate(new DateTime());
 			
 			$em = $this
 				-> getDoctrine()
