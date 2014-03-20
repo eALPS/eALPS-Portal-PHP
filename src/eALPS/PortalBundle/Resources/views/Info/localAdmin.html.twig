@@ -238,10 +238,12 @@
 		// ToolTips
 		$('.sortInfoToolTip').tooltip();
 	});
+	
 	$('.info-tab').click(function () {
 		$(this).next().slideToggle('fast');
 	});
 	
+{#
 	// お知らせ編集モーダルへのデータ渡し
 	$(":a[id^='infoId-']").click(function(){
 		var str = $(this).attr("id");
@@ -260,16 +262,15 @@
 			$('#editInfoAvailability').removeAttr('checked');
 		}
 		
-		{#
-var bodytext = '<?php echo str_replace(array("\r\n", "\n", "\r"), '<br />', $row['body'] ); ?>';
+		var bodytext = '<?php echo str_replace(array("\r\n", "\n", "\r"), '<br />', $row['body'] ); ?>';
 		bodytext = bodytext.replace('<br />', '\r\n');
 		bodytext = bodytext.replace('<br>', '\r\n');
 		$('#editInfoBody').text(bodytext);
-#}
 		
 		$('#editModal').modal('show');
 		
 	});
+#}
 </script>
 
 {% endblock %}
