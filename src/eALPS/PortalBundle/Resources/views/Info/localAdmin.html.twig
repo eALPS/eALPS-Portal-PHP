@@ -250,7 +250,7 @@
 	});
 	
 	// お知らせ編集モーダルへのデータ渡し
-	$(':a[id^=infoId-]').click(function(){
+	$(":a[id^='infoId-']").click(function(){
 		var str = $(this).attr("id");
 		var id = Number(str.substring(7));
 		
