@@ -37,10 +37,10 @@ class InfoController extends Controller
 	public function localAdminAction(Request $request)
 	{
 		$infoArray = $this
-				-> getDoctrine()
-				-> getEntityManager('info')
-				-> getRepository('eALPSPortalBundle:Info')
-				-> findAll();
+			-> getDoctrine()
+			-> getEntityManager('info')
+			-> getRepository('eALPSPortalBundle:Info')
+			-> findAll();
 				/*
 					-> createQuery("
 					SELECT id, title, body, importance, address, datetime(insertdate) as insertdate, datetime(updatedate) as updatedate, datetime(deletedate) as deletedate, term, availability
@@ -53,26 +53,24 @@ class InfoController extends Controller
 		$info = new Info();
 		$insertForm = $this->createForm(new InfoType(), $info);
 		
-		return $this->render('eALPSPortalBundle:Info:localAdmin.html.twig', array('infoArray' => $infoArray, 'insertForm' => $insertForm->createView(),));
+		$insertAction = $this->get('router')->generate('e_alps_portal_info_insert');
+		
+		return $this->render('eALPSPortalBundle:Info:localAdmin.html.twig', array('infoArray' => $infoArray, 'insertForm' => $insertForm->createView(), 'insertActionURL' => $insertAction));
 	}
 	
 	public function insertAction(Request $request)
 	{
 		$info = new Info();
-	
-		$insertForm = $this->createFormBuilder($info)
-			->add('title', 'text')
-			->add('body', 'textarea')
-			->add('importance')
-			->add('address')
-			->add('term')
-			->add('availability')
-			->getForm();
+		$insertForm = $this->createForm(new InfoType(), $info);
 			
 		if ($request->getMethod() == 'POST') {
-			$insertForm->bindRequest($request);
-			if ($insertForm->isValid()) {
-				// データベースへの保存など、何らかのアクションを実行する
+			$insertForm -> bindRequest($request);
+			if ($insertForm -> isValid()) {
+				$em = $this
+					-> getDoctrine()
+					-> getEntityManager('info');
+				$em -> persist($info);
+				$em -> flush();
 				
 				return $this->render('eALPSPortalBundle:Default:infoLocalAdmin');
 			}

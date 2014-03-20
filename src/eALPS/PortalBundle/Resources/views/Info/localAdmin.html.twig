@@ -93,7 +93,7 @@
 	</header>
 	<section class="modal-body">
 		<h2>新規作成フォーム</h2>
-		<form action="db/sql/ealps-info-sql.php" method="post" id="insertForm" class="form-horizontal">
+		<form action="{{ insertAction }}" method="post" id="insertForm" class="form-horizontal">
 			<fieldset>
 				<input type="hidden" name="method" value="insert" />
 				<div class="control-group">
@@ -122,13 +122,14 @@
 						<!-- <textarea name="body" id="insertInfoBody" class="input-xlarge editInfoBody"></textarea> -->
 					</div>
 				</div>
+				{#
 				<div class="control-group">
 					<label class="control-label">{{ form_label(insertForm.term, '表示期限') }}</label>
 					<div class="controls">
 						{{ form_widget(insertForm.term) }}
-						<!-- <input type="checkbox" name="availability" id="insertInfoAvailability" /> -->
 					</div>
 				</div>
+				#}
 				<div class="control-group">
 					<label class="control-label">{{ form_label(insertForm.availability, '表示') }}</label>
 					<div class="controls">
