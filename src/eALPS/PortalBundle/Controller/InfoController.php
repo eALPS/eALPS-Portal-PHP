@@ -55,22 +55,6 @@ class InfoController extends Controller
 		
 		$insertAction = $this->get('router')->generate('e_alps_portal_info_insert');
 		
-		
-		var_dump('hogehoge');
-		if ($request->getMethod() == 'POST') {
-			$insertForm -> bindRequest($request);
-			var_dump($info);
-			if ($insertForm -> isValid()) {
-				$em = $this
-					-> getDoctrine()
-					-> getEntityManager('info');
-				$em -> persist($info);
-				$em -> flush();
-				
-				return $this->redirect($this->generateUrl('e_alps_portal_info_local_admin'));
-			}
-		}
-		
 		return $this->render('eALPSPortalBundle:Info:localAdmin.html.twig', array('infoArray' => $infoArray, 'insertForm' => $insertForm->createView(), 'insertAction' => $insertAction));
 	}
 	
@@ -78,19 +62,18 @@ class InfoController extends Controller
 	{
 		$info = new Info();
 		$insertForm = $this->createForm(new InfoType(), $info);
-		var_dump('hogehoge');
+
 		if ($request->getMethod() == 'POST') {
 			$insertForm -> bindRequest($request);
-			var_dump($info);
-			if ($insertForm -> isValid()) {
-				$em = $this
-					-> getDoctrine()
-					-> getEntityManager('info');
-				$em -> persist($info);
-				$em -> flush();
-				
-				return $this->redirect($this->generateUrl('e_alps_portal_info_local_admin'));
-			}
+			
+			$em = $this
+				-> getDoctrine()
+				-> getEntityManager('info');
+			$em -> persist($info);
+			$em -> flush();
+			
+			return $this->redirect($this->generateUrl('e_alps_portal_info_local_admin'));
+			
 		}
 		
 		return $this->redirect($this->generateUrl('e_alps_portal_info_local_admin'));
