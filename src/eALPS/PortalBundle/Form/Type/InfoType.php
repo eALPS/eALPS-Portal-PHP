@@ -42,7 +42,7 @@ class InfoType extends AbstractType
 		$builder->add('term', 'datetime', array(
 			'required'  => false,
 		));
-		$builder->add('availability', array(
+		$builder->add('availability', 'choice', array(
 			'required'  => false,
 		));
 	}
