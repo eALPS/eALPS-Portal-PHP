@@ -55,7 +55,7 @@ class InfoController extends Controller
 		
 		$insertAction = $this->get('router')->generate('e_alps_portal_info_insert');
 		
-		return $this->render('eALPSPortalBundle:Info:localAdmin.html.twig', array('infoArray' => $infoArray, 'insertForm' => $insertForm->createView(), 'insertActionURL' => $insertAction));
+		return $this->render('eALPSPortalBundle:Info:localAdmin.html.twig', array('infoArray' => $infoArray, 'insertForm' => $insertForm->createView(), 'insertAction' => $insertAction));
 	}
 	
 	public function insertAction(Request $request)
