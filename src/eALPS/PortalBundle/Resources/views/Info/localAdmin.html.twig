@@ -217,6 +217,13 @@
 </div>
 
 <script type="text/javascript">
+				$('#infoId-<?php echo $row['id']; ?>').click( function() {
+					
+					
+				});
+			</script>
+
+<script type="text/javascript">
 	$(document).ready(function(){
 		$('.info-detail').hide();
 		$('table.infoTable').dataTable({
@@ -240,6 +247,35 @@
 	});
 	$('.info-tab').click(function () {
 		$(this).next().slideToggle('fast');
+	});
+	
+	// お知らせ編集モーダルへのデータ渡し
+	$(':a[id^=infoId-]').click(function(){
+		var str = $(this).attr("id");
+		var id = Number(str.substring(7));
+		
+		$('#editInfoID').val('');
+		$('#editInfoType').val('');
+		$('#editInfoAddress').val('');
+		$('#editInfoTitle').val($('#infoTitle-' + id).text());
+		
+		var availability = '';
+		
+		if(availability == 1) {
+			$('#editInfoAvailability').attr('checked', 'checked');
+		} else {
+			$('#editInfoAvailability').removeAttr('checked');
+		}
+		
+		{#
+var bodytext = '<?php echo str_replace(array("\r\n", "\n", "\r"), '<br />', $row['body'] ); ?>';
+		bodytext = bodytext.replace('<br />', '\r\n');
+		bodytext = bodytext.replace('<br>', '\r\n');
+		$('#editInfoBody').text(bodytext);
+#}
+		
+		$('#editModal').modal('show');
+		
 	});
 </script>
 
