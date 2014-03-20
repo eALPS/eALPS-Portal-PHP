@@ -63,10 +63,11 @@ class InfoController extends Controller
 		$info = new Info();
 		$insertForm = $this->createForm(new InfoType(), $info);
 
-		if ($request->getMethod() == 'POST') {
+		if ($request -> getMethod() == 'POST') {
 			$insertForm -> bindRequest($request);
 			
-			$info -> setInsertdate(new DateTime());
+			$date = new DateTime();
+			$info -> setInsertdate($date);
 			
 			$em = $this
 				-> getDoctrine()
