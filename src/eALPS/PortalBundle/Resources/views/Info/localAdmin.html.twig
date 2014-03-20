@@ -123,6 +123,13 @@
 					</div>
 				</div>
 				<div class="control-group">
+					<label class="control-label">{{ form_label(insertForm.term, '表示期限') }}</label>
+					<div class="controls">
+						{{ form_widget(insertForm.term) }}
+						<!-- <input type="checkbox" name="availability" id="insertInfoAvailability" /> -->
+					</div>
+				</div>
+				<div class="control-group">
 					<label class="control-label">{{ form_label(insertForm.availability, '表示') }}</label>
 					<div class="controls">
 						{{ form_widget(insertForm.availability) }}
