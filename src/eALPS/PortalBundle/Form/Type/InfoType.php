@@ -21,10 +21,12 @@ class InfoType extends AbstractType
 		$builder->add('importance', 'choice', array(
 			'choices' => $this -> getInportanceArray(),
 			'empty_value' => '選択肢を選んで下さい',
+			'required'  => false,
 		));
 		$builder->add('address', 'choice', array(
 			'choices' => $this -> getAddressArray(),
 			'empty_value' => '選択肢を選んで下さい',
+			'required'  => false,
 		));
 		$builder->add('insertdate', 'datetime');
 		$builder->add('updatedate', 'datetime');
