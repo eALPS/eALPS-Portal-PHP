@@ -72,11 +72,11 @@ class InfoController extends Controller
 				$em -> persist($info);
 				$em -> flush();
 				
-				return $this->render('eALPSPortalBundle:Default:infoLocalAdmin');
+				return $this->redirect($this->generateUrl('e_alps_portal_info_local_admin'));
 			}
 		}
 		
-		return $this->render('eALPSPortalBundle:Default:infoLocalAdmin');
+		return $this->redirect($this->generateUrl('e_alps_portal_info_local_admin'));
 	}
 }
  
