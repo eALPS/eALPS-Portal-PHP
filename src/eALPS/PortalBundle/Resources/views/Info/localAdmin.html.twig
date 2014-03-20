@@ -245,7 +245,6 @@
 	
 	// お知らせ編集モーダルへのデータ渡し
 	$("[id^='infoId-']").click(function(){
-{#
 		var str = $(this).attr("id");
 		var id = Number(str.substring(7));
 		
@@ -262,6 +261,7 @@
 			$('#editInfoAvailability').removeAttr('checked');
 		}
 		
+{#
 		var bodytext = '<?php echo str_replace(array("\r\n", "\n", "\r"), '<br />', $row['body'] ); ?>';
 		bodytext = bodytext.replace('<br />', '\r\n');
 		bodytext = bodytext.replace('<br>', '\r\n');
