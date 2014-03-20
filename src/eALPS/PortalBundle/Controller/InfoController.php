@@ -62,9 +62,10 @@ class InfoController extends Controller
 	{
 		$info = new Info();
 		$insertForm = $this->createForm(new InfoType(), $info);
-			
+		var_dump('hogehoge');
 		if ($request->getMethod() == 'POST') {
 			$insertForm -> bindRequest($request);
+			var_dump($insertForm);
 			if ($insertForm -> isValid()) {
 				$em = $this
 					-> getDoctrine()
