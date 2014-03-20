@@ -28,7 +28,7 @@ class InfoType extends AbstractType
 		return 'info';
 	}
 	
-	function static getInportanceArray() {
+	function getInportanceArray() {
 		
 		$importanceArray = array(
 			'通 知' => '通知',
