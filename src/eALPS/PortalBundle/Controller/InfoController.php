@@ -70,6 +70,7 @@ class InfoController extends Controller
 			
 			$date = new DateTime();
 			$info -> setInsertdate($date -> format('Y-m-d H:i:s'));
+			$info -> setUpdatedate($date -> format('Y-m-d H:i:s'));
 			
 			$em = $this
 				-> getDoctrine()
