@@ -97,38 +97,15 @@
 			<fieldset>
 				<input type="hidden" name="method" value="insert" />
 				<div class="control-group">
-					<label class="control-label">タイプ</label>
+					<label class="control-label">{{ form_label(insertForm.importance, 'タイプ') }}</label>
 					<div class="controls">
 						{{ form_widget(insertForm.importance, {'attr':{'class':'hogehoge'}}) }}
-						{#
-<select name="importance" id="insertInfoType" class="span2">
-							<option value=""></option>
-							<option value="通 知">通知</option>
-							<option value="重 要">重要</option>
-							<option value="警 告">警告</option>
-							<option value="成 功">成功</option>
-						</select>
-#}
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">宛先</label>
+					<label class="control-label">{{ form_label(insertForm.address, '宛先') }}</label>
 					<div class="controls">
-						<select name="address" id="insertInfoAddress" class="span2">
-							<option></option>
-							<option value="全 体">全体</option>
-							<option value="教 員">教員</option>
-							<option value="学 生">学生</option>
-							<option value="共通教育">共通教育</option>
-							<option value="農学部">農学部</option>
-							<option value="教育学部">教育学部</option>
-							<option value="繊維学部">繊維学部</option>
-							<option value="経済学部">経済学部</option>
-							<option value="人文学部">人文学部</option>
-							<option value="医学部">医学部</option>
-							<option value="理学部">理学部</option>
-							<option value="工学部">工学部</option>
-						</select>
+						{{ form_widget(insertForm.address, {'attr':{'class':'hogehoge'}}) }}
 					</div>
 				</div>
 				<div class="control-group">
@@ -139,14 +116,14 @@
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">本文</label>
+					<label class="control-label">{{ form_label(insertForm.body, '本文') }}</label>
 					<div class="controls">
 						{{ form_widget(insertForm.body, {'attr':{'class':'hogehoge'}}) }}
 						<!-- <textarea name="body" id="insertInfoBody" class="input-xlarge editInfoBody"></textarea> -->
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">{{ form_label(insertForm.availability) }}</label>
+					<label class="control-label">{{ form_label(insertForm.availability, '表示') }}</label>
 					<div class="controls">
 						{{ form_widget(insertForm.availability) }}
 						<!-- <input type="checkbox" name="availability" id="insertInfoAvailability" /> -->
