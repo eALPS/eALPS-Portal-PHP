@@ -75,6 +75,8 @@ class InfoController extends Controller
 				return $this->render('eALPSPortalBundle:Default:infoLocalAdmin');
 			}
 		}
+		
+		return $this->render('eALPSPortalBundle:Default:infoLocalAdmin');
 	}
 }
  
