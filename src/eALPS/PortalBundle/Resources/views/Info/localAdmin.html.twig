@@ -16,7 +16,7 @@
 				<th><div class="sortInfoToolTip" rel="tooltip" data-toggle="tooltip" data-placement="top" data--title="クリックでソート">&nbsp;</div></th>
 				<th><div class="sortInfoToolTip" rel="tooltip" data-toggle="tooltip" data-placement="top" data--title="クリックでソート">&nbsp;</div></th>
 				<th><div class="sortInfoToolTip" rel="tooltip" data-toggle="tooltip" data-placement="top" data-title="クリックでソート">&nbsp;</div></th>
-				<th><div class="sortInfoToolTip" rel="tooltip" data-placement="top" data-title="クリックでソート">更新日</div></th>
+				<th><div class="sortInfoToolTip" rel="tooltip" data-placement="top" data-title="クリックでソート">ID</div></th>
 				<th><div class="sortInfoToolTip" rel="tooltip" data-placement="top" data-title="クリックでソート">内容</div></th>
 				<th><div class="sortInfoToolTip" rel="tooltip" data-placement="top" data-title="クリックでソート">作成日時</div></th>
 				<th><div class="sortInfoToolTip" rel="tooltip" data-placement="top" data-title="クリックでソート">更新日時</div></th>
@@ -48,7 +48,7 @@
 				</td>
 				<td class="info-date">
 					<time id="infoInsertDate-{{ info.id }}">
-						{{ info.getUpdatedate }}
+						{{- info.getId -}}
 					</time>
 				</td>
 				<td>
@@ -59,9 +59,11 @@
 							</h1>
 						</a>
 						<div class="info-detail">
-							<p id="infoBody-{{ info.id }}">
-								{{- info.body | replace({'\r\n': '<br />', '\n': '<br />', '\r': '<br />'}) | raw  -}}
-							</p>
+							<div id="infoBody-{{ info.id }}">
+								<p>
+									{{- info.body | replace({'\r\n': '<br />', '\n': '<br />', '\r': '<br />'}) | raw  -}}
+								</p>
+							</div>
 						</div>
 					</article>
 				</td>
@@ -79,6 +81,11 @@
 					<time id="infoDeleteDateTime-{{ info.id }}">
 						{{ info.getDeletedate }}
 					</time>
+				</td>
+				<td class="hidden">
+					<span id="infoAvailability-{{ info.id }}">
+						{{- info.availability -}}
+					</span>
 				</td>
 			</tr>
 			{% endfor %}
@@ -152,46 +159,7 @@
 		<h2>お知らせ編集フォーム</h2>
 		<form action="db/sql/ealps-info-sql.php" method="post" id="updateForm" class="form-horizontal">
 			<fieldset>
-				<input type="hidden" name="method" value="update" />
 				<input type="hidden" name="id" id="editInfoID" />
-				<div class="control-group">
-					<label class="control-label">タイプ</label>
-					<div class="controls">
-						<select name="importance" id="editInfoType" class="span2">
-							<option value=""></option>
-							<option value="通 知">通知</option>
-							<option value="重 要">重要</option>
-							<option value="警 告">警告</option>
-							<option value="成 功">成功</option>
-						</select>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">宛先</label>
-					<div class="controls">
-						<select name="address" id="editInfoAddress" class="span2">
-							<option></option>
-							<option value="全 体">全体</option>
-							<option value="教 員">教員</option>
-							<option value="学 生">学生</option>
-							<option value="共通教育">共通教育</option>
-							<option value="農学部">農学部</option>
-							<option value="教育学部">教育学部</option>
-							<option value="繊維学部">繊維学部</option>
-							<option value="経済学部">経済学部</option>
-							<option value="人文学部">人文学部</option>
-							<option value="医学部">医学部</option>
-							<option value="理学部">理学部</option>
-							<option value="工学部">工学部</option>
-						</select>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">表示</label>
-					<div class="controls">
-						<input type="checkbox" name="availability" id="editInfoAvailability" />
-					</div>
-				</div>
 				<div class="control-group">
 					<label class="control-label">{{ form_label(updateForm.id, 'ID') }}</label>
 					<div class="controls">
@@ -282,18 +250,19 @@
 		$('#updateForm #info_address').val($('#infoAddress-' + id).text());
 		$('#updateForm #info_title').val($('#infoTitle-' + id).text());
 		
-		var availability = '';
+		var availability = $('#infoAvailability-' + id).text());
 		
 		if(availability == 1) {
-			$('#editInfoAvailability').attr('checked', 'checked');
+			$('#updateForm #info_availability').attr('checked', 'checked');
 		} else {
-			$('#editInfoAvailability').removeAttr('checked');
+			$('#updateForm #info_availability').removeAttr('checked');
 		}
 		
-		var bodytext = $('#infoBody-' + id).html();
+		var bodytext = str_replace(array("\r\n", "\n", "\r"), '<br />', $('#infoBody-' + id).html() );
 		$('#updateForm #info_body').val(bodytext);
 {#
 		var bodytext = '<?php echo str_replace(array("\r\n", "\n", "\r"), '<br />', $row['body'] ); ?>';
+		
 		bodytext = bodytext.replace('<br />', '\r\n');
 		bodytext = bodytext.replace('<br>', '\r\n');
 		$('#editInfoBody').text(bodytext);
