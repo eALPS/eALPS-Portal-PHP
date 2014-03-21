@@ -123,7 +123,7 @@ class InfoController extends Controller
 	
 	public function deleteAction(Request $request)
 	{	
-		$deleteId->request->get('id');
+		$deleteId = $request -> request -> get('id');
 
 		if ($request -> getMethod() == 'POST')
 		{
