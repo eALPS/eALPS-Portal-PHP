@@ -82,7 +82,7 @@
 						{{ info.getDeletedate }}
 					</time>
 				</td>
-				<td class="hidden">
+				<td class="hide">
 					<span id="infoAvailability-{{ info.id }}">
 						{{- info.availability -}}
 					</span>
@@ -217,7 +217,7 @@
 	$(document).ready(function(){
 		$('.info-detail').hide();
 		$('table.infoTable').dataTable({
-			aaSorting : [[ 4, 'desc']],
+			aaSorting : [[ 7, 'desc']],
 			aLengthMenu : [ 1, 2, 3, 5, 8, 13, 21, 34, 55, 89 ],
 			iDisplayLength : 100,
 			sPaginationType : 'bootstrap',
