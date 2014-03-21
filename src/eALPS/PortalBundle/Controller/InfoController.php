@@ -118,5 +118,27 @@ class InfoController extends Controller
 		
 		return $this->redirect($this->generateUrl('e_alps_portal_info_local_admin'));
 	}
+	
+	public function deleteAction(Request $request)
+	{	
+		$deleteId->request->get('id');
+
+		if ($request -> getMethod() == 'POST')
+		{
+			$em = $this
+				-> getDoctrine()
+				-> getEntityManager('info');
+			$deleteInfo = $em -> getRepository('eALPSPortalBundle:Info')
+				-> find($deleteId);
+				
+			$em->remove($deleteInfo);
+			$em -> flush();
+			
+			return $this->redirect($this->generateUrl('e_alps_portal_info_local_admin'));
+			
+		}
+		
+		return $this->redirect($this->generateUrl('e_alps_portal_info_local_admin'));
+	}
 }
  

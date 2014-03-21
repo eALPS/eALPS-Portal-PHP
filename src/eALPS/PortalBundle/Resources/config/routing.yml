@@ -34,6 +34,10 @@ e_alps_portal_info_update:
     pattern:  /info/update
     defaults: { _controller: eALPSPortalBundle:Info:update }
     
+e_alps_portal_info_delete:
+    pattern:  /info/delete
+    defaults: { _controller: eALPSPortalBundle:Info:delete }
+    
 e_alps_portal_redirect_moodle_course:
     pattern:  /redirectMoodleCourse/{opYear}/{siteCode}/{titleCode}
     defaults: { _controller: eALPSPortalBundle:Redirect:redirectMoodleCourse }
