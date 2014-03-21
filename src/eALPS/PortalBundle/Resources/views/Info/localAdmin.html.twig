@@ -21,7 +21,7 @@
 				<th><div class="sortInfoToolTip" rel="tooltip" data-placement="top" data-title="クリックでソート">作成日時</div></th>
 				<th><div class="sortInfoToolTip" rel="tooltip" data-placement="top" data-title="クリックでソート">更新日時</div></th>
 				<th><div class="sortInfoToolTip" rel="tooltip" data-placement="top" data-title="クリックでソート">削除日時</div></th>
-				<th><div class="sortInfoToolTip" rel="tooltip" data-placement="top" data-title="クリックでソート">表示</div></th>
+				<th><div class="sortInfoToolTip hide" rel="tooltip" data-placement="top" data-title="クリックでソート">表示</div></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -259,14 +259,13 @@
 			$('#updateForm #info_availability').removeAttr('checked');
 		}
 		
-/* 		var bodytext = str_replace(array("\r\n", "\n", "\r"), '<br />', $('#infoBody-' + id).html() ); */
 		var bodytext = $('#infoBody-' + id).html();
+		bodytext = bodytext.replace(/<br \/>/g, '\r\n');
+		bodytext = bodytext.replace(/<br>/g, '\r\n');
 		$('#updateForm #info_body').val(bodytext);
 {#
-		var bodytext = '<?php echo str_replace(array("\r\n", "\n", "\r"), '<br />', $row['body'] ); ?>';
-		
-		bodytext = bodytext.replace('<br />', '\r\n');
-		bodytext = bodytext.replace('<br>', '\r\n');
+		var bodytext = '<?php echo str_replace(array("\r\n", "\n", "\r"), '<br />', $row['body'] ); ?>';		
+		var bodytext = str_replace(array("\r\n", "\n", "\r"), '<br />', $('#infoBody-' + id).html() );
 		$('#editInfoBody').text(bodytext);
 		
 #}
