@@ -39,7 +39,7 @@ class InfoType extends AbstractType
 		$builder->add('deletedate', 'datetime', array(
 			'required'  => false,
 		));
-		$builder->add('term', 'datetime', array(
+		$builder->add('term', 'text', array(
 			'required'  => false,
 		));
 		$builder->add('availability', 'checkbox', array(

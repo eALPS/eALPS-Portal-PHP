@@ -128,14 +128,14 @@
 						{{ form_widget(insertForm.body, {'attr':{'class':'input-xlarge insertInfoBody'}}) }}
 					</div>
 				</div>
-				{#
 				<div class="control-group">
 					<label class="control-label">{{ form_label(insertForm.term, '表示期限') }}</label>
-					<div class="controls">
-						{{ form_widget(insertForm.term) }}
+					<div class="controls input-append date form_datetime">
+						{{ form_widget(insertForm.term, {'attr':{'class':'input-xlarge'}}) }}
+						<span class="add-on"><i class="icon-remove"></i></span>
+						<span class="add-on"><i class="icon-calendar"></i></span>
 					</div>
 				</div>
-				#}
 				<div class="control-group">
 					<label class="control-label">{{ form_label(insertForm.availability, '表示') }}</label>
 					<div class="controls">
@@ -239,6 +239,13 @@
 	
 	$('.info-tab').click(function () {
 		$(this).next().slideToggle('fast');
+	});
+	
+	$('.form_datetime').datetimepicker({
+		format: "yyyy-MM-dd hh:ii:ss",
+		autoclose: true,
+		todayBtn: true,
+		minuteStep: 30
 	});
 	
 	// お知らせ編集モーダルへのデータ渡し
