@@ -32,7 +32,7 @@
 					<input type="hidden" name="id" value="{{ info.id }}" />
 				</form>
 				<td>
-					<span id="infoInsertDate-{{ info.id }}">
+					<span id="infoInsertDate-{{ info.id }}" class="label label-inverse">
 						{{- info.getId -}}
 					</span>
 				</td>
@@ -61,9 +61,7 @@
 						</a>
 						<div class="info-detail">
 							<div id="infoBody-{{ info.id }}">
-								<p>
-									{{- info.body | replace({'\r\n': '<br />', '\n': '<br />', '\r': '<br />'}) | raw  -}}
-								</p>
+								{{- info.body | replace({'\r\n': '<br />', '\n': '<br />', '\r': '<br />'}) | raw  -}}
 							</div>
 						</div>
 					</article>
