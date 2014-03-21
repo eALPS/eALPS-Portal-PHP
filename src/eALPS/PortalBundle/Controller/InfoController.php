@@ -60,7 +60,9 @@ class InfoController extends Controller
 		$updateForm = $this->createForm(new InfoType(), $updateInfo);
 		$updateAction = $this->get('router')->generate('e_alps_portal_info_update');
 		
-		return $this->render('eALPSPortalBundle:Info:localAdmin.html.twig', array('infoArray' => $infoArray, 'insertForm' => $insertForm->createView(), 'insertAction' => $insertAction, 'updateForm' => $updateForm->createView(), 'updateAction' => $updateAction));
+		$deleteAction = $this->get('router')->generate('e_alps_portal_info_delete');
+		
+		return $this->render('eALPSPortalBundle:Info:localAdmin.html.twig', array('infoArray' => $infoArray, 'insertForm' => $insertForm->createView(), 'insertAction' => $insertAction, 'updateForm' => $updateForm->createView(), 'updateAction' => $updateAction, 'deleteAction' => $deleteAction));
 	}
 	
 	public function insertAction(Request $request)
