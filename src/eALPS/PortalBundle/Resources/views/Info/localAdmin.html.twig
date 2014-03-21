@@ -12,15 +12,16 @@
 	<table class="table table-striped table-condensed table-hover infoTable">
 		<thead>
 			<tr>
+				<th><div class="sortInfoToolTip" rel="tooltip" data-placement="top" data-title="クリックでソート">ID</div></th>
 				<th><div class="sortInfoToolTip" rel="tooltip" data-toggle="tooltip" data-placement="top" data--title="クリックでソート">&nbsp;</div></th>
 				<th><div class="sortInfoToolTip" rel="tooltip" data-toggle="tooltip" data-placement="top" data--title="クリックでソート">&nbsp;</div></th>
 				<th><div class="sortInfoToolTip" rel="tooltip" data-toggle="tooltip" data-placement="top" data--title="クリックでソート">&nbsp;</div></th>
 				<th><div class="sortInfoToolTip" rel="tooltip" data-toggle="tooltip" data-placement="top" data-title="クリックでソート">&nbsp;</div></th>
-				<th><div class="sortInfoToolTip" rel="tooltip" data-placement="top" data-title="クリックでソート">ID</div></th>
 				<th><div class="sortInfoToolTip" rel="tooltip" data-placement="top" data-title="クリックでソート">内容</div></th>
 				<th><div class="sortInfoToolTip" rel="tooltip" data-placement="top" data-title="クリックでソート">作成日時</div></th>
 				<th><div class="sortInfoToolTip" rel="tooltip" data-placement="top" data-title="クリックでソート">更新日時</div></th>
 				<th><div class="sortInfoToolTip" rel="tooltip" data-placement="top" data-title="クリックでソート">削除日時</div></th>
+				<th><div class="sortInfoToolTip" rel="tooltip" data-placement="top" data-title="クリックでソート">表示</div></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -30,6 +31,11 @@
 					<input type="hidden" name="method" value="delete" />
 					<input type="hidden" name="id" value="{{ info.id }}" />
 				</form>
+				<td>
+					<span id="infoInsertDate-{{ info.id }}">
+						{{- info.getId -}}
+					</span>
+				</td>
 				<td class="info-edit">
 					<a href="#editModal" id="infoId-{{ info.id }}" class="btn"><i class="icon-pencil"></i></a>
 				</td>
@@ -45,11 +51,6 @@
 					<span id="infoAddress-{{ info.id }}" class="label">
 						{{- info.address -}}
 					</span>
-				</td>
-				<td class="info-date">
-					<time id="infoInsertDate-{{ info.id }}">
-						{{- info.getId -}}
-					</time>
 				</td>
 				<td>
 					<article>
@@ -258,7 +259,8 @@
 			$('#updateForm #info_availability').removeAttr('checked');
 		}
 		
-		var bodytext = str_replace(array("\r\n", "\n", "\r"), '<br />', $('#infoBody-' + id).html() );
+/* 		var bodytext = str_replace(array("\r\n", "\n", "\r"), '<br />', $('#infoBody-' + id).html() ); */
+		var bodytext = $('#infoBody-' + id).html();
 		$('#updateForm #info_body').val(bodytext);
 {#
 		var bodytext = '<?php echo str_replace(array("\r\n", "\n", "\r"), '<br />', $row['body'] ); ?>';
