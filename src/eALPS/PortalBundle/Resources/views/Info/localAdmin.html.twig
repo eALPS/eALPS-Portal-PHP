@@ -27,7 +27,7 @@
 		<tbody>
 			{% for info in infoArray %}
 			<tr class="{% if info.availability != 1 %}error{% endif %}">
-				<form id="deleteform-{{ info.id }}" action="{{ deleteAction}}" method="post">
+				<form id="deleteform-{{ info.id }}" action="{{ deleteAction }}" method="post">
 					<input type="hidden" name="method" value="delete" />
 					<input type="hidden" name="id" value="{{ info.id }}" />
 				</form>
