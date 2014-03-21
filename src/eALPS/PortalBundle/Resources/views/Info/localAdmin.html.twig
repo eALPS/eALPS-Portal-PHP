@@ -27,6 +27,10 @@
 		<tbody>
 			{% for info in infoArray %}
 			<tr class="{% if info.availability != 1 %}error{% endif %}">
+				<form id="deleteform-{{ info.id }}" action="{{ deleteAction}}" method="post">
+					<input type="hidden" name="method" value="delete" />
+					<input type="hidden" name="id" value="{{ info.id }}" />
+				</form>
 				<td>
 					<span id="infoInsertDate-{{ info.id }}" class="label label-inverse">
 						{{- info.getId -}}
@@ -36,11 +40,7 @@
 					<a href="#editModal" id="infoId-{{ info.id }}" class="btn"><i class="icon-pencil"></i></a>
 				</td>
 				<td class="info-delete">
-					<form id="deleteform-{{ info.id }}" action="{{ deleteAction}}" method="post">
-						<input type="hidden" name="method" value="delete" />
-						<input type="hidden" name="id" value="{{ info.id }}" />
 						<button id="infodeletebutton-{{ info.id }}" form="deleteform-{{ info.id }}" class="btn"><i class="icon-trash"></i></button>
-					</form>
 				</td>
 				<td class="info-label">
 					<span id="infoLabelType-{{ info.id }}" class="{{info.getLabelType}}">
