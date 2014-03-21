@@ -89,20 +89,27 @@ class InfoController extends Controller
 	}
 	
 	public function updateAction(Request $request)
-	{
-		$updateInfo = new Info();
-		$updateForm = $this->createForm(new InfoType(), $updateInfo);
+	{	
+		$tmpInfo = new Info();
+		$updateForm = $this->createForm(new InfoType(), $tmpInfo);
 
 		if ($request -> getMethod() == 'POST') {
 			$updateForm -> bindRequest($request);
 			
-			$date = new DateTime();
-			$updateInfo -> setUpdatedate($date -> format('Y-m-d H:i:s'));
-			
 			$em = $this
 				-> getDoctrine()
-				-> getEntityManager('info');
-			$em -> persist($updateInfo);
+				-> getEntityManager('info')
+			$updateInfo = $em -> getRepository('eALPSPortalBundle:Info')
+				-> find($tmpInfo->getId());
+			
+			$updateInfo -> setTitle($tmpInfo -> getTitle());
+			$updateInfo -> setBody($tmpInfo -> getBody());
+			$updateInfo -> setImportance($tmpInfo -> getInportance());
+			$updateInfo -> setAddress($tmpInfo -> getAddress());
+			$updateInfo -> setAvailability($tmpInfo -> getAvailability());
+			$date = new DateTime();
+			$updateInfo -> setUpdatedate($date -> format('Y-m-d H:i:s'));
+						
 			$em -> flush();
 			
 			return $this->redirect($this->generateUrl('e_alps_portal_info_local_admin'));
