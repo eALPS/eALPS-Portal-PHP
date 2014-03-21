@@ -85,6 +85,18 @@ class Info
 	private $availability;
 
 
+	/**
+	 * Set id
+	 *
+	 * @param integer $id
+	 * @return Info
+	 */
+	public function setId($id)
+	{
+		$this->id = $id;
+	
+		return $this;
+	}
 
 	/**
 	 * Get id
