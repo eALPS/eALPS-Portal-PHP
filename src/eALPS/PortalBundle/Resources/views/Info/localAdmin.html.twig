@@ -193,6 +193,12 @@
 					</div>
 				</div>
 				<div class="control-group">
+					<label class="control-label">{{ form_label(updateForm.id, 'ID') }}</label>
+					<div class="controls">
+						{{ form_widget(updateForm.id) }}
+					</div>
+				</div>
+				<div class="control-group">
 					<label class="control-label">{{ form_label(updateForm.importance, 'タイプ') }}</label>
 					<div class="controls">
 						{{ form_widget(updateForm.importance) }}
@@ -271,9 +277,9 @@
 		var str = $(this).attr("id");
 		var id = Number(str.substring(7));
 		
-		$('#editInfoID').val('');
-		$('#editInfoType').val('');
-		$('#editInfoAddress').val('');
+		$('#updateForm #info_id').val('');
+		$('#updateForm #info_importance').val('');
+		$('#updateForm #info_address').val('');
 		$('#updateForm #info_title').val($('#infoTitle-' + id).text());
 		
 		var availability = '';
@@ -284,7 +290,7 @@
 			$('#editInfoAvailability').removeAttr('checked');
 		}
 		
-		var bodytext = $('#infoBody-' + id).text();
+		var bodytext = $('#infoBody-' + id).html();
 		$('#updateForm #info_body').val(bodytext);
 {#
 		var bodytext = '<?php echo str_replace(array("\r\n", "\n", "\r"), '<br />', $row['body'] ); ?>';
