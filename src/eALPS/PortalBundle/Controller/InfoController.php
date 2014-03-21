@@ -104,7 +104,7 @@ class InfoController extends Controller
 			
 			$updateInfo -> setTitle($tmpInfo -> getTitle());
 			$updateInfo -> setBody($tmpInfo -> getBody());
-			$updateInfo -> setImportance($tmpInfo -> getInportance());
+			$updateInfo -> setImportance($tmpInfo -> getImportance());
 			$updateInfo -> setAddress($tmpInfo -> getAddress());
 			$updateInfo -> setAvailability($tmpInfo -> getAvailability());
 			$date = new DateTime();
