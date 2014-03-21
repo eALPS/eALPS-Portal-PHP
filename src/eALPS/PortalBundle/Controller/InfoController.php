@@ -102,7 +102,7 @@ class InfoController extends Controller
 			$em = $this
 				-> getDoctrine()
 				-> getEntityManager('info');
-			$em -> persist($info);
+			$em -> persist($updateInfo);
 			$em -> flush();
 			
 			return $this->redirect($this->generateUrl('e_alps_portal_info_local_admin'));
