@@ -20,7 +20,7 @@
 				<th><div class="sortInfoToolTip" rel="tooltip" data-placement="top" data-title="クリックでソート">内容</div></th>
 				<th><div class="sortInfoToolTip" rel="tooltip" data-placement="top" data-title="クリックでソート">作成日時</div></th>
 				<th><div class="sortInfoToolTip" rel="tooltip" data-placement="top" data-title="クリックでソート">更新日時</div></th>
-				<th><div class="sortInfoToolTip" rel="tooltip" data-placement="top" data-title="クリックでソート">削除日時</div></th>
+				{# <th><div class="sortInfoToolTip" rel="tooltip" data-placement="top" data-title="クリックでソート">削除日時</div></th> #}
 				<th><div class="sortInfoToolTip hide" rel="tooltip" data-placement="top" data-title="クリックでソート">表示</div></th>
 			</tr>
 		</thead>
@@ -76,11 +76,13 @@
 						{{ info.getUpdatedate }}
 					</time>
 				</td>
+				{#
 				<td class="info-date">
 					<time id="infoDeleteDateTime-{{ info.id }}">
 						{{ info.getDeletedate }}
 					</time>
 				</td>
+				#}
 				<td class="hide">
 					<span id="infoAvailability-{{ info.id }}">
 						{{- info.availability -}}
