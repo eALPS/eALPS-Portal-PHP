@@ -38,12 +38,12 @@
 				</td>
 				<td class="info-label">
 					<span id="infoLabelType-{{ info.id }}" class="{{info.getLabelType}}">
-						{{ info.importance }}
+						{{- info.importance -}}
 					</span>
 				</td>
 				<td class="info-label">
 					<span id="infoAddress-{{ info.id }}" class="label">
-						{{ info.address }}
+						{{- info.address -}}
 					</span>
 				</td>
 				<td class="info-date">
@@ -55,12 +55,12 @@
 					<article>
 						<a class="info-tab" >
 							<h1 id="infoTitle-{{ info.id }}">
-								{{ info.title | raw }}
+								{{- info.title | raw -}}
 							</h1>
 						</a>
 						<div class="info-detail">
 							<p id="infoBody-{{ info.id }}">
-								{{ info.body | replace({'\r\n': '<br />', '\n': '<br />', '\r': '<br />'}) | raw  }}
+								{{- info.body | replace({'\r\n': '<br />', '\n': '<br />', '\r': '<br />'}) | raw  -}}
 							</p>
 						</div>
 					</article>
@@ -99,27 +99,25 @@
 				<div class="control-group">
 					<label class="control-label">{{ form_label(insertForm.importance, 'タイプ') }}</label>
 					<div class="controls">
-						{{ form_widget(insertForm.importance, {'attr':{'class':'hogehoge'}}) }}
+						{{ form_widget(insertForm.importance) }}
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">{{ form_label(insertForm.address, '宛先') }}</label>
 					<div class="controls">
-						{{ form_widget(insertForm.address, {'attr':{'class':'hogehoge'}}) }}
+						{{ form_widget(insertForm.address) }}
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">{{ form_label(insertForm.title, 'タイトル') }}</label>
 					<div class="controls">
 						{{ form_widget(insertForm.title, { 'attr': {'class': 'input-xlarge'} })}}
-						<!-- <input type="text" name="title" id="insertInfoTitle" class="input-xlarge"> -->
 					</div>
 				</div>
 				<div class="control-group">
 					<label class="control-label">{{ form_label(insertForm.body, '本文') }}</label>
 					<div class="controls">
-						{{ form_widget(insertForm.body, {'attr':{'class':'input-xlarge'}}) }}
-						<!-- <textarea name="body" id="insertInfoBody" class="input-xlarge editInfoBody"></textarea> -->
+						{{ form_widget(insertForm.body, {'attr':{'class':'input-xlarge insertInfoBody'}}) }}
 					</div>
 				</div>
 				{#
@@ -134,7 +132,6 @@
 					<label class="control-label">{{ form_label(insertForm.availability, '表示') }}</label>
 					<div class="controls">
 						{{ form_widget(insertForm.availability) }}
-						<!-- <input type="checkbox" name="availability" id="insertInfoAvailability" /> -->
 					</div>
 				</div>
 			</fieldset>
@@ -190,21 +187,47 @@
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">タイトル</label>
-					<div class="controls">
-						<input type="text" name="title" id="editInfoTitle" class="input-xlarge">
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">本文</label>
-					<div class="controls">
-						<textarea name="body" id="editInfoBody" class="input-xlarge editInfoBody"></textarea>
-					</div>
-				</div>
-				<div class="control-group">
 					<label class="control-label">表示</label>
 					<div class="controls">
 						<input type="checkbox" name="availability" id="editInfoAvailability" />
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{{ form_label(updateForm.importance, 'タイプ') }}</label>
+					<div class="controls">
+						{{ form_widget(updateForm.importance) }}
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{{ form_label(updateForm.address, '宛先') }}</label>
+					<div class="controls">
+						{{ form_widget(updateForm.address) }}
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{{ form_label(updateForm.title, 'タイトル') }}</label>
+					<div class="controls">
+						{{ form_widget(updateForm.title, {'attr' : {'id' : 'editInfoTitle', 'class' : 'input-xlarge'}}) }}
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{{ form_label(updateForm.body, '本文') }}</label>
+					<div class="controls">
+						{{ form_widget(updateForm.body, {'attr':{'class':'input-xlarge editInfoBody'}}) }}
+					</div>
+				</div>
+				{#
+				<div class="control-group">
+					<label class="control-label">{{ form_label(updateForm.term, '表示期限') }}</label>
+					<div class="controls">
+						{{ form_widget(updateForm.term) }}
+					</div>
+				</div>
+				#}
+				<div class="control-group">
+					<label class="control-label">{{ form_label(updateForm.availability, '表示') }}</label>
+					<div class="controls">
+						{{ form_widget(updateForm.availability) }}
 					</div>
 				</div>
 			</fieldset>

@@ -52,25 +52,52 @@ class InfoController extends Controller
 				-> getResult();
 				*/
 				
-		$info = new Info();
-		$insertForm = $this->createForm(new InfoType(), $info);
-		
+		$insertInfo = new Info();
+		$insertForm = $this->createForm(new InfoType(), $insertInfo);
 		$insertAction = $this->get('router')->generate('e_alps_portal_info_insert');
 		
-		return $this->render('eALPSPortalBundle:Info:localAdmin.html.twig', array('infoArray' => $infoArray, 'insertForm' => $insertForm->createView(), 'insertAction' => $insertAction));
+		$updateInfo = new Info();
+		$updateForm = $this->createForm(new InfoType(), $updateInfo);
+		$updateAction = $this->get('router')->generate('e_alps_portal_info_update');
+		
+		return $this->render('eALPSPortalBundle:Info:localAdmin.html.twig', array('infoArray' => $infoArray, 'insertForm' => $insertForm->createView(), 'insertAction' => $insertAction, 'updateForm' => $updateForm->createView(), 'updateAction' => $updateAction));
 	}
 	
 	public function insertAction(Request $request)
 	{
-		$info = new Info();
-		$insertForm = $this->createForm(new InfoType(), $info);
+		$insertInfo = new Info();
+		$insertForm = $this->createForm(new InfoType(), $insertInfo);
 
 		if ($request -> getMethod() == 'POST') {
 			$insertForm -> bindRequest($request);
 			
 			$date = new DateTime();
-			$info -> setInsertdate($date -> format('Y-m-d H:i:s'));
-			$info -> setUpdatedate($date -> format('Y-m-d H:i:s'));
+			$insertInfo -> setInsertdate($date -> format('Y-m-d H:i:s'));
+			$insertInfo -> setUpdatedate($date -> format('Y-m-d H:i:s'));
+			
+			$em = $this
+				-> getDoctrine()
+				-> getEntityManager('info');
+			$em -> persist($insertInfo);
+			$em -> flush();
+			
+			return $this->redirect($this->generateUrl('e_alps_portal_info_local_admin'));
+			
+		}
+		
+		return $this->redirect($this->generateUrl('e_alps_portal_info_local_admin'));
+	}
+	
+	public function updateAction(Request $request)
+	{
+		$updateInfo = new Info();
+		$updateForm = $this->createForm(new InfoType(), $updateInfo);
+
+		if ($request -> getMethod() == 'POST') {
+			$insertForm -> bindRequest($request);
+			
+			$date = new DateTime();
+			$updateInfo -> setUpdatedate($date -> format('Y-m-d H:i:s'));
 			
 			$em = $this
 				-> getDoctrine()
