@@ -284,6 +284,8 @@
 			$('#editInfoAvailability').removeAttr('checked');
 		}
 		
+		var bodytext = $('#infoBody-' + id).text();
+		$('#updateForm #info_body').text(bodytext);
 {#
 		var bodytext = '<?php echo str_replace(array("\r\n", "\n", "\r"), '<br />', $row['body'] ); ?>';
 		bodytext = bodytext.replace('<br />', '\r\n');
