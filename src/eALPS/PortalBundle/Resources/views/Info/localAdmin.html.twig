@@ -277,9 +277,9 @@
 		var str = $(this).attr("id");
 		var id = Number(str.substring(7));
 		
-		$('#updateForm #info_id').val('');
-		$('#updateForm #info_importance').val('');
-		$('#updateForm #info_address').val('');
+		$('#updateForm #info_id').val(id);
+		$('#updateForm #info_importance').val($('#infoLabelType-' + id).text());
+		$('#updateForm #info_address').val($('#infoAddress-' + id).text());
 		$('#updateForm #info_title').val($('#infoTitle-' + id).text());
 		
 		var availability = '';
