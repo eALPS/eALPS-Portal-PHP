@@ -94,7 +94,7 @@ class InfoController extends Controller
 		$updateForm = $this->createForm(new InfoType(), $updateInfo);
 
 		if ($request -> getMethod() == 'POST') {
-			$insertForm -> bindRequest($request);
+			$updateForm -> bindRequest($request);
 			
 			$date = new DateTime();
 			$updateInfo -> setUpdatedate($date -> format('Y-m-d H:i:s'));
