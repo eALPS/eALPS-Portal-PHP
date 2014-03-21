@@ -98,7 +98,7 @@ class InfoController extends Controller
 			
 			$em = $this
 				-> getDoctrine()
-				-> getEntityManager('info')
+				-> getEntityManager('info');
 			$updateInfo = $em -> getRepository('eALPSPortalBundle:Info')
 				-> find($tmpInfo->getId());
 			
