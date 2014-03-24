@@ -189,14 +189,16 @@
 						{{ form_widget(updateForm.body, {'attr':{'class':'input-xlarge editInfoBody'}}) }}
 					</div>
 				</div>
+				{#
 				<div class="control-group">
-					{# <label class="control-label">{{ form_label(insertForm.term, '表示期限') }}</label> #}
+					<label class="control-label">{{ form_label(insertForm.term, '表示期限') }}</label> 
 					<div class="controls input-append date form_datetime" data-date-format="yyyy-mm-dd HH:ii:ss">
 						{{ form_widget(insertForm.term, {'attr':{'class':'input-xlarge'}}) }}
 						<span class="add-on"><i class="icon-remove"></i></span>
 						<span class="add-on"><i class="icon-calendar"></i></span>
 					</div>
 				</div>
+				#}
 				<div class="control-group">
 					<label class="control-label">{{ form_label(updateForm.availability, '表示') }}</label>
 					<div class="controls">
