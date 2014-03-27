@@ -154,11 +154,11 @@
 									&nbsp;&nbsp;
 									{% endfor %}
 									{% endif %}
-									{% if course.infoURL | length > 0 %}
+									<!-- {% if course.infoURL | length > 0 %} -->
 									<a href="{{ course.infoURL }}" target="{{ course.URLTarget }}">
 										<i class="icon-globe"></i>&nbsp;{{ course.titleName }}に関するお知らせ
 									</a>
-									{% endif %}
+<!-- 									{% endif %} -->
 								</span>
 							</li>
 							{% endfor %}
