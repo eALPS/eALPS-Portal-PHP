@@ -88,6 +88,10 @@
 													<dd><a href="{{ asset('bundles/ealpsportal/file/') }}{{ attachment }}" target="{{ course.URLTarget }}">添付ファイル</a></dd>
 													{% endfor %}
 													{% endif %}
+													{% if course.infoURL | length > 0 %}
+													<dt><i class="icon-globe"></i>&nbsp;</dt>
+													<dd><a href="{{ course.infoURL }}" target="{{ course.URLTarget }}">{{ course.titleName }}に関するお知らせ</a></dd>
+													{% endif %}
 												</dl>
 											</li>
 											{% endfor %}
@@ -119,8 +123,14 @@
 										<a href="{{ asset('bundles/ealpsportal/file/') }}{{ attachment }}" target="{{ course.URLTarget }}">
 											<i class="icon-file"></i>&nbsp;添付ファイル
 										</a>
+										&nbsp;&nbsp;
 										{% endfor %}
 										{% endif %}
+										{% if course.infoURL | length > 0 %}
+										<a href="{{ course.infoURL }}" target="{{ course.URLTarget }}">
+											<i class="icon-globe"></i>&nbsp;{{ course.titleName }}に関するお知らせ
+										</a>
+									{% endif %}
 									</span>
 								</li>
 								{% endfor %}
@@ -154,11 +164,11 @@
 									&nbsp;&nbsp;
 									{% endfor %}
 									{% endif %}
-									<!-- {% if course.infoURL | length > 0 %} -->
+									{% if course.infoURL | length > 0 %}
 									<a href="{{ course.infoURL }}" target="{{ course.URLTarget }}">
 										<i class="icon-globe"></i>&nbsp;{{ course.titleName }}に関するお知らせ
 									</a>
-<!-- 									{% endif %} -->
+									{% endif %}
 								</span>
 							</li>
 							{% endfor %}
