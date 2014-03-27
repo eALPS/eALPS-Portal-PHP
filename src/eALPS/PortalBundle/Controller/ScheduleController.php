@@ -227,7 +227,7 @@ class ScheduleController extends Controller
 			}
 			*/
 			$course['infoURL'] = '';
-			if(strncmp($course['titleName'], 'ＦＡＥ', 3) == 0 || strncmp($course['titleName'], 'アカデミック・イングリッシュ', 14) == 0) {
+			if(strncmp($course['titleName'], 'ＦＡＥ', 3) == 0) {
 				$course['infoURL'] = 'https://moodle-cloud.ealps.shinshu-u.ac.jp/common/course/view.php?id=13';
 			}
 			
