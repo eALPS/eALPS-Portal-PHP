@@ -221,8 +221,13 @@ class ScheduleController extends Controller
 			$course['informationURL'] = $this->get('router')->generate('e_alps_portal_redirect_moodle_course_info', array('opYear' => $courseOpYear, 'siteCode' => $courseSiteCode, 'titleCode' => $courseTitleCode));
 			$course['URLTarget'] = '_blank';
 			$course['attachmentArray'] = array();
+			/*
 			if(strncmp($course['titleName'], 'ＦＡＥ', 3) == 0) {
 				$course['attachmentArray'][] = 'ALCNetAcademy.pdf';
+			}
+			*/
+			if(strncmp($course['titleName'], 'ＦＡＥ', 3) == 0 || strncmp($course['titleName'], 'アカデミック・イングリッシュ', 14) == 0) {
+				$course['infoURL'] = 'https://moodle-cloud.ealps.shinshu-u.ac.jp/common/course/view.php?id=13';
 			}
 			
 			foreach($courseTeacherArray as $courseTeacher) {
