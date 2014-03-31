@@ -26,6 +26,8 @@ class RedirectController extends Controller
 			$ssl = false;
 		}
 		
+		$constantSiteArray = Utility::getConstantSiteArray();
+		
 		$moodleURL = Utility::getMoodleURL($opYear, $ssl);
 		$jsonCourseId = @file_get_contents("$moodleURL/$opYear/$siteCode/api/getInnerCode.php?code=$titleCode", true);
 		
@@ -40,6 +42,8 @@ class RedirectController extends Controller
 			if(is_null($courseIdArray) || ($http_response_header[0] == 'HTTP/1.1 404 Not Found') || !array_key_exists($titleCode, $courseIdArray))
 			{
 				return $this->render('eALPSPortalBundle:Error:redirectMoodleCourseError.html.twig', array('opYear' => $opYear, 'siteCode' => $siteCode, 'titleCode' => $titleCode));
+			} else if(in_array($siteCode, $constantSiteArray)) {
+				$redirectURL = "$moodleURL/$siteCode/course/view.php?id=$courseIdArray[$titleCode]";
 			} else {
 				$redirectURL = "$moodleURL/$opYear/$siteCode/course/view.php?id=$courseIdArray[$titleCode]";
 			}
