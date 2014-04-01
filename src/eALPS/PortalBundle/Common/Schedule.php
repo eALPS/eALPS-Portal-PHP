@@ -20,6 +20,7 @@ class Schedule {
 			'水曜' => array(),
 			'木曜' => array(),
 			'金曜' => array(),
+			'土曜' => array(),
 		),
 		'２時限' => array(
 			'月曜' => array(),
@@ -27,6 +28,7 @@ class Schedule {
 			'水曜' => array(),
 			'木曜' => array(),
 			'金曜' => array(),
+			'土曜' => array(),
 		),
 		'３時限' => array(
 			'月曜' => array(),
@@ -34,6 +36,7 @@ class Schedule {
 			'水曜' => array(),
 			'木曜' => array(),
 			'金曜' => array(),
+			'土曜' => array(),
 		),
 		'４時限' => array(
 			'月曜' => array(),
@@ -41,6 +44,7 @@ class Schedule {
 			'水曜' => array(),
 			'木曜' => array(),
 			'金曜' => array(),
+			'土曜' => array(),
 		),
 		'５時限' => array(
 			'月曜' => array(),
@@ -48,6 +52,7 @@ class Schedule {
 			'水曜' => array(),
 			'木曜' => array(),
 			'金曜' => array(),
+			'土曜' => array(),
 		),
 		'６時限' => array(
 			'月曜' => array(),
@@ -55,6 +60,7 @@ class Schedule {
 			'水曜' => array(),
 			'木曜' => array(),
 			'金曜' => array(),
+			'土曜' => array(),
 		),
 		'７時限' => array(
 			'月曜' => array(),
@@ -62,6 +68,7 @@ class Schedule {
 			'水曜' => array(),
 			'木曜' => array(),
 			'金曜' => array(),
+			'土曜' => array(),
 		),
 	);
 }
