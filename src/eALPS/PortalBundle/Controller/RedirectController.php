@@ -26,10 +26,15 @@ class RedirectController extends Controller
 			$ssl = false;
 		}
 		
+		$moodleURL = Utility::getMoodleURL($opYear, $ssl);
+		
 		$constantSiteArray = Utility::getConstantSiteArray();
 		
-		$moodleURL = Utility::getMoodleURL($opYear, $ssl);
-		$jsonCourseId = @file_get_contents("$moodleURL/$opYear/$siteCode/api/getInnerCode.php?code=$titleCode", true);
+		if(in_array($siteCode, $constantSiteArray)) {
+			$jsonCourseId = @file_get_contents("$moodleURL/$siteCode/api/getInnerCode.php?code=$titleCode", true);
+		} else {
+			$jsonCourseId = @file_get_contents("$moodleURL/$opYear/$siteCode/api/getInnerCode.php?code=$titleCode", true);
+		}
 		
 		$redirectURL;
 		
