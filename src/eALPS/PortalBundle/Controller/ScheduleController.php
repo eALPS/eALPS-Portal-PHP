@@ -67,6 +67,9 @@ class ScheduleController extends Controller
 			
 			$courseViewArray[$i] = $courseYearViewArray;
 		}
+		
+		// 年度更新しないサイト一覧を取得
+		$constantSiteArray = Utility::getConstantSiteArray();
 
 		$relationArray = $this
 				-> getDoctrine()
@@ -262,7 +265,14 @@ class ScheduleController extends Controller
 					}
 					
 					if($course['opDay'] == '' || $course['opDay'] == '集中' || $course['opHour'] == '' || $course['opHour'] == '不定') {
-						$courseViewArray[$course['opYear']]['courseSchedule'] -> otherCourseArray[] = $course;
+						// 年度更新しないサイトは全ての年度タブに表示する
+						if(in_array($courseSiteCode, $constantSiteArray)) {
+							for($i = $fiscalYear; $i >= self::MIN_YEAR && $fiscalYear - $i < self::COUNT_YEAR; $i--) {
+								$courseViewArray[$i]['courseSchedule'] -> otherCourseArray[] = $course;
+							}
+						} else {
+							$courseViewArray[$course['opYear']]['courseSchedule'] -> otherCourseArray[] = $course;
+						}
 					} else {
 						$courseTmpArray = $courseViewArray[$course['opYear']]['courseSchedule'] -> table[$course['opHour']][$course['opDay']];
 						$repeated = false;
@@ -281,8 +291,14 @@ class ScheduleController extends Controller
 			}
 			
 			// コースリスト
-			$courseViewArray[$course['opYear']]['courseList'][] = $course;
-		
+			if(in_array($courseSiteCode, $constantSiteArray)) {
+				for($i = $fiscalYear; $i >= self::MIN_YEAR && $fiscalYear - $i < self::COUNT_YEAR; $i--) {
+					$courseViewArray[$i]['courseList'][] = $course;
+				}
+			} else {
+				$courseViewArray[$course['opYear']]['courseList'][] = $course;
+			}
+			
 		}
 		unset($relation);
 		
