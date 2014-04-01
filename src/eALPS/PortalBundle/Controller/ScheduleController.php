@@ -253,7 +253,14 @@ class ScheduleController extends Controller
 			// 時間割
 			//$opDayHourArray = $course['opDayHour'];
 			if(empty($course['opDayHour'])) {
-				$courseViewArray[$course['opYear']]['courseSchedule'] -> otherCourseArray[] = $course;
+				// 年度更新しないサイトは全ての年度タブに表示する
+				if(in_array($courseSiteCode, $constantSiteArray)) {
+					for($i = $fiscalYear; $i >= self::MIN_YEAR && $fiscalYear - $i < self::COUNT_YEAR; $i--) {
+						$courseViewArray[$i]['courseSchedule'] -> otherCourseArray[] = $course;
+					}
+				} else {
+					$courseViewArray[$course['opYear']]['courseSchedule'] -> otherCourseArray[] = $course;
+				}
 			} else {
 				foreach($course['opDayHour'] as $opDayHour) {
 					$opDayHourArray = explode('-', $opDayHour);
