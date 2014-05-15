@@ -29,7 +29,7 @@
 				</td>
 				<td class="info-date">
 					<time id="infoInsertDate-{{ info.id }}">
-						{{ info.getUpdatedate }}
+						{{ info.getUpdatedate | date('Y.m.d') }}
 					</time>
 				</td>
 				<td>
