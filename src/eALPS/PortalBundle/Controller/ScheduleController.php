@@ -277,7 +277,7 @@ class ScheduleController extends Controller
 					
 					if($course['opDay'] == '' || $course['opDay'] == '集中' || $course['opHour'] == '' || $course['opHour'] == '不定') {
 						// コースの重複チェック
-						$courseTmpArray = $courseViewArray[$i]['courseSchedule'] -> otherCourseArray[];
+						$courseTmpArray = $courseViewArray[$i]['courseSchedule'] -> otherCourseArray;
 						$repeated = false;
 						foreach($courseTmpArray as $couseTmp) {
 							if($courseTmp['titleCode'] == $course['titleCode']) {
