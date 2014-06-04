@@ -179,7 +179,9 @@ class ScheduleController extends Controller
 				-> createQuery('
 					SELECT aa
 					FROM eALPSPortalBundle:Relation r, eALPSPortalBundle:RelationRole rr, eALPSPortalBundle:AccountAttr aa, eALPSPortalBundle:AccountAttrType aat
-					WHERE r.course = :course
+					WHERE r.enable = 1
+					AND r.closed = 0 
+					AND r.course = :course
 					AND r.relationRole = rr
 					AND rr.id = 1
 					AND r.account = aa.account
@@ -199,7 +201,9 @@ class ScheduleController extends Controller
 				-> createQuery('
 					SELECT aa
 					FROM eALPSPortalBundle:Relation r, eALPSPortalBundle:RelationRole rr, eALPSPortalBundle:AccountAttr aa, eALPSPortalBundle:AccountAttrType aat
-					WHERE r.course = :course
+					WHERE r.enable = 1
+					AND r.closed = 0 
+					AND r.course = :course
 					AND r.relationRole = rr
 					AND rr.id = 2
 					AND r.account = aa.account
@@ -272,13 +276,24 @@ class ScheduleController extends Controller
 					}
 					
 					if($course['opDay'] == '' || $course['opDay'] == '集中' || $course['opHour'] == '' || $course['opHour'] == '不定') {
-						// 年度更新しないサイトは全ての年度タブに表示する
-						if(in_array($courseSiteCode, $constantSiteArray)) {
-							for($i = $fiscalYear; $i >= self::MIN_YEAR && $fiscalYear - $i < self::COUNT_YEAR; $i--) {
-								$courseViewArray[$i]['courseSchedule'] -> otherCourseArray[] = $course;
+						// コースの重複チェック
+						$courseTmpArray = $courseViewArray[$i]['courseSchedule'] -> otherCourseArray[];
+						$repeated = false;
+						foreach($courseTmpArray as $couseTmp) {
+							if($courseTmp['titleCode'] == $course['titleCode']) {
+								$repeated = true;
 							}
-						} else {
-							$courseViewArray[$course['opYear']]['courseSchedule'] -> otherCourseArray[] = $course;
+						}
+						
+						if(!$repeated) {
+							// 年度更新しないサイトは全ての年度タブに表示する
+							if(in_array($courseSiteCode, $constantSiteArray)) {
+								for($i = $fiscalYear; $i >= self::MIN_YEAR && $fiscalYear - $i < self::COUNT_YEAR; $i--) {
+									$courseViewArray[$i]['courseSchedule'] -> otherCourseArray[] = $course;
+								}
+							} else {
+								$courseViewArray[$course['opYear']]['courseSchedule'] -> otherCourseArray[] = $course;
+							}
 						}
 					} else {
 						$courseTmpArray = $courseViewArray[$course['opYear']]['courseSchedule'] -> table[$course['opHour']][$course['opDay']];
@@ -298,6 +313,7 @@ class ScheduleController extends Controller
 			}
 			
 			// コースリスト
+			// 年度更新しないサイトは全ての年度タブに表示する
 			if(in_array($courseSiteCode, $constantSiteArray)) {
 				for($i = $fiscalYear; $i >= self::MIN_YEAR && $fiscalYear - $i < self::COUNT_YEAR; $i--) {
 					$courseViewArray[$i]['courseList'][] = $course;
