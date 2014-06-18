@@ -259,13 +259,14 @@ class ScheduleController extends Controller
 			if(empty($course['opDayHour'])) {
 			
 			// コースの重複チェック
-				$courseTmpArray = $courseViewArray[$course['opYear']]['courseSchedule'] -> otherCourseArray;
+				$courseTmpArray = $courseViewArray[$courseOpYear]['courseSchedule'] -> otherCourseArray;
 				$repeated = false;
-				foreach($courseTmpArray as $couseTmp) {
-					if($courseTmp['titleCode'] == $course['titleCode']) {
+				foreach($courseTmpArray as $courseTmp) {
+					if($courseTmp['titleCode'] == $courseTitleCode) {
 						$repeated = true;
 					}
 				}
+				unset($courseTmp);
 				
 				if(!$repeated) {
 					// 年度更新しないサイトは全ての年度タブに表示する
@@ -289,13 +290,14 @@ class ScheduleController extends Controller
 					
 					if($course['opDay'] == '' || $course['opDay'] == '集中' || $course['opHour'] == '' || $course['opHour'] == '不定') {
 						// コースの重複チェック
-						$courseTmpArray = $courseViewArray[$course['opYear']]['courseSchedule'] -> otherCourseArray;
+						$courseTmpArray = $courseViewArray[$courseOpYear]['courseSchedule'] -> otherCourseArray;
 						$repeated = false;
-						foreach($courseTmpArray as $couseTmp) {
+						foreach($courseTmpArray as $courseTmp) {
 							if($courseTmp['titleCode'] == $course['titleCode']) {
 								$repeated = true;
 							}
 						}
+						unset($courseTmp);
 						
 						if(!$repeated) {
 							// 年度更新しないサイトは全ての年度タブに表示する
@@ -304,7 +306,7 @@ class ScheduleController extends Controller
 									$courseViewArray[$i]['courseSchedule'] -> otherCourseArray[] = $course;
 								}
 							} else {
-								$courseViewArray[$course['opYear']]['courseSchedule'] -> otherCourseArray[] = $course;
+								$courseViewArray[$courseOpYear]['courseSchedule'] -> otherCourseArray[] = $course;
 							}
 						}
 					} else {
@@ -315,6 +317,8 @@ class ScheduleController extends Controller
 								$repeated = true;
 							}
 						}
+						unset($courseTmp);
+						
 						if(!$repeated) {
 							$courseViewArray[$course['opYear']]['courseSchedule'] -> table[$course['opHour']][$course['opDay']][] = $course;
 						}
