@@ -86,8 +86,8 @@ class Utility
 	public static function getHostNameArray() 
 	{
 		$hostNameArray = array(
-			'WEB1' => 'ec2-54-250-120-41.ap-northeast-1.compute.amazonaws.com',
-			'WEB2' => 'ec2-54-250-120-128.ap-northeast-1.compute.amazonaws.com',
+			'WEB1' => '54.249.250.203',
+			'WEB2' => '54.249.250.208',
 		);
 		return $hostNameArray;
 	}
