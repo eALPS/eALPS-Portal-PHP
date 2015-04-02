@@ -46,7 +46,9 @@ class ScheduleController extends Controller
 		
 		// 年度
 		if(empty($appointedYear)) {
-			$fiscalYear = Utility::getFiscalYear();
+			//$fiscalYear = Utility::getFiscalYear();
+			// 時間割画面のリニューアルに伴って2014年で固定する．
+			$fiscalYear = 2014;
 		} else {
 			$fiscalYear = $appointedYear;
 		}
