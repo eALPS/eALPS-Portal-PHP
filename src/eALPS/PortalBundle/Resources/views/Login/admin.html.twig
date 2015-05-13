@@ -16,7 +16,7 @@
 			{% endif %}
 			{% endfor %}
 			<li class="tab_constant"><a href="#constant"><i class="icon-tag"></i>&nbsp;年度更新しないサイト</a></li>
-			<li class="tab_constant"><a href="#constant"><i class="icon-tag"></i>&nbsp;年度更新しないサイト（過年度）</a></li>
+			<li class="tab_prev_constant"><a href="#prev_constant"><i class="icon-tag"></i>&nbsp;年度更新しないサイト（過年度）</a></li>
 			<li class="tab_other"><a href="#other"><i class="icon-tag"></i>&nbsp;その他</a></li>
 		</ul>
 	
@@ -160,7 +160,7 @@
 					<br />
 				</section>
 			</div>
-			<div id="constant" class="tab-pane fade">
+			<div id="prev_constant" class="tab-pane fade">
 				<section class="well">
 					<h1>管理者ログインフォーム</h1>
 					<form class="form-horizontal adminLoginForm" method="post" target="_self">
@@ -170,7 +170,7 @@
 								<div class="controls">
 									<select class="span3" name="constantSite">
 										{% for siteName, site in constantSiteURLArray %}
-										<option name="{{ fiscalYear }}_prev_{{ site.siteENName }}" label="{{ siteName }}" value="{{ notELBURL }}/{{ fiscalYear }}/prev_{{ site.siteENName }}/login/index.php">{{ siteName }}">{{ siteName }}</option>
+										<option name="{{ fiscalYear }}_prev_{{ site.siteENName }}" label="{{ siteName }}" value="{{ notELBURL }}/prev_{{ site.siteENName }}/login/index.php">{{ siteName }}">{{ siteName }}</option>
 										{% endfor %}
 									</select>
 								</div>
