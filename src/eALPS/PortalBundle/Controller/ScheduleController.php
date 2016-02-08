@@ -16,7 +16,7 @@ use eALPS\PortalBundle\Entity\RelationRole;
 class ScheduleController extends Controller
 {
 	// 表示する年の最大数
-	const COUNT_YEAR = 3;
+	const COUNT_YEAR = 2;
 	// 表示する年の最小値
 	const MIN_YEAR = 2010;
 
