@@ -60,7 +60,8 @@ class Utility
 	 * 
 	 * @access public
 	 * @param int $year(xxxx)
-	 * @return boolean $ssl
+	 * @param boolean $ssl
+	 * @return string $URL
 	 */
 	public static function getMoodleURL($year, $ssl)
 	{
@@ -120,6 +121,7 @@ class Utility
 			'人文学部・人文科学研究科' => 'l',
 			'教育学部・教育学研究科' => 'e',
 			'経済学部・経済社会政策科学研究科' => 'k',
+			'経法学部・経済社会政策科学研究科' => 'j',
 			'理学部・理工学研究科【理学】' => 's',
 			'医学部・医学研究科' => 'm',
 			'医学部閲覧用' => 'mv',
